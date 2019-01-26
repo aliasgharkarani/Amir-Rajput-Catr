@@ -1,108 +1,69 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
+// import React from "react";
+// import { View, Text, Button } from "react-native";
+// import Main from './main'
+// import SelectCity from './src/components/SelectCity'
+// import { createStackNavigator, createAppContainer } from "react-navigation";
+// class HomeScreen extends React.Component {
+//   constructor(props) {
+//     super(props);
+//   }
+//   render() {
+//     return (
+//       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+//         <Text>Router</Text>
+//       </View>
+//     );
+//   }
+// }
+// const AppNavigator = createStackNavigator({
+//   Main: {
+//     screen: Main,
+//     navigationOptions: {
+//       header: null,
+//     }
+//   },
+//   SelectCity: {
+//     screen: SelectCity,
+//     navigationOptions: {
+//       header: null,
+//     }
+//   },
+// });
 
-import React, { Component } from 'react';
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  Image,
-  View,
-  Dimensions,
-  TouchableOpacity
-} from 'react-native';import { Content, Container, Header, List, ListItem, Thumbnail, CardItem, Left, Body, Right, Footer, FooterTab, Button, Icon } from "native-base"
-import firebase from 'react-native-firebase'
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+// export default createAppContainer(AppNavigator);
 
-// type Props = {};
-export default class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      datacmg: []
-    }
-    var config = {
-      apiKey: "AIzaSyBu6_k9uyJaNeN3QqxFaZHeVTqN5Yq4Eus",
-      authDomain: "technicalsolutions-2fd6c.firebaseapp.com",
-      databaseURL: "https://technicalsolutions-2fd6c.firebaseio.com",
-      projectId: "technicalsolutions-2fd6c",
-      storageBucket: "technicalsolutions-2fd6c.appspot.com",
-      messagingSenderId: "800730417694"
-    };
-    firebase.initializeApp(config);
 
-  }
-  UNSAFE_componentWillMount() {
-    firebase.database().ref('Orders').once("value").then(success => {
-      const product = success.val();
-      const keys = Object.keys(product);
-      const array = [];
-      for (e of keys) {
-          array.push(product[e])
-      }
-      // console.log(array," Worked!!!!!!");
-      this.setState({ datacmg: array });
-  })
-      .catch(err => {
-          alert(err)
-      }
-      )
-  }
+import React from "react";
+import { View, Text } from "react-native";
+import { createStackNavigator, createAppContainer } from "react-navigation";
+import Main from './main'
+import SelectCity from './src/components/SelectCity'
+class HomeScreen extends React.Component {
   render() {
     return (
-      <Container>
-      {/* <Headers navigation={this.props.navigation} /> */}
-      <Content>
-          <List>
-              {this.state.datacmg && this.state.datacmg.map((item, index) => {
-                 return <ListItem key={index} >
-                      <Left>
-                        <Text>Sorry!!!!!!!!!!!!!!!!!</Text>
-                          {/* <Thumbnail square source={{ uri: item.imagelink }} /> */}
-                      </Left>
-                      <Body>
-                          <Text>{item.email}</Text>
-                          <Text note numberOfLines={1}>{item.name}</Text>
-                      </Body>
-                      <Right>
-                          <Button transparent>
-                              <Text>{item.totalPrice}</Text>
-                          </Button>
-                      </Right>
-                  </ListItem>
-              })}
-          </List>
-      </Content>
-  </Container>
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+        <Text>Home Screen</Text>
+      </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+const AppNavigator = createStackNavigator({
+  SelectCity: {
+    screen: SelectCity,
+    navigationOptions: {
+      header: null,
+    }
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  Main: {
+    screen: Main,
+    navigationOptions: {
+      header: null,
+    }
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+  Home: {
+    screen: HomeScreen
+  }
 });
+
+export default createAppContainer(AppNavigator);

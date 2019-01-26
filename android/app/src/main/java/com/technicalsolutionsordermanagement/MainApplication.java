@@ -12,7 +12,6 @@ import com.facebook.soloader.SoLoader;
 import io.invertase.firebase.database.RNFirebaseDatabasePackage; // <
 import java.util.Arrays;
 import java.util.List;
-
 public class MainApplication extends Application implements ReactApplication {
 
   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
@@ -26,6 +25,7 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
             new RNFirebasePackage(),
+              new RNGestureHandlerPackage(), // <-- change 2
               new RNFirebaseDatabasePackage() // <-- Add this line
       );
     }

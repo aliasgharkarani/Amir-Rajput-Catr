@@ -5,80 +5,104 @@
  * @format
  * @flow
  */
+
 import React, { Component } from 'react';
 import {
   Platform,
   StyleSheet,
+  Text,
   Image,
-  TouchableNativeFeedback,
+  View,
   Dimensions,
-  ScrollView
-} from 'react-native';
-import { Container, Header, Content, Footer, Button, Text, View, ListItem, CheckBox, Body } from 'native-base';
-// import { bold } from 'ansi-colors';
-// import { createStackNavigator, createAppContainer } from "react-navigation";
-const { height, width, fontScale } = Dimensions.get('window');
-export default class Main extends Component {
+  TouchableOpacity
+} from 'react-native';import { Content, Container, Header, List, ListItem, Thumbnail, CardItem, Left, Body, Right, Footer, FooterTab, Button, Icon } from "native-base"
+import firebase from 'react-native-firebase'
+const instructions = Platform.select({
+  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
+  android:
+    'Double tap R on your keyboard to reload,\n' +
+    'Shake or press menu button for dev menu',
+});
+
+// type Props = {};
+export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      stm: true,
+      datacmg: []
     }
-    // this.onSubmit = this.onSubmit.bind(this);
+    var config = {
+      apiKey: "AIzaSyBu6_k9uyJaNeN3QqxFaZHeVTqN5Yq4Eus",
+      authDomain: "technicalsolutions-2fd6c.firebaseapp.com",
+      databaseURL: "https://technicalsolutions-2fd6c.firebaseio.com",
+      projectId: "technicalsolutions-2fd6c",
+      storageBucket: "technicalsolutions-2fd6c.appspot.com",
+      messagingSenderId: "800730417694"
+    };
+    firebase.initializeApp(config);
+
   }
   UNSAFE_componentWillMount() {
-    setTimeout(() => {
-      this.setState({
-        stm: false
-      })
-    }, 2500)
+    firebase.database().ref('Orders').once("value").then(success => {
+      const product = success.val();
+      const keys = Object.keys(product);
+      const array = [];
+      for (e of keys) {
+          array.push(product[e])
+      }
+      // console.log(array," Worked!!!!!!");
+      this.setState({ datacmg: array });
+  })
+      .catch(err => {
+          alert(err)
+      }
+      )
   }
   render() {
     return (
-      this.state.stm ? <View style={styles.container}>
-        <View style={{ height: width / 1.1 }}></View>
-        <View style={{ justifyContent: "flex-end", alignItems: "center", height: width / 4 }}>
-          <View style={{ width: width / 1.01, height: width / 1.5 }}>
-            <Image
-              source={require("./logo.png")} resizeMode="contain" style={{ height: "100%", width: "100%" }} />
-          </View>
-
-          <View style={{ height: width / 4 }}>
-            <Text style={{ marginTop: '1%', color: "#4A4A4A", fontSize: fontScale * 35, color: "white", fontWeight: "bold" }}>Amir Rajput Catering</Text>
-          </View>
-
-        </View>
-        <View style={{ justifyContent: "flex-end", display: "flex", height: width / 1.8 }}>
-          <Text style={{ color: "white", fontSize: 20, textAlign: "center" }}>Brands</Text>
-        </View>
-      </View> :
-        <Container>
-          <View style={{ display: "flex", justifyContent: "center", backgroundColor: 'red', width: '100%', height: 45 }}>
-            <Text style={{ textAlign: "center", fontSize: 23, fontWeight: 'bold', color: "white" }}>Amir Rajput Catering</Text>
-          </View>
-          <ScrollView>
-            <ListItem>
-              <CheckBox checked={true} color="blue" />
-                <Text>Comming Soon</Text>
-              <Body>
-              </Body>
-            </ListItem>
-            <Content />
-          </ScrollView>
-          <Footer>
-            <Button full style={{ elevation: 0, width: "100%" }}>
-              <Text style={{ fontSize: 23, fontWeight: 'bold', color: "white" }}>Move Ahead</Text>
-            </Button>
-          </Footer>
-        </Container>
+      <Container>
+      {/* <Headers navigation={this.props.navigation} /> */}
+      <Content>
+          <List>
+              {this.state.datacmg && this.state.datacmg.map((item, index) => {
+                 return <ListItem key={index} >
+                      <Left>
+                        <Text>Sorry!!!!!!!!!!!!!!!!!</Text>
+                          {/* <Thumbnail square source={{ uri: item.imagelink }} /> */}
+                      </Left>
+                      <Body>
+                          <Text>{item.email}</Text>
+                          <Text note numberOfLines={1}>{item.name}</Text>
+                      </Body>
+                      <Right>
+                          <Button transparent>
+                              <Text>{item.totalPrice}</Text>
+                          </Button>
+                      </Right>
+                  </ListItem>
+              })}
+          </List>
+      </Content>
+  </Container>
     );
   }
 }
+
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
-    backgroundColor: '#214467',
-    height,
-    width
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  },
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
+  instructions: {
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5,
   },
 });
