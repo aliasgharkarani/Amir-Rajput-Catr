@@ -14,7 +14,20 @@ import {
   Dimensions,
   ScrollView
 } from 'react-native';
-import { Container, Header, Content, Footer, Button, Text, View, ListItem, CheckBox, Body } from 'native-base';
+import {
+  Footer,
+  Text,
+  View,
+  CheckBox,
+  Body,
+  Button,
+  Container,
+  Content,
+  Item,
+  Input,
+  Header,
+  ListItem,
+} from 'native-base';
 // import { bold } from 'ansi-colors';
 // import { createStackNavigator, createAppContainer } from "react-navigation";
 const { height, width, fontScale } = Dimensions.get('window');
@@ -35,7 +48,7 @@ export default class Main extends Component {
   }
   render() {
     return (
-      this.state.stm ? <View style={styles.container}>
+      this.state.stm ? <View style={styles.container1}>
         <View style={{ height: width / 1.1 }}></View>
         <View style={{ justifyContent: "flex-end", alignItems: "center", height: width / 4 }}>
           <View style={{ width: width / 1.01, height: width / 1.5 }}>
@@ -53,21 +66,52 @@ export default class Main extends Component {
         </View>
       </View> :
         <Container>
-          <View style={{ display: "flex", justifyContent: "center", backgroundColor: 'red', width: '100%', height: 45 }}>
-            <Text style={{ textAlign: "center", fontSize: 23, fontWeight: 'bold', color: "white" }}>Amir Rajput Catering</Text>
-          </View>
-          <ScrollView>
-            <ListItem>
-              <CheckBox checked={true} color="blue" />
-                <Text>Comming Soon</Text>
-              <Body>
-              </Body>
-            </ListItem>
-            <Content />
-          </ScrollView>
-          <Footer>
-            <Button full style={{ elevation: 0, width: "100%" }}>
-              <Text style={{ fontSize: 23, fontWeight: 'bold', color: "white" }}>Move Ahead</Text>
+          <Header style={styles.hdr}>
+            <Text style={styles.heading}>Delivery details</Text>
+          </Header>
+          <Content>
+            <View style={styles.container}>
+              <View>
+                <ListItem itemDivider>
+                  <Text>Select Delivery Address</Text>
+                </ListItem>
+
+                <View>
+                  <Item regular>
+                    <Input placeholder="Enter a new address" />
+                  </Item>
+                </View>
+                {/* <Autocomplete style={styles.btnText}
+                        onChangeText={text => this.setState({ query: text })}
+                        renderItem={item => (
+                        <TouchableOpacity onPress={() => this.setState({ query: item })}>
+                            <Text>{item}</Text>
+                        </TouchableOpacity>
+                        )}
+                    /> */}
+                <ListItem itemDivider>
+                  <Text>More details</Text>
+                </ListItem>
+                <Item underline style={styles.detailBox}>
+                  <Input placeholder="Flat number/ suite / floor" />
+                </Item>
+                <Item underline style={styles.detailBox}>
+                  <Input placeholder="Buisness name" />
+                </Item>
+                <Item underline style={styles.detailBox}>
+                  <Input placeholder="Add delivery note" />
+                </Item>
+              </View>
+            </View>
+          </Content>
+          <Footer style={{ backgroundColor: "#C21807" }}>
+            <Button
+              full
+              primary
+              style={styles.nextBtn}
+              onPress={() => this.props.navigation.navigate('Dashboard')}
+            >
+              <Text style={styles.btnText}>Book</Text>
             </Button>
           </Footer>
         </Container>
@@ -75,10 +119,44 @@ export default class Main extends Component {
   }
 }
 const styles = StyleSheet.create({
-  container: {
+  container1: {
     // flex: 1,
-    backgroundColor: '#214467',
+    // backgroundColor: '#214467',
+    backgroundColor: '#C21807',
     height,
     width
   },
+  container: {
+    flex: 1,
+    justifyContent: "space-between",
+    alignItems: "stretch",
+    height: height / 1.2
+  },
+  heading: {
+    textAlign: "center",
+    marginTop: 10,
+    fontSize: 20,
+    color: 'white'
+  },
+  pwd: {
+    margin: 20
+  },
+  hdr: {
+    backgroundColor: '#C21807'
+  },
+
+  nextBtn: {
+    textAlign: "center",
+    backgroundColor: '#C21807',
+  },
+  btnText: {
+    textAlign: "center",
+    fontSize: 22,
+    color: "white",
+
+  },
+  detailBox: {
+    margin: 5,
+    padding: 5
+  }
 });

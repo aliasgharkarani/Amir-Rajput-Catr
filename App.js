@@ -38,6 +38,7 @@ import { View, Text } from "react-native";
 import { createStackNavigator, createAppContainer } from "react-navigation";
 import Main from './main'
 import SelectCity from './src/components/SelectCity'
+import Dashboard from './src/components/dashboard'
 class HomeScreen extends React.Component {
   render() {
     return (
@@ -57,6 +58,12 @@ const AppNavigator = createStackNavigator({
   },
   Main: {
     screen: Main,
+    navigationOptions: {
+      header: null,
+    }
+  },
+  Dashboard: {
+    screen: Dashboard,
     navigationOptions: {
       header: null,
     }
