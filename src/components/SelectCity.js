@@ -53,16 +53,16 @@ export default class Main extends Component {
         <View style={{ justifyContent: "flex-end", alignItems: "center", height: width / 4 }}>
           <View style={{ width: width / 1.01, height: width / 1.5 }}>
             <Image
-              source={require("../assets/logo.png")} resizeMode="contain" style={{ height: "100%", width: "100%" }} />
+              source={require("../assets/logo1.png")} resizeMode="contain" style={{ height: "100%", width: "100%" }} />
           </View>
 
           <View style={{ height: width / 4 }}>
-            <Text style={{ marginTop: '1%', color: "#4A4A4A", fontSize: fontScale * 35, color: "white", fontWeight: "bold" }}>Amir Rajput Catering</Text>
+            <Text style={{ marginTop: '1%', color: "#7e1416", fontSize: fontScale * 35, color: "#7e1416", fontWeight: "bold" }}>Amir Rajput Catering</Text>
           </View>
 
         </View>
         <View style={{ justifyContent: "flex-end", display: "flex", height: width / 1.8 }}>
-          <Text style={{ color: "white", fontSize: 20, textAlign: "center" }}>Brands</Text>
+          <Text style={{ color: "#7e1416", fontSize: 20, textAlign: "center" }}>Brands</Text>
         </View>
       </View> :
         <Container>
@@ -120,9 +120,7 @@ export default class Main extends Component {
 }
 const styles = StyleSheet.create({
   container1: {
-    // flex: 1,
-    // backgroundColor: '#214467',
-    backgroundColor: '#C21807',
+    backgroundColor: '#a4a3ab5e',
     height,
     width
   },
@@ -148,6 +146,7 @@ const styles = StyleSheet.create({
   nextBtn: {
     textAlign: "center",
     backgroundColor: '#C21807',
+    elevation:0,
   },
   btnText: {
     textAlign: "center",

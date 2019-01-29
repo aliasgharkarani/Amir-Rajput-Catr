@@ -11,35 +11,35 @@ export default class FooterTabsBadgeExample extends Component {
     render() {
         return (
             <Container>
-                <Header>
+                {/* <Header>
                     <Left />
                     <Body>
-                        <Title>Dashboard</Title>
+                        <Title>Delivery details</Title>
                     </Body>
                     <Right />
-                </Header>
+                </Header> */}
                 <Content>
                     <Screen ScrnChng={this.state.ScreenDisplay} />
                 </Content>
-                <Footer>
-                    <FooterTab>
-                        <Button badge vertical onPress={() => { this.setState({ ScreenDisplay: 0 }) }}>
+                <Footer style={{ backgroundColor: "#C21807" }}>
+                    <FooterTab style={{ backgroundColor: "#C21807" }}>
+                        <Button style={{ elevation: 0 }} badge vertical onPress={() => { this.setState({ ScreenDisplay: 0 }) }}>
                             <Badge><Text>2</Text></Badge>
                             <Icon name="apps" />
-                            <Text>Apps</Text>
+                            <Text>HOME</Text>
                         </Button>
-                        <Button vertical onPress={() => { this.setState({ ScreenDisplay: 1 }) }}>
+                        <Button style={{ elevation: 0 }} vertical onPress={() => { this.setState({ ScreenDisplay: 1 }) }}>
                             <Icon name="camera" />
-                            <Text>Camera</Text>
+                            <Text>SEARCH</Text>
                         </Button>
-                        <Button active badge vertical onPress={() => { this.setState({ ScreenDisplay: 2 }) }}>
+                        <Button style={{ elevation: 0 }} badge vertical onPress={() => { this.setState({ ScreenDisplay: 2 }) }}>
                             <Badge ><Text>51</Text></Badge>
                             <Icon active name="navigate" />
-                            <Text>Navigate</Text>
+                            <Text>HISTORY</Text>
                         </Button>
-                        <Button vertical onPress={() => { this.setState({ ScreenDisplay: 3 }) }}>
+                        <Button style={{ elevation: 0 }} vertical onPress={() => { this.setState({ ScreenDisplay: 3 }) }}>
                             <Icon name="person" />
-                            <Text>Contact</Text>
+                            <Text>PROFILE</Text>
                         </Button>
                     </FooterTab>
                 </Footer>
