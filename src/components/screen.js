@@ -35,8 +35,10 @@ import CardImage from './img.jpeg'
 var height = Dimensions.get('window').height;
 var width = Dimensions.get("window").width;
 var Menus = [
-    { menuName: "Menu 01", items: ["FRESH JUICES ON ARRIVAL", "FRIED FISH LAHORI", "CHICKEN RESHMI KABAB", "MUTTON KUNNA", "CHICKEN BIRYANI", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "GULAB JAMAN", "CREAM CARAMEL"] },
-    { menuName: "Menu 02", items: ["FRESH JUICES ON ARRIVAL", "FRIED FISH LAHORI", "CHICKEN RESHMI KABAB", "MUTTON KUNNA", "CHICKEN BIRYANI", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "GULAB JAMAN", "CREAM CARAMEL"] }
+    { menuName: "Menu 01", items: ["FRESH JUICES ON ARRIVAL", "FRIED FISH LAHORI", "CHICKEN RESHMI KABAB", "MUTTON KUNNA", "CHICKEN BIRYANI", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "GULAB JAMAN", "CREAM CARAMEL"],"price":"10,000" },
+    { menuName: "Menu 02", items: ["FRESH JUICES ON ARRIVAL", "CHAPLI / SEEKH KABAB", "CHICKEN MALAI BOTI", "CHICKEN ZAFRANI BIRYANI", "CHICKEN BADAMI QORMA", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "GAJAR KA HALWA", "FRUIT TRIFFLE"],"price":"15,000"},
+    { menuName: "Menu 03", items: ["FRESH JUICES ON ARRIVAL", "GRILLED FISH", "CHICKEN BIHARI BOTI", "CHICKEN KARAHI", "MUTTON YAKHNI PULAO", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "RABRI KHEER", "LAB-E-SHEEREN"],"price":"20,000"},
+    { menuName: "Menu 04", items: ["FRESH JUICES ON ARRIVAL", "FRIED FISH ORLY", "CHICKEN STEAM", "CHICKEN PESHAWARI KARAHI", "KASHMIRI PULAO", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "SPECIAL ZARDA", "DOODH DULARI"],"price":"25,000"}
 ]
 export default class Screen extends Component {
     constructor(props) {
@@ -53,41 +55,38 @@ export default class Screen extends Component {
                         <Header style={styles.hdr}>
                             <Title style={styles.txt}>Traditional Set Menus</Title>
                         </Header>
-                      <View>
-                            <ScrollView style={{marginBottom:'10%'}}>
-                                {/* <View> */}
-                                    {
-                                        Menus.map((mu, index) => {
-                                            return (
-                                                <Card>
-                                                    <CardItem cardBody>
-                                                        <Image source={CardImage} style={{ height: 200, width: null, flex: 1 }} />
-                                                    </CardItem>
-                                                    <CardItem>
-                                                        <Body>
-                                                            {/* <Text style={styles.cardHeading}>Menu 01</Text> */}
-                                                            <Text style={styles.cardHeading}>{mu.menuName}</Text>
-                                                            <View style={{ width: width / 1.1, backgroundColor: "green" }}>
-                                                                {
-                                                                    mu.items.map((numbers) => {
-                                                                        return (
-                                                                            <Text>{numbers}</Text>
-                                                                        )
-                                                                    })
-                                                                    //         <Text style={styles.cardText}>{mu}-{index}</Text>
-                                                                }
-                                                            </View>
-                                                            <Text style={styles.cardTime}>Rs.10,000</Text>
-                                                        </Body>
-                                                    </CardItem>
-                                                </Card>
-                                            )
-                                        })
-                                    }
-                                {/* </View> */}
+                        <View>
+                            <ScrollView style={{ marginBottom: '10%' }}>
+                                {
+                                    Menus.map((mu, index) => {
+                                        return (
+                                            <Card>
+                                                <CardItem cardBody>
+                                                    <Image source={CardImage} style={{ height: 200, width: null, flex: 1 }} />
+                                                </CardItem>
+                                                <CardItem>
+                                                    <Body>
+                                                        <Text style={styles.cardHeading}>{mu.menuName}</Text>
+                                                        <View style={{ width: width / 1.1}}>
+                                                            {
+                                                                mu.items.map((numbers) => {
+                                                                    return (
+                                                                        <Text style={styles.cardText}>{numbers}</Text>
+                                                                    )
+                                                                })
+                                                            }
+                                                        </View>
+                                                        <Text style={styles.cardTime}>Rs.{mu.price}</Text>
+                                                        <Button><Text>Add to Card</Text></Button>
+                                                    </Body>
+                                                </CardItem>
+                                            </Card>
+                                        )
+                                    })
+                                }
                             </ScrollView>
-                            </View>
                         </View>
+                    </View>
                     // </Container>
                 )
                 break;
@@ -279,10 +278,16 @@ const styles = StyleSheet.create({
         fontSize: 22
     },
     cardText: {
-        fontSize: 18,
+        fontSize: 17,
         color: 'grey',
-        width: width / 1.05,
-        backgroundColor: "red"
+        width: width / 1.9,
+        // display: "flex",
+        // flexDirection: "row",
+        // textAlign:"center"
+        // backgroundColor: "red",
+        // borderColor: "blue",
+        // borderWidth: 1
+
     },
     cardTime: {
         backgroundColor: 'lightgrey',
