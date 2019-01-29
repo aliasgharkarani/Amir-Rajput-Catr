@@ -10,15 +10,8 @@ export default class FooterTabsBadgeExample extends Component {
     }
     render() {
         return (
-            <Container>
-                {/* <Header>
-                    <Left />
-                    <Body>
-                        <Title>Delivery details</Title>
-                    </Body>
-                    <Right />
-                </Header> */}
-                <Content>
+            <Container contentContainerStyle={{flex:1}}>
+                <Content contentContainerStyle={{flex:1}}>
                     <Screen ScrnChng={this.state.ScreenDisplay} />
                 </Content>
                 <Footer style={{ backgroundColor: "#C21807" }}>

@@ -57,7 +57,7 @@ export default class Main extends Component {
           </View>
 
           <View style={{ height: width / 4 }}>
-            <Text style={{ marginTop: '1%', color: "#7e1416", fontSize: fontScale * 35, color: "#7e1416", fontWeight: "bold" }}>Amir Rajput Catering</Text>
+            {/* <Text style={{ marginTop: '1%', color: "#7e1416", fontSize: fontScale * 35, color: "#7e1416", fontWeight: "bold" }}>Amir Rajput Catering</Text> */}
           </View>
 
         </View>

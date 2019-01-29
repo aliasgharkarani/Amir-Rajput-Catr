@@ -7,6 +7,7 @@ import {
     defaultProps,
     Image,
     AppRegistry,
+    ScrollView
 } from 'react-native'
 import {
     Text,
@@ -30,8 +31,13 @@ import {
     Segment
 } from 'native-base';
 import CardImage from './img.jpeg'
+// import { ScrollView } from 'react-native-gesture-handler';
 var height = Dimensions.get('window').height;
 var width = Dimensions.get("window").width;
+var Menus = [
+    { menuName: "Menu 01", items: ["FRESH JUICES ON ARRIVAL", "FRIED FISH LAHORI", "CHICKEN RESHMI KABAB", "MUTTON KUNNA", "CHICKEN BIRYANI", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "GULAB JAMAN", "CREAM CARAMEL"] },
+    { menuName: "Menu 02", items: ["FRESH JUICES ON ARRIVAL", "FRIED FISH LAHORI", "CHICKEN RESHMI KABAB", "MUTTON KUNNA", "CHICKEN BIRYANI", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "GULAB JAMAN", "CREAM CARAMEL"] }
+]
 export default class Screen extends Component {
     constructor(props) {
         super(props)
@@ -43,45 +49,46 @@ export default class Screen extends Component {
         switch (this.props.ScrnChng) {
             case 0:
                 return (
-                    <Container>
+                    <View>
                         <Header style={styles.hdr}>
-                            <Title style={styles.txt}>Delivery details</Title>
+                            <Title style={styles.txt}>Traditional Set Menus</Title>
                         </Header>
-                        <Content>
-                            <Separator bordered>
-                                <Text>Popular Restaurants</Text>
-                            </Separator>
-                            <View>
-                                <Card>
-                                    <CardItem cardBody>
-                                        <Image source={CardImage} style={{ height: 200, width: null, flex: 1 }} />
-                                    </CardItem>
-                                    <CardItem>
-                                        <Body>
-                                            <Text style={styles.cardHeading}>Mc Donald's (Tuart Hill)</Text>
-                                            <Text style={styles.cardText}>$ - American - Burgers - Fast Food</Text>
-                                            <Text style={styles.cardTime}>10-20 mins</Text>
-                                        </Body>
-                                    </CardItem>
-                                </Card>
-                                <Separator bordered>
-                                    <Text>Under 25 Minutes</Text>
-                                </Separator>
-                                <Card>
-                                    <CardItem cardBody>
-                                        <Image source={CardImage} style={{ height: 200, width: null, flex: 1 }} />
-                                    </CardItem>
-                                    <CardItem>
-                                        <Body>
-                                            <Text style={styles.cardHeading}>Mc Donald's (Tuart Hill)</Text>
-                                            <Text style={styles.cardText}>$ - American - Burgers - Fast Food</Text>
-                                            <Text style={styles.cardTime}>10-20 mins</Text>
-                                        </Body>
-                                    </CardItem>
-                                </Card>
+                      <View>
+                            <ScrollView style={{marginBottom:'10%'}}>
+                                {/* <View> */}
+                                    {
+                                        Menus.map((mu, index) => {
+                                            return (
+                                                <Card>
+                                                    <CardItem cardBody>
+                                                        <Image source={CardImage} style={{ height: 200, width: null, flex: 1 }} />
+                                                    </CardItem>
+                                                    <CardItem>
+                                                        <Body>
+                                                            {/* <Text style={styles.cardHeading}>Menu 01</Text> */}
+                                                            <Text style={styles.cardHeading}>{mu.menuName}</Text>
+                                                            <View style={{ width: width / 1.1, backgroundColor: "green" }}>
+                                                                {
+                                                                    mu.items.map((numbers) => {
+                                                                        return (
+                                                                            <Text>{numbers}</Text>
+                                                                        )
+                                                                    })
+                                                                    //         <Text style={styles.cardText}>{mu}-{index}</Text>
+                                                                }
+                                                            </View>
+                                                            <Text style={styles.cardTime}>Rs.10,000</Text>
+                                                        </Body>
+                                                    </CardItem>
+                                                </Card>
+                                            )
+                                        })
+                                    }
+                                {/* </View> */}
+                            </ScrollView>
                             </View>
-                        </Content>
-                    </Container>
+                        </View>
+                    // </Container>
                 )
                 break;
             case 1:
@@ -273,7 +280,9 @@ const styles = StyleSheet.create({
     },
     cardText: {
         fontSize: 18,
-        color: 'grey'
+        color: 'grey',
+        width: width / 1.05,
+        backgroundColor: "red"
     },
     cardTime: {
         backgroundColor: 'lightgrey',
