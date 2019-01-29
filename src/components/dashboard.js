@@ -19,16 +19,16 @@ export default class FooterTabsBadgeExample extends Component {
                         <Button style={{ elevation: 0 }} badge vertical onPress={() => { this.setState({ ScreenDisplay: 0 }) }}>
                             <Badge><Text>2</Text></Badge>
                             <Icon name="apps" />
-                            <Text>HOME</Text>
+                            <Text>TSM</Text>
                         </Button>
                         <Button style={{ elevation: 0 }} vertical onPress={() => { this.setState({ ScreenDisplay: 1 }) }}>
                             <Icon name="camera" />
                             <Text>SEARCH</Text>
                         </Button>
                         <Button style={{ elevation: 0 }} badge vertical onPress={() => { this.setState({ ScreenDisplay: 2 }) }}>
-                            <Badge ><Text>51</Text></Badge>
+                            <Badge ><Text>1</Text></Badge>
                             <Icon active name="navigate" />
-                            <Text>HISTORY</Text>
+                            <Text>Pan Asian</Text>
                         </Button>
                         <Button style={{ elevation: 0 }} vertical onPress={() => { this.setState({ ScreenDisplay: 3 }) }}>
                             <Icon name="person" />

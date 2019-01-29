@@ -28,7 +28,8 @@ import {
     Button,
     Item,
     Input,
-    Segment
+    Segment,
+    Accordion
 } from 'native-base';
 import CardImage from './img.jpeg'
 // import { ScrollView } from 'react-native-gesture-handler';
@@ -40,6 +41,31 @@ var Menus = [
     { menuName: "Menu 03", items: ["FRESH JUICES ON ARRIVAL", "GRILLED FISH", "CHICKEN BIHARI BOTI", "CHICKEN KARAHI", "MUTTON YAKHNI PULAO", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "RABRI KHEER", "LAB-E-SHEEREN"], "price": "20,000" },
     { menuName: "Menu 04", items: ["FRESH JUICES ON ARRIVAL", "FRIED FISH ORLY", "CHICKEN STEAM", "CHICKEN PESHAWARI KARAHI", "KASHMIRI PULAO", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "SPECIAL ZARDA", "DOODH DULARI"], "price": "25,000" }
 ]
+const dataArray = [
+    { title: "Prawn Tempura", content: "one" },
+    { title: "Chicken Satay", content: "two" },
+    { title: "Crispy Spring Rolls", content: "three" },
+    { title: "Tom Yum Soup", content: "three" },
+    { title: "Hot & Sour Soup", content: "three" }
+];
+const dataArray1 = [
+    { title: "Teppanyaki Grill Live", content: "one" },
+    { title: "Chicken- Beef- Prawn- Fish", content: "two" },
+    { title: "Sauces: Chili- Thai Red & Green Curry- Garlic", content: "three" },
+    { title: "Teriyaki Grill Live", content: "three" },
+    { title: "Chicken- Beef", content: "three" },
+    { title: "Sauce: Teriyaki", content: "three" },
+    { title: "Tiger Prawns", content: "three" },
+    { title: "Thai Green Curry", content: "three" },
+    { title: "Lemongrass Chicken", content: "three" },
+    { title: "Black Pepper Beef", content: "three" },
+];
+const dataArray2 = [
+    { title: "Summer Breeze", content: "one" },
+    { title: "Ice Cream with Espresso or Chocolate Syrup", content: "two" },
+    { title: "Mango- Coconut Ice Creams", content: "three" },
+    { title: "Fresh Tropical Fruits", content: "three" }
+];
 var Starters = ["Prawn Tempura", "Chicken Satay", "Crispy Spring Rolls", "Tom Yum Soup", "Hot & Sour Soup"]
 var MainCourse = ["Teppanyaki Grill Live", "Chicken- Beef- Prawn- Fish", "Sauces: Chili- Thai Red & Green Curry- Garlic", "Teriyaki Grill Live", "Chicken- Beef", "Sauce: Teriyaki", "Tiger Prawns", "Thai Green Curry", "Lemongrass Chicken", "Black Pepper Beef"]
 var Desserts = ["Summer Breeze", "Ice Cream with Espresso or Chocolate Syrup", "Mango- Coconut Ice Creams", "Fresh Tropical Fruits"]
@@ -124,8 +150,8 @@ export default class Screen extends Component {
                             </Left> */}
                             <Body>
                                 <Segment style={{ backgroundColor: "#C21807" }}>
-                                    <Button first active onPress={() => { this.setState({ tab1: true, tab2: false, tab3: false }) }}><Text>Starters</Text></Button>
-                                    <Button last onPress={() => { this.setState({ tab1: false, tab2: true, tab3: false }) }}><Text>Main Course</Text></Button>
+                                    <Button first onPress={() => { this.setState({ tab1: true, tab2: false, tab3: false }) }}><Text>Starters</Text></Button>
+                                    <Button last active  onPress={() => { this.setState({ tab1: false, tab2: true, tab3: false }) }}><Text>Main Course</Text></Button>
                                     <Button last onPress={() => { this.setState({ tab1: false, tab2: false, tab3: true }) }}><Text>Desserts</Text></Button>
                                 </Segment>
                             </Body>
@@ -137,64 +163,101 @@ export default class Screen extends Component {
                         </Header>
                         <Content padder>
                             {this.state.tab1 ?
-                                <Card>
-                                    <CardItem cardBody>
-                                        <Image source={CardImage} style={{ height: 200, width: null, flex: 1 }} />
-                                    </CardItem>
-                                    <CardItem>
-                                        <Body>
-                                            <View style={{ width: width / 1.1 }}>
-                                                {
-                                                    Starters.map((numbers) => {
-                                                        return (
-                                                            <Text style={styles.cardText}>{numbers}</Text>
-                                                        )
-                                                    })}
-                                            </View>
-                                            {/* <Button onPress={() => { alert(index) }}><Text>Add to Card</Text></Button> */}
-                                        </Body>
-                                    </CardItem>
-                                </Card>
+                                // <Card>
+                                //     <CardItem cardBody>
+                                //         <Image source={CardImage} style={{ height: 200, width: null, flex: 1 }} />
+                                //     </CardItem>
+                                //     <CardItem>
+                                //         <Body>
+                                //             <View style={{ width: width / 1.1 }}>
+                                //                 {
+                                //                     Starters.map((numbers) => {
+                                //                         return (
+                                //                             <Text style={styles.cardText}>{numbers}</Text>
+                                //                         )
+                                //                     })}
+                                //             </View>
+                                //             {/* <Button onPress={() => { alert(index) }}><Text>Add to Card</Text></Button> */}
+                                //         </Body>
+                                //     </CardItem>
+                                // </Card>
+                                // <Container>
+                                // <Header style={styles.hdr}>
+                                //     <Title style={styles.txt}>Search</Title>
+                                // </Header>
+                                <Content padder>
+                                    <Accordion
+                                        dataArray={dataArray}
+                                        icon="add"
+                                        expandedIcon="remove"
+                                        iconStyle={{ color: "green" }}
+                                        expandedIconStyle={{ color: "red" }}
+                                        headerStyle={{ backgroundColor: "#a4a3ab5e" }}
+                                        contentStyle={{ backgroundColor: "#ddecf8" }}
+                                    />
+                                </Content>
                                 : null}
                             {this.state.tab2 ?
-                                <Card>
-                                    <CardItem cardBody>
-                                        <Image source={CardImage} style={{ height: 200, width: null, flex: 1 }} />
-                                    </CardItem>
-                                    <CardItem>
-                                        <Body>
-                                            <View style={{ width: width / 1.1 }}>
-                                                {
-                                                    MainCourse.map((numbers) => {
-                                                        return (
-                                                            <Text style={styles.cardText}>{numbers}</Text>
-                                                        )
-                                                    })}
-                                            </View>
-                                            {/* <Button onPress={() => { alert(index) }}><Text>Add to Card</Text></Button> */}
-                                        </Body>
-                                    </CardItem>
-                                </Card>
+                                // <Card>
+                                //     <CardItem cardBody>
+                                //         <Image source={CardImage} style={{ height: 200, width: null, flex: 1 }} />
+                                //     </CardItem>
+                                //     <CardItem>
+                                //         <Body>
+                                //             <View style={{ width: width / 1.1 }}>
+                                //                 {
+                                //                     MainCourse.map((numbers) => {
+                                //                         return (
+                                //                             <Text style={styles.cardText}>{numbers}</Text>
+                                //                         )
+                                //                     })}
+                                //             </View>
+                                //             {/* <Button onPress={() => { alert(index) }}><Text>Add to Card</Text></Button> */}
+                                //         </Body>
+                                //     </CardItem>
+                                // </Card>
+                                <Content padder>
+                                    <Accordion
+                                        dataArray={dataArray1}
+                                        icon="add"
+                                        expandedIcon="remove"
+                                        iconStyle={{ color: "green" }}
+                                        expandedIconStyle={{ color: "red" }}
+                                        headerStyle={{ backgroundColor: "#a4a3ab5e" }}
+                                        contentStyle={{ backgroundColor: "#ddecf8" }}
+                                    />
+                                </Content>
                                 : null}
                             {this.state.tab3 ?
-                                <Card>
-                                    <CardItem cardBody>
-                                        <Image source={CardImage} style={{ height: 200, width: null, flex: 1 }} />
-                                    </CardItem>
-                                    <CardItem>
-                                        <Body>
-                                            <View style={{ width: width / 1.1 }}>
-                                                {
-                                                    Desserts.map((numbers) => {
-                                                        return (
-                                                            <Text style={styles.cardText}>{numbers}</Text>
-                                                        )
-                                                    })}
-                                            </View>
-                                            {/* <Button onPress={() => { alert(index) }}><Text>Add to Card</Text></Button> */}
-                                        </Body>
-                                    </CardItem>
-                                </Card>
+                                // <Card>
+                                //     <CardItem cardBody>
+                                //         <Image source={CardImage} style={{ height: 200, width: null, flex: 1 }} />
+                                //     </CardItem>
+                                //     <CardItem>
+                                //         <Body>
+                                //             <View style={{ width: width / 1.1 }}>
+                                //                 {
+                                //                     Desserts.map((numbers) => {
+                                //                         return (
+                                //                             <Text style={styles.cardText}>{numbers}</Text>
+                                //                         )
+                                //                     })}
+                                //             </View>
+                                //             {/* <Button onPress={() => { alert(index) }}><Text>Add to Card</Text></Button> */}
+                                //         </Body>
+                                //     </CardItem>
+                                // </Card>
+                                <Content padder>
+                                    <Accordion
+                                        dataArray={dataArray2}
+                                        icon="add"
+                                        expandedIcon="remove"
+                                        iconStyle={{ color: "green" }}
+                                        expandedIconStyle={{ color: "red" }}
+                                        headerStyle={{ backgroundColor: "#a4a3ab5e" }}
+                                        contentStyle={{ backgroundColor: "#ddecf8" }}
+                                    />
+                                </Content>
                                 : null}
                         </Content>
                     </Container>
@@ -341,6 +404,7 @@ const styles = StyleSheet.create({
         fontSize: 17,
         color: 'grey',
         width: width / 1.9,
+        fontFamily:"monospace",
         // display: "flex",
         // flexDirection: "row",
         // textAlign:"center"
