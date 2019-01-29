@@ -50,17 +50,12 @@ export default class Main extends Component {
     return (
       this.state.stm ? <View style={styles.container1}>
         <View style={{ height: width / 1.1 }}></View>
-        
+
         <View style={{ justifyContent: "flex-end", alignItems: "center", height: width / 4 }}>
           <View style={{ width: width / 1.01, height: width / 1.5 }}>
             <Image
               source={require("../assets/logo1.png")} resizeMode="contain" style={{ height: "100%", width: "100%" }} />
           </View>
-          <View style={{ height: width / 4 }}>
-            {/* <Text style={{ marginTop: '1%', color: "#7e1416", fontSize: fontScale * 35, color: "#7e1416", fontWeight: "bold" }}>Amir Rajput Catering</Text> */}
-          </View>
-
-
         </View>
         <View style={{ justifyContent: "flex-end", display: "flex", height: width / 1.8 }}>
           <Text style={{ color: "#7e1416", fontSize: 20, textAlign: "center" }}>Brands</Text>
@@ -147,7 +142,7 @@ const styles = StyleSheet.create({
   nextBtn: {
     textAlign: "center",
     backgroundColor: '#C21807',
-    elevation:0,
+    elevation: 0,
   },
   btnText: {
     textAlign: "center",
