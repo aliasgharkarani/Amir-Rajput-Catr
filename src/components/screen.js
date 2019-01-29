@@ -35,16 +35,21 @@ import CardImage from './img.jpeg'
 var height = Dimensions.get('window').height;
 var width = Dimensions.get("window").width;
 var Menus = [
-    { menuName: "Menu 01", items: ["FRESH JUICES ON ARRIVAL", "FRIED FISH LAHORI", "CHICKEN RESHMI KABAB", "MUTTON KUNNA", "CHICKEN BIRYANI", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "GULAB JAMAN", "CREAM CARAMEL"],"price":"10,000" },
-    { menuName: "Menu 02", items: ["FRESH JUICES ON ARRIVAL", "CHAPLI / SEEKH KABAB", "CHICKEN MALAI BOTI", "CHICKEN ZAFRANI BIRYANI", "CHICKEN BADAMI QORMA", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "GAJAR KA HALWA", "FRUIT TRIFFLE"],"price":"15,000"},
-    { menuName: "Menu 03", items: ["FRESH JUICES ON ARRIVAL", "GRILLED FISH", "CHICKEN BIHARI BOTI", "CHICKEN KARAHI", "MUTTON YAKHNI PULAO", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "RABRI KHEER", "LAB-E-SHEEREN"],"price":"20,000"},
-    { menuName: "Menu 04", items: ["FRESH JUICES ON ARRIVAL", "FRIED FISH ORLY", "CHICKEN STEAM", "CHICKEN PESHAWARI KARAHI", "KASHMIRI PULAO", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "SPECIAL ZARDA", "DOODH DULARI"],"price":"25,000"}
+    { menuName: "Menu 01", items: ["FRESH JUICES ON ARRIVAL", "FRIED FISH LAHORI", "CHICKEN RESHMI KABAB", "MUTTON KUNNA", "CHICKEN BIRYANI", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "GULAB JAMAN", "CREAM CARAMEL"], "price": "10,000" },
+    { menuName: "Menu 02", items: ["FRESH JUICES ON ARRIVAL", "CHAPLI / SEEKH KABAB", "CHICKEN MALAI BOTI", "CHICKEN ZAFRANI BIRYANI", "CHICKEN BADAMI QORMA", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "GAJAR KA HALWA", "FRUIT TRIFFLE"], "price": "15,000" },
+    { menuName: "Menu 03", items: ["FRESH JUICES ON ARRIVAL", "GRILLED FISH", "CHICKEN BIHARI BOTI", "CHICKEN KARAHI", "MUTTON YAKHNI PULAO", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "RABRI KHEER", "LAB-E-SHEEREN"], "price": "20,000" },
+    { menuName: "Menu 04", items: ["FRESH JUICES ON ARRIVAL", "FRIED FISH ORLY", "CHICKEN STEAM", "CHICKEN PESHAWARI KARAHI", "KASHMIRI PULAO", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "SPECIAL ZARDA", "DOODH DULARI"], "price": "25,000" }
 ]
+var Starters = ["Prawn Tempura", "Chicken Satay", "Crispy Spring Rolls", "Tom Yum Soup", "Hot & Sour Soup"]
+var MainCourse = ["Teppanyaki Grill Live", "Chicken- Beef- Prawn- Fish", "Sauces: Chili- Thai Red & Green Curry- Garlic", "Teriyaki Grill Live", "Chicken- Beef", "Sauce: Teriyaki", "Tiger Prawns", "Thai Green Curry", "Lemongrass Chicken", "Black Pepper Beef"]
+var Desserts = ["Summer Breeze", "Ice Cream with Espresso or Chocolate Syrup", "Mango- Coconut Ice Creams", "Fresh Tropical Fruits"]
 export default class Screen extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            tab: true
+            tab1: true,
+            tab2: false,
+            tab3: false
         }
     }
     render() {
@@ -67,7 +72,7 @@ export default class Screen extends Component {
                                                 <CardItem>
                                                     <Body>
                                                         <Text style={styles.cardHeading}>{mu.menuName}</Text>
-                                                        <View style={{ width: width / 1.1}}>
+                                                        <View style={{ width: width / 1.1 }}>
                                                             {
                                                                 mu.items.map((numbers) => {
                                                                     return (
@@ -77,7 +82,7 @@ export default class Screen extends Component {
                                                             }
                                                         </View>
                                                         <Text style={styles.cardTime}>Rs.{mu.price}</Text>
-                                                        <Button><Text>Add to Card</Text></Button>
+                                                        {/* <Button onPress={() => { alert(index) }}><Text>Add to Card</Text></Button> */}
                                                     </Body>
                                                 </CardItem>
                                             </Card>
@@ -87,7 +92,6 @@ export default class Screen extends Component {
                             </ScrollView>
                         </View>
                     </View>
-                    // </Container>
                 )
                 break;
             case 1:
@@ -113,29 +117,85 @@ export default class Screen extends Component {
                 return (
                     <Container>
                         <Header hasSegment style={{ backgroundColor: "#C21807" }}>
-                            <Left>
+                            {/* <Left>
                                 <Button transparent>
                                     <Icon name="arrow-back" />
                                 </Button>
-                            </Left>
+                            </Left> */}
                             <Body>
                                 <Segment style={{ backgroundColor: "#C21807" }}>
-                                    <Button first onPress={() => { this.setState({ tab: true }) }}><Text>Past Orders</Text></Button>
-                                    <Button last active onPress={() => { this.setState({ tab: false }) }}><Text>Upcomming Orders</Text></Button>
+                                    <Button first active onPress={() => { this.setState({ tab1: true, tab2: false, tab3: false }) }}><Text>Starters</Text></Button>
+                                    <Button last onPress={() => { this.setState({ tab1: false, tab2: true, tab3: false }) }}><Text>Main Course</Text></Button>
+                                    <Button last onPress={() => { this.setState({ tab1: false, tab2: false, tab3: true }) }}><Text>Desserts</Text></Button>
                                 </Segment>
                             </Body>
-                            <Right>
+                            {/* <Right>
                                 <Button transparent>
                                     <Icon name="search" />
                                 </Button>
-                            </Right>
+                            </Right> */}
                         </Header>
                         <Content padder>
-                            {this.state.tab ?
-                                <Text>Awesome segment-1</Text>
-                                :
-                                <Text>Awesome segment-2</Text>
-                            }
+                            {this.state.tab1 ?
+                                <Card>
+                                    <CardItem cardBody>
+                                        <Image source={CardImage} style={{ height: 200, width: null, flex: 1 }} />
+                                    </CardItem>
+                                    <CardItem>
+                                        <Body>
+                                            <View style={{ width: width / 1.1 }}>
+                                                {
+                                                    Starters.map((numbers) => {
+                                                        return (
+                                                            <Text style={styles.cardText}>{numbers}</Text>
+                                                        )
+                                                    })}
+                                            </View>
+                                            {/* <Button onPress={() => { alert(index) }}><Text>Add to Card</Text></Button> */}
+                                        </Body>
+                                    </CardItem>
+                                </Card>
+                                : null}
+                            {this.state.tab2 ?
+                                <Card>
+                                    <CardItem cardBody>
+                                        <Image source={CardImage} style={{ height: 200, width: null, flex: 1 }} />
+                                    </CardItem>
+                                    <CardItem>
+                                        <Body>
+                                            <View style={{ width: width / 1.1 }}>
+                                                {
+                                                    MainCourse.map((numbers) => {
+                                                        return (
+                                                            <Text style={styles.cardText}>{numbers}</Text>
+                                                        )
+                                                    })}
+                                            </View>
+                                            {/* <Button onPress={() => { alert(index) }}><Text>Add to Card</Text></Button> */}
+                                        </Body>
+                                    </CardItem>
+                                </Card>
+                                : null}
+                            {this.state.tab3 ?
+                                <Card>
+                                    <CardItem cardBody>
+                                        <Image source={CardImage} style={{ height: 200, width: null, flex: 1 }} />
+                                    </CardItem>
+                                    <CardItem>
+                                        <Body>
+                                            <View style={{ width: width / 1.1 }}>
+                                                {
+                                                    Desserts.map((numbers) => {
+                                                        return (
+                                                            <Text style={styles.cardText}>{numbers}</Text>
+                                                        )
+                                                    })}
+                                            </View>
+                                            {/* <Button onPress={() => { alert(index) }}><Text>Add to Card</Text></Button> */}
+                                        </Body>
+                                    </CardItem>
+                                </Card>
+                                : null}
                         </Content>
                     </Container>
                 )
