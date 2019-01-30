@@ -83,11 +83,11 @@ export default class Screen extends Component {
             case 0:
                 return (
                     <View>
-                        <Header style={styles.hdr}>
+                        {/* <Header style={styles.hdr}>
                             <Title style={styles.txt}>Traditional Set Menus</Title>
-                        </Header>
+                        </Header> */}
                         <View>
-                            <ScrollView style={{ marginBottom: '10%' }}>
+                            <ScrollView>
                                 {
                                     Menus.map((mu, index) => {
                                         return (

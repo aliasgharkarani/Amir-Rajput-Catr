@@ -9,14 +9,15 @@ export default class FooterTabsBadgeExample extends Component {
         super(props);
         this.state = {
             ScreenDisplay: 0,
-            order: 0
+            order:null ,
+            header:"Traditional Set Menus"
         }
     }
     render() {
         return (
             <Container contentContainerStyle={{ flex: 1 }}>
                 <Header style={styles.hdr}>
-                    <Text style={styles.heading}>Delivery details</Text>
+                    <Text style={styles.heading}>{this.state.header}</Text>
                 </Header>
                 <Content contentContainerStyle={{ flex: 1 }}>
                     <Screen ScrnChng={this.state.ScreenDisplay} />
