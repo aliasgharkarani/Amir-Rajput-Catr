@@ -142,17 +142,17 @@ export default class Screen extends Component {
             case 2:
                 return (
                     <Container>
-                        <Header hasSegment style={{ backgroundColor: "#C21807" }}>
+                        <Header hasSegment style={{ backgroundColor: "none" }}>
                             {/* <Left>
                                 <Button transparent>
                                     <Icon name="arrow-back" />
                                 </Button>
                             </Left> */}
                             <Body>
-                                <Segment style={{ backgroundColor: "#C21807" }}>
-                                    <Button first onPress={() => { this.setState({ tab1: true, tab2: false, tab3: false }) }}><Text>Starters</Text></Button>
-                                    <Button last active  onPress={() => { this.setState({ tab1: false, tab2: true, tab3: false }) }}><Text>Main Course</Text></Button>
-                                    <Button last onPress={() => { this.setState({ tab1: false, tab2: false, tab3: true }) }}><Text>Desserts</Text></Button>
+                                <Segment style={{ backgroundColor: "none", borderColor: "#C21807", borderWidth: 1 }}>
+                                    <Button style={{ backgroundColor: "none", borderColor: "#C21807", borderWidth: 1 }} first onPress={() => { this.setState({ tab1: true, tab2: false, tab3: false }) }}><Text style={{ color: "#C21807" }}>Starters</Text></Button>
+                                    <Button style={{ backgroundColor: "none", borderColor: "#C21807", borderWidth: 1 }} last onPress={() => { this.setState({ tab1: false, tab2: true, tab3: false }) }}><Text style={{ color: "#C21807" }}>Main Course</Text></Button>
+                                    <Button style={{ backgroundColor: "none", borderColor: "#C21807", borderWidth: 1 }} last onPress={() => { this.setState({ tab1: false, tab2: false, tab3: true }) }}><Text style={{ color: "#C21807" }}>Desserts</Text></Button>
                                 </Segment>
                             </Body>
                             {/* <Right>
@@ -404,7 +404,7 @@ const styles = StyleSheet.create({
         fontSize: 17,
         color: 'grey',
         width: width / 1.9,
-        fontFamily:"monospace",
+        fontFamily: "monospace",
         // display: "flex",
         // flexDirection: "row",
         // textAlign:"center"

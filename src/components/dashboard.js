@@ -9,8 +9,8 @@ export default class FooterTabsBadgeExample extends Component {
         super(props);
         this.state = {
             ScreenDisplay: 0,
-            order:0,
-            header:"Traditional Set Menus"
+            order: 0,
+            header: "Traditional Set Menus"
         }
     }
     render() {
@@ -24,21 +24,21 @@ export default class FooterTabsBadgeExample extends Component {
                 </Content>
                 <Footer style={{ backgroundColor: "#C21807" }}>
                     <FooterTab style={{ backgroundColor: "#C21807" }}>
-                        <Button style={{ elevation: 0 }} vertical onPress={() => { this.setState({ ScreenDisplay: 0,header:"Traditional Set Menus"}) }}>
+                        <Button style={{ elevation: 0 }} vertical onPress={() => { this.setState({ ScreenDisplay: 0, header: "Traditional Set Menus" }) }}>
                             <Icon name="apps" />
                             <Text>TSM</Text>
                         </Button>
-                        <Button style={{ elevation: 0 }} vertical onPress={() => { this.setState({ ScreenDisplay: 1,header:"Search" }) }}>
+                        <Button style={{ elevation: 0 }} vertical onPress={() => { this.setState({ ScreenDisplay: 1, header: "Search" }) }}>
                             {/* <Badge><Text>2</Text></Badge> */}
                             <Icon name="pizza" />
                             <Text>SEARCH</Text>
                         </Button>
-                        <Button style={{ elevation: 0 }} vertical onPress={() => { this.setState({ ScreenDisplay: 2,header:"Pan Asian" }) }}>
+                        <Button style={{ elevation: 0 }} vertical onPress={() => { this.setState({ ScreenDisplay: 2, header: "Pan Asian" }) }}>
                             <Icon name="nutrition" />
                             {/* <Icon active name="navigate" /> */}
                             <Text>Pan Asian</Text>
                         </Button>
-                        <Button style={{ elevation: 0 }} badge vertical onPress={() => { this.setState({ ScreenDisplay: 3,header:"PROFILE"  }) }}>
+                        <Button style={{ elevation: 0 }} badge vertical onPress={() => { this.setState({ ScreenDisplay: 3, header: "PROFILE" }) }}>
                             <Badge ><Text>{this.state.order}</Text></Badge>
                             <Icon name="cart" />
                             <Text>PROFILE</Text>
