@@ -1,5 +1,8 @@
 import React, { Component, View } from 'react';
 import Screen from './screen'
+import {
+    StyleSheet,
+} from 'react-native';
 import { Container, Header, Content, Footer, FooterTab, Button, Icon, Text, Badge, Left, Body, Title, Right } from 'native-base';
 export default class FooterTabsBadgeExample extends Component {
     constructor(props) {
@@ -12,6 +15,9 @@ export default class FooterTabsBadgeExample extends Component {
     render() {
         return (
             <Container contentContainerStyle={{ flex: 1 }}>
+                <Header style={styles.hdr}>
+                    <Text style={styles.heading}>Delivery details</Text>
+                </Header>
                 <Content contentContainerStyle={{ flex: 1 }}>
                     <Screen ScrnChng={this.state.ScreenDisplay} />
                 </Content>
@@ -42,3 +48,14 @@ export default class FooterTabsBadgeExample extends Component {
         );
     }
 }
+const styles = StyleSheet.create({
+    heading: {
+        textAlign: "center",
+        marginTop: 10,
+        fontSize: 20,
+        color: 'white'
+    },
+    hdr: {
+        backgroundColor: '#C21807'
+    }
+});
