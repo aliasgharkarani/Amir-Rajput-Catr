@@ -2,6 +2,7 @@ import React, { Component, View } from 'react';
 import Screen from './screen'
 import {
     StyleSheet,
+    TouchableOpacity
 } from 'react-native';
 import { Container, Header, Content, Footer, FooterTab, Button, Icon, Text, Badge, Left, Body, Title, Right } from 'native-base';
 export default class FooterTabsBadgeExample extends Component {
@@ -17,7 +18,24 @@ export default class FooterTabsBadgeExample extends Component {
         return (
             <Container contentContainerStyle={{ flex: 1 }}>
                 <Header style={styles.hdr}>
-                    <Text style={styles.heading}>{this.state.header}</Text>
+                    {/* <Left> */}
+                    {/* <Button transparent> */}
+                    {/* <Icon name="arrow-back" /> */}
+                    {/* </Button> */}
+                    {/* </Left> */}
+                    {/* <Body style={{backgroundColor:"yellow"}}> */}
+                    <TouchableOpacity style={{ width: "20%" }}></TouchableOpacity>
+                    <TouchableOpacity style={{ width: "60%" }}>
+                        <Text style={styles.heading}>{this.state.header}</Text>
+                    </TouchableOpacity>
+                    {/* </Body> */}
+                    {/* <Right> */}
+                    <TouchableOpacity style={{ width: "20%",alignSelf:"center"}}>
+                        <Button transparent>
+                            <Icon name="search" />
+                        </Button>
+                    </TouchableOpacity>
+                    {/* </Right> */}
                 </Header>
                 <Content contentContainerStyle={{ flex: 1 }}>
                     <Screen ScrnChng={this.state.ScreenDisplay} />
