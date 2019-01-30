@@ -22,12 +22,12 @@ export default class FooterTabsBadgeExample extends Component {
             <Container contentContainerStyle={{ flex: 1 }}>
                 <Header style={styles.hdr}>
                     <TouchableOpacity activeOpacity={1} style={{ width: "20%" }}></TouchableOpacity>
-                    <TouchableOpacity activeOpacity={1} style={{ width: "60%",alignSelf: "center" }}>
+                    <TouchableOpacity activeOpacity={1} style={{ width: "60%", alignSelf: "center" }}>
                         <Text style={styles.heading}>{this.state.header}</Text>
                     </TouchableOpacity>
                     <TouchableOpacity activeOpacity={1} style={{ width: "20%", alignSelf: "center" }}>
                         <Button style={{ elevation: 0, backgroundColor: "#C21807" }} badge vertical>
-                            <Badge style={{height:22,width:22,marginBottom:-7,zIndex:10}}><Text style={{fontSize:13,color:"white",height:20,width:22,alignSelf: "center"}}>{this.state.order}</Text></Badge>
+                            <Badge style={{ height: 22, width: 22, marginBottom: -7, zIndex: 10 }}><Text style={{ fontSize: 13, color: "white", height: 20, width: 22, alignSelf: "center" }}>{this.state.order}</Text></Badge>
                             <Icon name="cart" />
                         </Button>
                     </TouchableOpacity>
@@ -41,14 +41,12 @@ export default class FooterTabsBadgeExample extends Component {
                             <Icon name="apps" />
                             <Text>TSM</Text>
                         </Button>
-                        <Button style={{ elevation: 0 }} vertical onPress={() => { this.setState({ ScreenDisplay: 1, header: "Search" }) }}>
-                            {/* <Badge><Text>2</Text></Badge> */}
+                        <Button style={{ elevation: 0 }} vertical onPress={() => { this.setState({ ScreenDisplay: 1, header: "Royal Mughlai" }) }}>
                             <Icon name="pizza" />
-                            <Text>SEARCH</Text>
+                            <Text>Royal Mughlai</Text>
                         </Button>
                         <Button style={{ elevation: 0 }} vertical onPress={() => { this.setState({ ScreenDisplay: 2, header: "Pan Asian" }) }}>
                             <Icon name="nutrition" />
-                            {/* <Icon active name="navigate" /> */}
                             <Text>Pan Asian</Text>
                         </Button>
                         <Button style={{ elevation: 0 }} badge vertical onPress={() => { this.setState({ ScreenDisplay: 3, header: "PROFILE" }) }}>
@@ -71,6 +69,6 @@ const styles = StyleSheet.create({
     },
     hdr: {
         backgroundColor: '#C21807',
-        height:width/7.5
+        height: width / 7.5
     }
 });

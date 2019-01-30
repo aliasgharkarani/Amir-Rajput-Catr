@@ -66,16 +66,51 @@ const dataArray2 = [
     { title: "Mango- Coconut Ice Creams", content: "three" },
     { title: "Fresh Tropical Fruits", content: "three" }
 ];
-var Starters = ["Prawn Tempura", "Chicken Satay", "Crispy Spring Rolls", "Tom Yum Soup", "Hot & Sour Soup"]
-var MainCourse = ["Teppanyaki Grill Live", "Chicken- Beef- Prawn- Fish", "Sauces: Chili- Thai Red & Green Curry- Garlic", "Teriyaki Grill Live", "Chicken- Beef", "Sauce: Teriyaki", "Tiger Prawns", "Thai Green Curry", "Lemongrass Chicken", "Black Pepper Beef"]
-var Desserts = ["Summer Breeze", "Ice Cream with Espresso or Chocolate Syrup", "Mango- Coconut Ice Creams", "Fresh Tropical Fruits"]
+const dataArray1a = [
+    { title: "Murgh Tikka Lahori", content: "one" },
+    { title: "Chapli Kabab Peshawari", content: "two" },
+    { title: "Kabuli Chaanp", content: "three" },
+    { title: "Butterfly Jhinga", content: "three" },
+    { title: "Machi Anarkali", content: "three" }
+];
+const dataArray2a = [
+    { title: "Chicken Makhni", content: "one" },
+    { title: "Lamb Zafarani Korma", content: "two" },
+    { title: "Tawa Chicken", content: "three" },
+    { title: "Sag Gosht", content: "three" },
+    { title: "Tarka Dall", content: "three" },
+    { title: "Dal Makhni", content: "three" },
+    { title: "Sag GoshtAloo ki Tarkari", content: "three" },
+    { title: "Zafrani Biryani", content: "three" },
+    { title: "Sag GoshtAloo ki Tarkari", content: "three" },
+    { title: "Afghani Pulao", content: "three" }
+];
+const dataArray3a = [
+    { title: "Tandoori Naan", content: "one" },
+    { title: "Garlic Naan", content: "two" },
+    { title: "Sheermall", content: "three" },
+    { title: "Taftan", content: "three" },
+    { title: "Tandoori Roti", content: "three" }
+];
+const dataArray4a = [
+    { title: "Shahi Tukra", content: "one" },
+    { title: "Shahi Kheer", content: "two" },
+    { title: "Daal ka Halwa", content: "three" }
+];
+// var Starters = ["Prawn Tempura", "Chicken Satay", "Crispy Spring Rolls", "Tom Yum Soup", "Hot & Sour Soup"]
+// var MainCourse = ["Teppanyaki Grill Live", "Chicken- Beef- Prawn- Fish", "Sauces: Chili- Thai Red & Green Curry- Garlic", "Teriyaki Grill Live", "Chicken- Beef", "Sauce: Teriyaki", "Tiger Prawns", "Thai Green Curry", "Lemongrass Chicken", "Black Pepper Beef"]
+// var Desserts = ["Summer Breeze", "Ice Cream with Espresso or Chocolate Syrup", "Mango- Coconut Ice Creams", "Fresh Tropical Fruits"]
 export default class Screen extends Component {
     constructor(props) {
         super(props)
         this.state = {
             tab1: true,
             tab2: false,
-            tab3: false
+            tab3: false,
+            tab1b: true,
+            tab2b: false,
+            tab3b: false,
+            tab4b: false,
         }
     }
     render() {
@@ -123,18 +158,61 @@ export default class Screen extends Component {
             case 1:
                 return (
                     <Container>
-                        {/* <Header style={styles.hdr}>
-                            <Title style={styles.txt}>Search</Title>
-                        </Header> */}
-                        <Content>
-                            <View style={styles.container1}>
-                                <Item>
-                                    <Icon name="ios-search" style={styles.iconSearch1} />
-                                    <Input placeholder="Search for restaurant or dish" />
-                                </Item>
-                            </View>
-                            <Image style={styles.bgImage1} source={CardImage} />
-                            <Text style={styles.catName1}>Dinner</Text>
+                        <Header hasSegment style={{ backgroundColor: "none" }}>
+                            <Body>
+                                <Segment style={{ backgroundColor: "none", borderColor: "#C21807", borderWidth: 1 }}>
+                                    <Button style={{ backgroundColor: "none", borderColor: "#C21807", borderWidth: 1 }} first onPress={() => { this.setState({ tab1b: true, tab2b: false, tab3b: false, tab4b: false }) }}><Text style={{ color: "#C21807" }}>Starters</Text></Button>
+                                    <Button style={{ backgroundColor: "none", borderColor: "#C21807", borderWidth: 1 }} last onPress={() => { this.setState({ tab1b: false, tab2b: true, tab3b: false, tab4b: false }) }}><Text style={{ color: "#C21807" }}>Main Course</Text></Button>
+                                    <Button style={{ backgroundColor: "none", borderColor: "#C21807", borderWidth: 1 }} last onPress={() => { this.setState({ tab1b: false, tab2b: false, tab3b: true, tab4b: false }) }}><Text style={{ color: "#C21807" }}>Breads</Text></Button>
+                                    <Button style={{ backgroundColor: "none", borderColor: "#C21807", borderWidth: 1 }} last onPress={() => { this.setState({ tab1b: false, tab2b: false, tab3b: false, tab4b: true }) }}><Text style={{ color: "#C21807" }}>Desserts</Text></Button>
+                                </Segment>
+                            </Body>
+                        </Header>
+                        <Content padder style={{ marginTop: 0, paddingTop: 0 }}>
+                            {this.state.tab1b ?
+                                <Accordion
+                                    dataArray={dataArray1a}
+                                    icon="add"
+                                    expandedIcon="remove"
+                                    iconStyle={{ color: "green" }}
+                                    expandedIconStyle={{ color: "red" }}
+                                    headerStyle={{ backgroundColor: "#a4a3ab5e" }}
+                                    contentStyle={{ backgroundColor: "#ddecf8" }}
+                                />
+                                : null}
+                            {this.state.tab2b ?
+                                <Accordion
+                                    dataArray={dataArray2a}
+                                    icon="add"
+                                    expandedIcon="remove"
+                                    iconStyle={{ color: "green" }}
+                                    expandedIconStyle={{ color: "red" }}
+                                    headerStyle={{ backgroundColor: "#a4a3ab5e" }}
+                                    contentStyle={{ backgroundColor: "#ddecf8" }}
+                                />
+                                : null}
+                            {this.state.tab3b ?
+                                <Accordion
+                                    dataArray={dataArray3a}
+                                    icon="add"
+                                    expandedIcon="remove"
+                                    iconStyle={{ color: "green" }}
+                                    expandedIconStyle={{ color: "red" }}
+                                    headerStyle={{ backgroundColor: "#a4a3ab5e" }}
+                                    contentStyle={{ backgroundColor: "#ddecf8" }}
+                                />
+                                : null}
+                            {this.state.tab4b ?
+                                <Accordion
+                                    dataArray={dataArray4a}
+                                    icon="add"
+                                    expandedIcon="remove"
+                                    iconStyle={{ color: "green" }}
+                                    expandedIconStyle={{ color: "red" }}
+                                    headerStyle={{ backgroundColor: "#a4a3ab5e" }}
+                                    contentStyle={{ backgroundColor: "#ddecf8" }}
+                                />
+                                : null}
                         </Content>
                     </Container>
                 )
@@ -143,11 +221,6 @@ export default class Screen extends Component {
                 return (
                     <Container>
                         <Header hasSegment style={{ backgroundColor: "none" }}>
-                            {/* <Left>
-                                <Button transparent>
-                                    <Icon name="arrow-back" />
-                                </Button>
-                            </Left> */}
                             <Body>
                                 <Segment style={{ backgroundColor: "none", borderColor: "#C21807", borderWidth: 1 }}>
                                     <Button style={{ backgroundColor: "none", borderColor: "#C21807", borderWidth: 1 }} first onPress={() => { this.setState({ tab1: true, tab2: false, tab3: false }) }}><Text style={{ color: "#C21807" }}>Starters</Text></Button>
@@ -155,13 +228,8 @@ export default class Screen extends Component {
                                     <Button style={{ backgroundColor: "none", borderColor: "#C21807", borderWidth: 1 }} last onPress={() => { this.setState({ tab1: false, tab2: false, tab3: true }) }}><Text style={{ color: "#C21807" }}>Desserts</Text></Button>
                                 </Segment>
                             </Body>
-                            {/* <Right>
-                                <Button transparent>
-                                    <Icon name="search" />
-                                </Button>
-                            </Right> */}
                         </Header>
-                        <Content padder>
+                        <Content padder style={{ marginTop: 0, paddingTop: 0 }}>
                             {this.state.tab1 ?
                                 // <Card>
                                 //     <CardItem cardBody>
@@ -185,17 +253,17 @@ export default class Screen extends Component {
                                 // <Header style={styles.hdr}>
                                 //     <Title style={styles.txt}>Search</Title>
                                 // </Header>
-                                <Content padder>
-                                    <Accordion
-                                        dataArray={dataArray}
-                                        icon="add"
-                                        expandedIcon="remove"
-                                        iconStyle={{ color: "green" }}
-                                        expandedIconStyle={{ color: "red" }}
-                                        headerStyle={{ backgroundColor: "#a4a3ab5e" }}
-                                        contentStyle={{ backgroundColor: "#ddecf8" }}
-                                    />
-                                </Content>
+                                // <Content padder>
+                                <Accordion
+                                    dataArray={dataArray}
+                                    icon="add"
+                                    expandedIcon="remove"
+                                    iconStyle={{ color: "green" }}
+                                    expandedIconStyle={{ color: "red" }}
+                                    headerStyle={{ backgroundColor: "#a4a3ab5e" }}
+                                    contentStyle={{ backgroundColor: "#ddecf8" }}
+                                />
+                                // </Content>
                                 : null}
                             {this.state.tab2 ?
                                 // <Card>
@@ -216,17 +284,17 @@ export default class Screen extends Component {
                                 //         </Body>
                                 //     </CardItem>
                                 // </Card>
-                                <Content padder>
-                                    <Accordion
-                                        dataArray={dataArray1}
-                                        icon="add"
-                                        expandedIcon="remove"
-                                        iconStyle={{ color: "green" }}
-                                        expandedIconStyle={{ color: "red" }}
-                                        headerStyle={{ backgroundColor: "#a4a3ab5e" }}
-                                        contentStyle={{ backgroundColor: "#ddecf8" }}
-                                    />
-                                </Content>
+                                // <Content padder>
+                                <Accordion
+                                    dataArray={dataArray1}
+                                    icon="add"
+                                    expandedIcon="remove"
+                                    iconStyle={{ color: "green" }}
+                                    expandedIconStyle={{ color: "red" }}
+                                    headerStyle={{ backgroundColor: "#a4a3ab5e" }}
+                                    contentStyle={{ backgroundColor: "#ddecf8" }}
+                                />
+                                // </Content>
                                 : null}
                             {this.state.tab3 ?
                                 // <Card>
@@ -247,17 +315,17 @@ export default class Screen extends Component {
                                 //         </Body>
                                 //     </CardItem>
                                 // </Card>
-                                <Content padder>
-                                    <Accordion
-                                        dataArray={dataArray2}
-                                        icon="add"
-                                        expandedIcon="remove"
-                                        iconStyle={{ color: "green" }}
-                                        expandedIconStyle={{ color: "red" }}
-                                        headerStyle={{ backgroundColor: "#a4a3ab5e" }}
-                                        contentStyle={{ backgroundColor: "#ddecf8" }}
-                                    />
-                                </Content>
+                                // <Content padder>
+                                <Accordion
+                                    dataArray={dataArray2}
+                                    icon="add"
+                                    expandedIcon="remove"
+                                    iconStyle={{ color: "green" }}
+                                    expandedIconStyle={{ color: "red" }}
+                                    headerStyle={{ backgroundColor: "#a4a3ab5e" }}
+                                    contentStyle={{ backgroundColor: "#ddecf8" }}
+                                />
+                                // </Content>
                                 : null}
                         </Content>
                     </Container>
