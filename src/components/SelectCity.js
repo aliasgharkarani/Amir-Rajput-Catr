@@ -100,7 +100,7 @@ export default class Main extends Component {
               </View>
             </View>
           </Content>
-          <Footer style={{ backgroundColor: "#C21807" }}>
+          <Footer style={{ backgroundColor: "#C21807" }} >
             <Button
               full
               primary

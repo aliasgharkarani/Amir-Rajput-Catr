@@ -118,9 +118,6 @@ export default class Screen extends Component {
             case 0:
                 return (
                     <View>
-                        {/* <Header style={styles.hdr}>
-                            <Title style={styles.txt}>Traditional Set Menus</Title>
-                        </Header> */}
                         <View>
                             <ScrollView>
                                 {
@@ -163,13 +160,14 @@ export default class Screen extends Component {
                                 <Segment style={{ backgroundColor: "none", borderColor: "#C21807", borderWidth: 1 }}>
                                     <Button style={{ backgroundColor: "none", borderColor: "#C21807", borderWidth: 1 }} first onPress={() => { this.setState({ tab1b: true, tab2b: false, tab3b: false, tab4b: false }) }}><Text style={{ color: "#C21807" }}>Starters</Text></Button>
                                     <Button style={{ backgroundColor: "none", borderColor: "#C21807", borderWidth: 1 }} last onPress={() => { this.setState({ tab1b: false, tab2b: true, tab3b: false, tab4b: false }) }}><Text style={{ color: "#C21807" }}>Main Course</Text></Button>
-                                    <Button style={{ backgroundColor: "none", borderColor: "#C21807", borderWidth: 1 }} last onPress={() => { this.setState({ tab1b: false, tab2b: false, tab3b: true, tab4b: false }) }}><Text style={{ color: "#C21807" }}>Breads</Text></Button>
-                                    <Button style={{ backgroundColor: "none", borderColor: "#C21807", borderWidth: 1 }} last onPress={() => { this.setState({ tab1b: false, tab2b: false, tab3b: false, tab4b: true }) }}><Text style={{ color: "#C21807" }}>Desserts</Text></Button>
+                                    <Button style={{ backgroundColor: "none", borderColor: "#C21807", borderWidth: 1 }} last onPress={() => { this.setState({ tab1b: false, tab2b: false, tab3b: true, tab4b: false }) }}><Text style={{ color: "#C21807" }}>Desserts</Text></Button>
+                                    {/* <Button style={{ backgroundColor: "none", borderColor: "#C21807", borderWidth: 1 }} last onPress={() => { this.setState({ tab1b: false, tab2b: false, tab3b: true, tab4b: false }) }}><Text style={{ color: "#C21807" }}>Breads</Text></Button> */}
                                 </Segment>
                             </Body>
                         </Header>
-                        <Content padder style={{ marginTop: 0, paddingTop: 0 }}>
-                            {this.state.tab1b ?
+                        {/* <Content padder style={{ marginTop: 0, paddingTop: 0 }}> */}
+                        {this.state.tab1b ?
+                            <Content padder style={{ marginTop: 0, paddingTop: 0 }}>
                                 <Accordion
                                     dataArray={dataArray1a}
                                     icon="add"
@@ -179,8 +177,10 @@ export default class Screen extends Component {
                                     headerStyle={{ backgroundColor: "#a4a3ab5e" }}
                                     contentStyle={{ backgroundColor: "#ddecf8" }}
                                 />
-                                : null}
-                            {this.state.tab2b ?
+                            </Content>
+                            : null}
+                        {this.state.tab2b ?
+                            <Content padder style={{ marginTop: 0, paddingTop: 0 }}>
                                 <Accordion
                                     dataArray={dataArray2a}
                                     icon="add"
@@ -190,8 +190,10 @@ export default class Screen extends Component {
                                     headerStyle={{ backgroundColor: "#a4a3ab5e" }}
                                     contentStyle={{ backgroundColor: "#ddecf8" }}
                                 />
-                                : null}
-                            {this.state.tab3b ?
+                            </Content>
+                            : null}
+                        {this.state.tab3b ?
+                            <Content padder style={{ marginTop: 0, paddingTop: 0 }}>
                                 <Accordion
                                     dataArray={dataArray3a}
                                     icon="add"
@@ -201,8 +203,7 @@ export default class Screen extends Component {
                                     headerStyle={{ backgroundColor: "#a4a3ab5e" }}
                                     contentStyle={{ backgroundColor: "#ddecf8" }}
                                 />
-                                : null}
-                            {this.state.tab4b ?
+                                <Text style={{ textAlign: "center", fontSize: 19, fontWeight: "bold" }}>Breads</Text>
                                 <Accordion
                                     dataArray={dataArray4a}
                                     icon="add"
@@ -212,8 +213,20 @@ export default class Screen extends Component {
                                     headerStyle={{ backgroundColor: "#a4a3ab5e" }}
                                     contentStyle={{ backgroundColor: "#ddecf8" }}
                                 />
-                                : null}
-                        </Content>
+                            </Content>
+                            : null}
+                        {/* {this.state.tab4b ?
+                                <Accordion
+                                    dataArray={dataArray4a}
+                                    icon="add"
+                                    expandedIcon="remove"
+                                    iconStyle={{ color: "green" }}
+                                    expandedIconStyle={{ color: "red" }}
+                                    headerStyle={{ backgroundColor: "#a4a3ab5e" }}
+                                    contentStyle={{ backgroundColor: "#ddecf8" }}
+                                />
+                                : null} */}
+                        {/* </Content> */}
                     </Container>
                 )
                 break;
