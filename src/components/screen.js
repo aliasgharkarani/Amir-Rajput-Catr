@@ -123,9 +123,9 @@ export default class Screen extends Component {
             case 1:
                 return (
                     <Container>
-                        <Header style={styles.hdr}>
+                        {/* <Header style={styles.hdr}>
                             <Title style={styles.txt}>Search</Title>
-                        </Header>
+                        </Header> */}
                         <Content>
                             <View style={styles.container1}>
                                 <Item>
@@ -266,7 +266,7 @@ export default class Screen extends Component {
             case 3:
                 return (
                     <Container>
-                        <Header style={styles.hdr1}>
+                        {/* <Header style={styles.hdr1}>
                             <Left avatar>
                                 <Thumbnail source={CardImage} style={styles.image1} />
                             </Left>
@@ -274,7 +274,7 @@ export default class Screen extends Component {
                                 <Title>John Doe</Title>
                             </Body>
                             <Right />
-                        </Header>
+                        </Header> */}
                         <Content>
                             <ListItem icon>
                                 <Left>
@@ -381,7 +381,7 @@ export default class Screen extends Component {
                 break;
             default:
                 return (
-                    <Text>Default</Text>
+                    <Text>Sorry</Text>
                 )
         }
     }
