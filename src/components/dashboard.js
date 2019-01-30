@@ -39,7 +39,7 @@ export default class FooterTabsBadgeExample extends Component {
                     <FooterTab style={{ backgroundColor: "#C21807" }}>
                         <Button style={{ elevation: 0 }} vertical onPress={() => { this.setState({ ScreenDisplay: 0, header: "Traditional Set Menus" }) }}>
                             <Icon name="apps" />
-                            <Text>TSM</Text>
+                            <Text style={{fontSize:7}}>Traditional</Text>
                         </Button>
                         <Button style={{ elevation: 0 }} vertical onPress={() => { this.setState({ ScreenDisplay: 1, header: "Royal Mughlai" }) }}>
                             <Icon name="pizza" />

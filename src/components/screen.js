@@ -113,6 +113,10 @@ export default class Screen extends Component {
             tab4b: false,
         }
     }
+    card(index) {
+        alert(index);
+        this.props.order = 1;
+    }
     render() {
         switch (this.props.ScrnChng) {
             case 0:
@@ -139,8 +143,10 @@ export default class Screen extends Component {
                                                                 })
                                                             }
                                                         </View>
-                                                        <Text style={styles.cardTime}>Rs.{mu.price}</Text>
-                                                        {/* <Button onPress={() => { alert(index) }}><Text>Add to Card</Text></Button> */}
+                                                        <View style={{ display: "flex", flexDirection: "row", width: width / 1.1, justifyContent: "space-between" }}>
+                                                            <Text style={styles.cardTime}>Rs.{mu.price}</Text>
+                                                            <Button onPress={() => { this.card(index) }}><Text>Add to Card</Text></Button>
+                                                        </View>
                                                     </Body>
                                                 </CardItem>
                                             </Card>
@@ -195,7 +201,7 @@ export default class Screen extends Component {
                         {this.state.tab3b ?
                             <Content padder style={{ marginTop: 0, paddingTop: 0 }}>
                                 <Accordion
-                                    dataArray={dataArray3a}
+                                    dataArray={dataArray4a}
                                     icon="add"
                                     expandedIcon="remove"
                                     iconStyle={{ color: "green" }}
@@ -205,7 +211,7 @@ export default class Screen extends Component {
                                 />
                                 <Text style={{ textAlign: "center", fontSize: 19, fontWeight: "bold" }}>Breads</Text>
                                 <Accordion
-                                    dataArray={dataArray4a}
+                                    dataArray={dataArray3a}
                                     icon="add"
                                     expandedIcon="remove"
                                     iconStyle={{ color: "green" }}
@@ -497,6 +503,7 @@ const styles = StyleSheet.create({
     cardTime: {
         backgroundColor: 'lightgrey',
         fontSize: 18,
+        alignSelf: "center"
     },
     hdr: {
         backgroundColor: "#C21807",
