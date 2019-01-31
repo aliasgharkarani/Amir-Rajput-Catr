@@ -17,6 +17,16 @@ export default class FooterTabsBadgeExample extends Component {
             header: "Traditional Set Menus"
         }
     }
+    Order(card) {
+        alert("Order Working" + card);
+    }
+    Order1 = (abc) => {
+        let orderCount = this.state.order;
+        ++orderCount
+        this.setState({
+            order: orderCount,
+        })
+    }
     render() {
         return (
             <Container contentContainerStyle={{ flex: 1 }}>
@@ -25,25 +35,25 @@ export default class FooterTabsBadgeExample extends Component {
                     <TouchableOpacity activeOpacity={1} style={{ width: "60%", alignSelf: "center" }}>
                         <Text style={styles.heading}>{this.state.header}</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity activeOpacity={1} style={{ width: "30%",backgroundColor:"#C21807"}}>
-                        <Button style={{ elevation: 0, backgroundColor: "#C21807",width:"100%" }} badge vertical>
-                            <Badge style={{width: 22, marginBottom: -7, zIndex: 10 }}><Text style={{ fontSize: 13, color: "white",width: 22, alignSelf: "center" }}>{this.state.order}</Text></Badge>
+                    <TouchableOpacity activeOpacity={1} style={{ width: "30%", backgroundColor: "#C21807" }}>
+                        <Button style={{ elevation: 0, backgroundColor: "#C21807", width: "100%" }} badge vertical>
+                            <Badge style={{ width: 22, marginBottom: -7, zIndex: 10 }}><Text style={{ fontSize: 13, color: "white", width: 22, alignSelf: "center" }}>{this.state.order}</Text></Badge>
                             <Icon name="cart" />
                         </Button>
                     </TouchableOpacity>
                 </Header>
                 <Content contentContainerStyle={{ flex: 1 }}>
-                    <Screen ScrnChng={this.state.ScreenDisplay} />
+                    <Screen Card={this.Order1} ScrnChng={this.state.ScreenDisplay} />
                 </Content>
                 <Footer style={{ backgroundColor: "#C21807" }}>
                     <FooterTab style={{ backgroundColor: "#C21807" }}>
                         <Button style={{ elevation: 0 }} vertical onPress={() => { this.setState({ ScreenDisplay: 0, header: "Traditional Set Menus" }) }}>
                             <Icon name="apps" />
-                            <Text style={{fontSize:7}}>Traditional</Text>
+                            <Text style={{ fontSize: 7 }}>Traditional</Text>
                         </Button>
                         <Button style={{ elevation: 0 }} vertical onPress={() => { this.setState({ ScreenDisplay: 1, header: "Royal Mughlai" }) }}>
                             <Icon name="pizza" />
-                            <Text style={{fontSize:7}}>Royal Mughlai</Text>
+                            <Text style={{ fontSize: 7 }}>Royal Mughlai</Text>
                         </Button>
                         <Button style={{ elevation: 0 }} vertical onPress={() => { this.setState({ ScreenDisplay: 2, header: "Pan Asian" }) }}>
                             <Icon name="nutrition" />

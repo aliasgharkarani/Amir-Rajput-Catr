@@ -113,10 +113,6 @@ export default class Screen extends Component {
             tab4b: false,
         }
     }
-    card(index) {
-        alert(index);
-        this.props.order = 1;
-    }
     render() {
         switch (this.props.ScrnChng) {
             case 0:
@@ -145,7 +141,7 @@ export default class Screen extends Component {
                                                         </View>
                                                         <View style={{ display: "flex", flexDirection: "row", width: width / 1.1, justifyContent: "space-between" }}>
                                                             <Text style={styles.cardTime}>Rs.{mu.price}</Text>
-                                                            <Button onPress={() => { this.card(index) }}><Text>Add to Card</Text></Button>
+                                                            <Button onPress={() => { this.props.Card(1) }}><Text>Add to Card</Text></Button>
                                                         </View>
                                                     </Body>
                                                 </CardItem>
