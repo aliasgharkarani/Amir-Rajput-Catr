@@ -7,7 +7,8 @@ import {
     defaultProps,
     Image,
     AppRegistry,
-    ScrollView
+    ScrollView,
+    TextInput
 } from 'react-native'
 import {
     Text,
@@ -113,6 +114,7 @@ export default class Screen extends Component {
             tab2b: false,
             tab3b: false,
             tab4b: false,
+            qty: ""
         }
     }
     render() {
@@ -143,7 +145,16 @@ export default class Screen extends Component {
                                                         </View>
                                                         <View style={{ display: "flex", flexDirection: "row", width: width / 1.1, justifyContent: "space-between" }}>
                                                             <Text style={styles.cardTime}>Rs.{mu.price}</Text>
-                                                            <Button onPress={() => { this.props.card(mu) }}><Text>Add to Card</Text></Button>
+                                                            <TextInput
+                                                                // underlineColorAndroid="white"
+                                                                style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 8, color: "rgb(99, 212, 218)", backgroundColor: "red", fontSize: 19, paddingRight: "2%", paddingLeft: "2%" }}
+                                                                onChangeText={(qty) => this.setState({ qty })}
+                                                                value={this.state.qty}
+                                                                placeholder="Qty"
+                                                                placeholderTextColor="#ffffff"
+                                                                autoCapitalize='none'
+                                                            />
+                                                            <Button onPress={() => { this.props.card(mu, this.state.qty) }}><Text>Add to Card</Text></Button>
                                                         </View>
                                                     </Body>
                                                 </CardItem>
@@ -470,9 +481,10 @@ export default class Screen extends Component {
                                         return (
                                             <ListItem selected>
                                                 <Left>
-                                                    <Text>{itm.menuName}</Text>
+                                                    <Text>{itm.MenuName}</Text>
                                                 </Left>
                                                 <Right>
+                                                    <Text>{itm.quantity}-</Text>
                                                     <Text>{itm.price}</Text>
                                                 </Right>
                                             </ListItem>

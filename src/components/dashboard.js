@@ -18,13 +18,18 @@ export default class FooterTabsBadgeExample extends Component {
             header: "Traditional Set Menus"
         }
     }
-    AddTOCARD = (OrdrD) => {
-        console.log(OrdrD, "orderDetail");
+    AddTOCARD = (OrdrD, qty) => {
+        // console.log(OrdrD, "orderDetail");
         let temporder = this.state.order;
         ++temporder;
+        let obj = {
+            quantity: qty,
+            MenuName: OrdrD.menuName,
+            price:OrdrD.price
+        };
+        // console.log(obj," New Object!!!");
         let temporderDetails = [...this.state.orderDetails];
-        temporderDetails.push(OrdrD)
-        // console.log(this.state.temporderDetails);
+        temporderDetails.push(obj)
         this.setState({
             order: temporder,
             orderDetails: temporderDetails
@@ -65,7 +70,7 @@ export default class FooterTabsBadgeExample extends Component {
                         <Button style={{ elevation: 0 }} badge vertical onPress={() => { this.setState({ ScreenDisplay: 3, header: "CARD" }) }}>
                             <Badge><Text>{this.state.order}</Text></Badge>
                             <Icon name="cart" />
-                            <Text>PROFILE</Text>
+                            <Text>Card</Text>
                         </Button>
                     </FooterTab>
                 </Footer>
