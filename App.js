@@ -39,6 +39,7 @@ import { createStackNavigator, createAppContainer } from "react-navigation";
 import Main from './main'
 import SelectCity from './src/components/SelectCity'
 import Dashboard from './src/components/dashboard'
+import Card from './src/components/card'
 class HomeScreen extends React.Component {
   render() {
     return (
@@ -64,6 +65,12 @@ const AppNavigator = createStackNavigator({
   },
   Dashboard: {
     screen: Dashboard,
+    navigationOptions: {
+      header: null,
+    }
+  },
+  Card: {
+    screen: Card,
     navigationOptions: {
       header: null,
     }

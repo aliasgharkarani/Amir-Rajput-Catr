@@ -5,7 +5,7 @@ import {
     TouchableOpacity,
     Dimensions
 } from 'react-native';
-import { Container, Header, Content, Footer, FooterTab, Button, Icon, Text, Badge, Left, Body, Title, Right } from 'native-base';
+import { Container, Header, Content, Footer, FooterTab, Button, Icon, Text, Badge, Left, Body, Title, Right, List, ListItem } from 'native-base';
 var height = Dimensions.get('window').height;
 var width = Dimensions.get("window").width;
 export default class FooterTabsBadgeExample extends Component {
@@ -14,8 +14,21 @@ export default class FooterTabsBadgeExample extends Component {
         this.state = {
             ScreenDisplay: 0,
             order: 0,
+            orderDetails: [],
             header: "Traditional Set Menus"
         }
+    }
+    AddTOCARD = (OrdrD) => {
+        console.log(OrdrD, "orderDetail");
+        let temporder = this.state.order;
+        ++temporder;
+        let temporderDetails = [...this.state.orderDetails];
+        temporderDetails.push(OrdrD)
+        // console.log(this.state.temporderDetails);
+        this.setState({
+            order: temporder,
+            orderDetails: temporderDetails
+        })
     }
     render() {
         return (
@@ -25,31 +38,31 @@ export default class FooterTabsBadgeExample extends Component {
                     <TouchableOpacity activeOpacity={1} style={{ width: "60%", alignSelf: "center" }}>
                         <Text style={styles.heading}>{this.state.header}</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity activeOpacity={1} style={{ width: "30%",backgroundColor:"#C21807"}}>
-                        <Button style={{ elevation: 0, backgroundColor: "#C21807",width:"100%" }} badge vertical>
-                            <Badge style={{width: 22, marginBottom: -7, zIndex: 10 }}><Text style={{ fontSize: 13, color: "white",width: 22, alignSelf: "center" }}>{this.state.order}</Text></Badge>
+                    <TouchableOpacity activeOpacity={1} style={{ width: "30%", backgroundColor: "#C21807" }}>
+                        <Button style={{ elevation: 0, backgroundColor: "#C21807", width: "100%" }} onPress={() => { this.setState({ ScreenDisplay: 3, header: "CARD" }) }} badge vertical>
+                            <Badge style={{ width: 22, marginBottom: -7, zIndex: 10 }}><Text style={{ fontSize: 13, color: "white", width: 22, alignSelf: "center" }}>{this.state.order}</Text></Badge>
                             <Icon name="cart" />
                         </Button>
                     </TouchableOpacity>
                 </Header>
                 <Content contentContainerStyle={{ flex: 1 }}>
-                    <Screen ScrnChng={this.state.ScreenDisplay} />
+                    <Screen card={this.AddTOCARD} cardItemsno={this.state.order} cardItemsdet={this.state.orderDetails} ScrnChng={this.state.ScreenDisplay} />
                 </Content>
                 <Footer style={{ backgroundColor: "#C21807" }}>
                     <FooterTab style={{ backgroundColor: "#C21807" }}>
                         <Button style={{ elevation: 0 }} vertical onPress={() => { this.setState({ ScreenDisplay: 0, header: "Traditional Set Menus" }) }}>
                             <Icon name="apps" />
-                            <Text style={{fontSize:7}}>Traditional</Text>
+                            <Text style={{ fontSize: 7 }}>Traditional</Text>
                         </Button>
                         <Button style={{ elevation: 0 }} vertical onPress={() => { this.setState({ ScreenDisplay: 1, header: "Royal Mughlai" }) }}>
                             <Icon name="pizza" />
-                            <Text style={{fontSize:7}}>Royal Mughlai</Text>
+                            <Text style={{ fontSize: 7 }}>Royal Mughlai</Text>
                         </Button>
                         <Button style={{ elevation: 0 }} vertical onPress={() => { this.setState({ ScreenDisplay: 2, header: "Pan Asian" }) }}>
                             <Icon name="nutrition" />
                             <Text>Pan Asian</Text>
                         </Button>
-                        <Button style={{ elevation: 0 }} badge vertical onPress={() => { this.setState({ ScreenDisplay: 3, header: "PROFILE" }) }}>
+                        <Button style={{ elevation: 0 }} badge vertical onPress={() => { this.setState({ ScreenDisplay: 3, header: "CARD" }) }}>
                             <Badge><Text>{this.state.order}</Text></Badge>
                             <Icon name="cart" />
                             <Text>PROFILE</Text>

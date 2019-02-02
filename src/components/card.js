@@ -1,6 +1,6 @@
 import React, { Component} from 'react';
 import { Text,View} from 'native-base';
-export default class Screen1 extends Component {
+export default class card extends Component {
     render() {
         return (
             <View>

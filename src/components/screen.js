@@ -29,7 +29,9 @@ import {
     Item,
     Input,
     Segment,
-    Accordion
+    Accordion,
+    Footer,
+    FooterTab,
 } from 'native-base';
 import CardImage from './img.jpeg'
 // import { ScrollView } from 'react-native-gesture-handler';
@@ -113,10 +115,6 @@ export default class Screen extends Component {
             tab4b: false,
         }
     }
-    card(index) {
-        alert(index);
-        this.props.order = 1;
-    }
     render() {
         switch (this.props.ScrnChng) {
             case 0:
@@ -145,7 +143,7 @@ export default class Screen extends Component {
                                                         </View>
                                                         <View style={{ display: "flex", flexDirection: "row", width: width / 1.1, justifyContent: "space-between" }}>
                                                             <Text style={styles.cardTime}>Rs.{mu.price}</Text>
-                                                            <Button onPress={() => { this.card(index) }}><Text>Add to Card</Text></Button>
+                                                            <Button onPress={() => { this.props.card(mu) }}><Text>Add to Card</Text></Button>
                                                         </View>
                                                     </Body>
                                                 </CardItem>
@@ -352,117 +350,151 @@ export default class Screen extends Component {
                 break;
             case 3:
                 return (
+                    // <Container>
+                    //     {/* <Header style={styles.hdr1}>
+                    //         <Left avatar>
+                    //             <Thumbnail source={CardImage} style={styles.image1} />
+                    //         </Left>
+                    //         <Body>
+                    //             <Title>John Doe</Title>
+                    //         </Body>
+                    //         <Right />
+                    //     </Header> */}
+                    //     <Content>
+                    //         <ListItem icon>
+                    //             <Left>
+                    //                 <Button style={{ backgroundColor: "#C21807" }}>
+                    //                     <Icon active name="heart" />
+                    //                 </Button>
+                    //             </Left>
+                    //             <Body>
+                    //                 <Button
+                    //                     transparent
+                    //                     onPress={() => {
+                    //                         this.handleChange();
+                    //                     }}
+                    //                 >
+                    //                     <Text style={styles.textStyle1}>{this.props.cardItemsno}</Text>
+                    //                 </Button>
+                    //             </Body>
+                    //         </ListItem>
+                    //         <ListItem icon>
+                    //             <Left>
+                    //                 <Button style={{ backgroundColor: "#C21807" }}>
+                    //                     <Icon active name="wallet" />
+                    //                 </Button>
+                    //             </Left>
+                    //             <Body>
+                    //                 <Button
+                    //                     transparent
+                    //                     onPress={() => {
+                    //                         this.handleChange1();
+                    //                     }}
+                    //                 >
+                    //                     <Text style={styles.textStyle1}></Text>
+                    //                 </Button>
+                    //             </Body>
+                    //         </ListItem>
+                    //         <ListItem icon>
+                    //             <Left>
+                    //                 <Button style={{ backgroundColor: "#C21807" }}>
+                    //                     <Icon active name="help" />
+                    //                 </Button>
+                    //             </Left>
+                    //             <Body>
+                    //                 <Button transparent>
+                    //                     <Text style={styles.textStyle1}>HELP</Text>
+                    //                 </Button>
+                    //             </Body>
+                    //         </ListItem>
+                    //         <ListItem icon>
+                    //             <Left>
+                    //                 <Button style={{ backgroundColor: "#C21807" }}>
+                    //                     <Icon active name="share" />
+                    //                 </Button>
+                    //             </Left>
+                    //             <Body>
+                    //                 <Button transparent>
+                    //                     <Text style={styles.textStyle1}>FREE FOOD</Text>
+                    //                 </Button>
+                    //             </Body>
+                    //         </ListItem>
+                    //         <ListItem icon>
+                    //             <Left>
+                    //                 <Button style={{ backgroundColor: "#C21807" }}>
+                    //                     <Icon active name="star" />
+                    //                 </Button>
+                    //             </Left>
+                    //             <Body>
+                    //                 <Button transparent>
+                    //                     <Text style={styles.textStyle1}>PROMOTIONS</Text>
+                    //                 </Button>
+                    //             </Body>
+                    //         </ListItem>
+                    //         <ListItem icon>
+                    //             <Left>
+                    //                 <Button style={{ backgroundColor: "#C21807" }}>
+                    //                     <Icon active name="cart" />
+                    //                 </Button>
+                    //             </Left>
+                    //             <Body>
+                    //                 <Button transparent>
+                    //                     <Text style={styles.textStyle1}>DELIVER WITH ROTIAPP</Text>
+                    //                 </Button>
+                    //             </Body>
+                    //         </ListItem>
+                    //         <ListItem icon>
+                    //             <Left>
+                    //                 <Button style={{ backgroundColor: "#C21807" }}>
+                    //                     <Icon active name="person" />
+                    //                 </Button>
+                    //             </Left>
+                    //             <Body>
+                    //                 <Button
+                    //                     transparent
+                    //                     onPress={() => {
+                    //                         this.handleChange2();
+                    //                     }}
+                    //                 >
+                    //                     <Text style={styles.textStyle1}>SETTINGS</Text>
+                    //                 </Button>
+                    //             </Body>
+                    //         </ListItem>
+                    //     </Content>
+                    // </Container>
                     <Container>
-                        {/* <Header style={styles.hdr1}>
-                            <Left avatar>
-                                <Thumbnail source={CardImage} style={styles.image1} />
-                            </Left>
-                            <Body>
-                                <Title>John Doe</Title>
-                            </Body>
-                            <Right />
-                        </Header> */}
-                        <Content>
-                            <ListItem icon>
-                                <Left>
-                                    <Button style={{ backgroundColor: "#C21807" }}>
-                                        <Icon active name="heart" />
-                                    </Button>
-                                </Left>
-                                <Body>
-                                    <Button
-                                        transparent
-                                        onPress={() => {
-                                            this.handleChange();
-                                        }}
-                                    >
-                                        <Text style={styles.textStyle1}>YOUR FAVOURITES</Text>
-                                    </Button>
-                                </Body>
-                            </ListItem>
-                            <ListItem icon>
-                                <Left>
-                                    <Button style={{ backgroundColor: "#C21807" }}>
-                                        <Icon active name="wallet" />
-                                    </Button>
-                                </Left>
-                                <Body>
-                                    <Button
-                                        transparent
-                                        onPress={() => {
-                                            this.handleChange1();
-                                        }}
-                                    >
-                                        <Text style={styles.textStyle1}>PAYMENT</Text>
-                                    </Button>
-                                </Body>
-                            </ListItem>
-                            <ListItem icon>
-                                <Left>
-                                    <Button style={{ backgroundColor: "#C21807" }}>
-                                        <Icon active name="help" />
-                                    </Button>
-                                </Left>
-                                <Body>
-                                    <Button transparent>
-                                        <Text style={styles.textStyle1}>HELP</Text>
-                                    </Button>
-                                </Body>
-                            </ListItem>
-                            <ListItem icon>
-                                <Left>
-                                    <Button style={{ backgroundColor: "#C21807" }}>
-                                        <Icon active name="share" />
-                                    </Button>
-                                </Left>
-                                <Body>
-                                    <Button transparent>
-                                        <Text style={styles.textStyle1}>FREE FOOD</Text>
-                                    </Button>
-                                </Body>
-                            </ListItem>
-                            <ListItem icon>
-                                <Left>
-                                    <Button style={{ backgroundColor: "#C21807" }}>
-                                        <Icon active name="star" />
-                                    </Button>
-                                </Left>
-                                <Body>
-                                    <Button transparent>
-                                        <Text style={styles.textStyle1}>PROMOTIONS</Text>
-                                    </Button>
-                                </Body>
-                            </ListItem>
-                            <ListItem icon>
-                                <Left>
-                                    <Button style={{ backgroundColor: "#C21807" }}>
-                                        <Icon active name="cart" />
-                                    </Button>
-                                </Left>
-                                <Body>
-                                    <Button transparent>
-                                        <Text style={styles.textStyle1}>DELIVER WITH ROTIAPP</Text>
-                                    </Button>
-                                </Body>
-                            </ListItem>
-                            <ListItem icon>
-                                <Left>
-                                    <Button style={{ backgroundColor: "#C21807" }}>
-                                        <Icon active name="person" />
-                                    </Button>
-                                </Left>
-                                <Body>
-                                    <Button
-                                        transparent
-                                        onPress={() => {
-                                            this.handleChange2();
-                                        }}
-                                    >
-                                        <Text style={styles.textStyle1}>SETTINGS</Text>
-                                    </Button>
-                                </Body>
-                            </ListItem>
-                        </Content>
+                        <ScrollView>
+                            <Content>
+                                <List>
+                                    {this.props.cardItemsdet.map((itm, i) => {
+                                        return (
+                                            <ListItem selected>
+                                                <Left>
+                                                    <Text>{itm.menuName}</Text>
+                                                </Left>
+                                                <Right>
+                                                    <Text>{itm.price}</Text>
+                                                </Right>
+                                            </ListItem>
+                                        )
+                                    })
+                                    }
+                                    <ListItem>
+                                        <Left>
+                                            <Text style={{ color: "red", fontSize: 20 }}>Total Price</Text>
+                                        </Left>
+                                        <Right>
+                                            <Text style={{ color: "blue", fontSize: 25 }}>WOW</Text>
+                                        </Right>
+                                    </ListItem>
+                                </List>
+                            </Content>
+                        </ScrollView>
+                        {/* <Footer>
+                            <Button full style={{ elevation: 0, width: "100%" }}>
+                                <Text style={{ fontSize: 23, fontWeight: 'bold', color: "white" }}>Add Details</Text>
+                            </Button>
+                        </Footer> */}
                     </Container>
                 )
                 break;
