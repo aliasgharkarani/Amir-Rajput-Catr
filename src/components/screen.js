@@ -484,7 +484,7 @@ export default class Screen extends Component {
                                             <Text style={{ color: "red", fontSize: 20 }}>Total Price</Text>
                                         </Left>
                                         <Right>
-                                            <Text style={{ color: "blue", fontSize: 25 }}>WOW</Text>
+                                            <Text style={{ color: "blue", fontSize: 24 }}>WOW</Text>
                                         </Right>
                                     </ListItem>
                                 </List>
