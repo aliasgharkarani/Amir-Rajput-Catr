@@ -15,26 +15,43 @@ export default class FooterTabsBadgeExample extends Component {
             ScreenDisplay: 0,
             order: 0,
             orderDetails: [],
-            header: "Traditional Set Menus"
+            header: "Traditional Set Menus",
+            Total: 0
         }
     }
     AddTOCARD = (OrdrD, qty) => {
         // console.log(OrdrD, "orderDetail");
         let temporder = this.state.order;
+        let tot = this.state.Total;
+        tot += OrdrD.price * qty;
         ++temporder;
         let obj = {
             quantity: qty,
             MenuName: OrdrD.menuName,
-            price:OrdrD.price
+            price: OrdrD.price
         };
         // console.log(obj," New Object!!!");
         let temporderDetails = [...this.state.orderDetails];
         temporderDetails.push(obj)
         this.setState({
             order: temporder,
-            orderDetails: temporderDetails
+            orderDetails: temporderDetails,
+            Total: tot
         })
+        // this.pricecal();
     }
+    // pricecal = () => {
+    //     console.warn(this.state.orderDetails);
+    // let tot = this.state.Total;
+    // for (let i = 0; i < this.state.orderDetails.length; i++) {
+    //     tot += this.state.orderDetails[i].price * this.state.orderDetails[i].quantity;
+    // }
+    // this.setState({
+    //     Total: tot
+    // })
+    // console.log(tot);
+    // console.log(this.state.Total);
+    // }
     render() {
         return (
             <Container contentContainerStyle={{ flex: 1 }}>
@@ -51,7 +68,7 @@ export default class FooterTabsBadgeExample extends Component {
                     </TouchableOpacity>
                 </Header>
                 <Content contentContainerStyle={{ flex: 1 }}>
-                    <Screen card={this.AddTOCARD} cardItemsno={this.state.order} cardItemsdet={this.state.orderDetails} ScrnChng={this.state.ScreenDisplay} />
+                    <Screen card={this.AddTOCARD} cardItemsno={this.state.order} totalAmount={this.state.Total} cardItemsdet={this.state.orderDetails} ScrnChng={this.state.ScreenDisplay} />
                 </Content>
                 <Footer style={{ backgroundColor: "#C21807" }}>
                     <FooterTab style={{ backgroundColor: "#C21807" }}>

@@ -39,10 +39,10 @@ import CardImage from './img.jpeg'
 var height = Dimensions.get('window').height;
 var width = Dimensions.get("window").width;
 var Menus = [
-    { menuName: "Menu 01", items: ["FRESH JUICES ON ARRIVAL", "FRIED FISH LAHORI", "CHICKEN RESHMI KABAB", "MUTTON KUNNA", "CHICKEN BIRYANI", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "GULAB JAMAN", "CREAM CARAMEL"], "price": "10,000" },
-    { menuName: "Menu 02", items: ["FRESH JUICES ON ARRIVAL", "CHAPLI / SEEKH KABAB", "CHICKEN MALAI BOTI", "CHICKEN ZAFRANI BIRYANI", "CHICKEN BADAMI QORMA", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "GAJAR KA HALWA", "FRUIT TRIFFLE"], "price": "15,000" },
-    { menuName: "Menu 03", items: ["FRESH JUICES ON ARRIVAL", "GRILLED FISH", "CHICKEN BIHARI BOTI", "CHICKEN KARAHI", "MUTTON YAKHNI PULAO", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "RABRI KHEER", "LAB-E-SHEEREN"], "price": "20,000" },
-    { menuName: "Menu 04", items: ["FRESH JUICES ON ARRIVAL", "FRIED FISH ORLY", "CHICKEN STEAM", "CHICKEN PESHAWARI KARAHI", "KASHMIRI PULAO", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "SPECIAL ZARDA", "DOODH DULARI"], "price": "25,000" }
+    { menuName: "Menu 01", items: ["FRESH JUICES ON ARRIVAL", "FRIED FISH LAHORI", "CHICKEN RESHMI KABAB", "MUTTON KUNNA", "CHICKEN BIRYANI", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "GULAB JAMAN", "CREAM CARAMEL"], "price": 10000 },
+    { menuName: "Menu 02", items: ["FRESH JUICES ON ARRIVAL", "CHAPLI / SEEKH KABAB", "CHICKEN MALAI BOTI", "CHICKEN ZAFRANI BIRYANI", "CHICKEN BADAMI QORMA", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "GAJAR KA HALWA", "FRUIT TRIFFLE"], "price": 15000 },
+    { menuName: "Menu 03", items: ["FRESH JUICES ON ARRIVAL", "GRILLED FISH", "CHICKEN BIHARI BOTI", "CHICKEN KARAHI", "MUTTON YAKHNI PULAO", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "RABRI KHEER", "LAB-E-SHEEREN"], "price": 20000 },
+    { menuName: "Menu 04", items: ["FRESH JUICES ON ARRIVAL", "FRIED FISH ORLY", "CHICKEN STEAM", "CHICKEN PESHAWARI KARAHI", "KASHMIRI PULAO", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "SPECIAL ZARDA", "DOODH DULARI"], "price": 25000 }
 ]
 const dataArray = [
     { title: "Prawn Tempura", content: "one" },
@@ -114,9 +114,29 @@ export default class Screen extends Component {
             tab2b: false,
             tab3b: false,
             tab4b: false,
-            qty: ""
+            qty: "",
+            // Total: 0
         }
     }
+    clear = () => {
+        this.setState({
+            qty: ""
+        })
+    }
+    // componentWillMount(){
+    // this.pricecal();
+    // }
+    // pricecal = () => {
+    //     let tot = this.state.Total;
+    //     for (let i = 0; i < this.props.cardItemsdet.length; i++) {
+    //         tot += this.props.cardItemsdet[i].price * this.props.cardItemsdet[i].quantity;
+    //     }
+    //     this.setState({
+    //         Total: tot
+    //     })
+    //     console.log(tot);
+    //     console.log(this.state.Total);
+    // }
     render() {
         switch (this.props.ScrnChng) {
             case 0:
@@ -147,14 +167,14 @@ export default class Screen extends Component {
                                                             <Text style={styles.cardTime}>Rs.{mu.price}</Text>
                                                             <TextInput
                                                                 // underlineColorAndroid="white"
-                                                                style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 8, color: "rgb(99, 212, 218)", backgroundColor: "red", fontSize: 19, paddingRight: "2%", paddingLeft: "2%" }}
+                                                                style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 8, color: "red", backgroundColor: "none", fontSize: 19, paddingRight: "2%", paddingLeft: "2%" }}
                                                                 onChangeText={(qty) => this.setState({ qty })}
                                                                 value={this.state.qty}
-                                                                placeholder="Qty"
-                                                                placeholderTextColor="#ffffff"
+                                                                placeholder="Ppl"
+                                                                placeholderTextColor="red"
                                                                 autoCapitalize='none'
                                                             />
-                                                            <Button onPress={() => { this.props.card(mu, this.state.qty) }}><Text>Add to Card</Text></Button>
+                                                            <Button onPress={() => { this.props.card(mu, this.state.qty); this.clear(); }}><Text>Add to Card</Text></Button>
                                                         </View>
                                                     </Body>
                                                 </CardItem>
@@ -481,23 +501,29 @@ export default class Screen extends Component {
                                         return (
                                             <ListItem selected>
                                                 <Left>
+                                                    {/* <View style={{ width: "20%",backgroundColor:"yellow" }}> */}
                                                     <Text>{itm.MenuName}</Text>
+                                                    {/* </View> */}
                                                 </Left>
-                                                <Right>
-                                                    <Text>{itm.quantity}-</Text>
+                                                {/* <View style={{ width: "35%" }}></View> */}
+                                                <Right style={{ display: "flex", flexDirection: "row" }}>
+                                                    {/* <View style={{ width: "20%",backgroundColor:"green", display: "flex", flexDirection: "row"}}> */}
+                                                    <Text>{itm.quantity}*</Text>
                                                     <Text>{itm.price}</Text>
+                                                    {/* </View> */}
                                                 </Right>
                                             </ListItem>
                                         )
                                     })
                                     }
                                     <ListItem>
-                                        <Left>
+                                        <View style={{ width: "35%" }}>
                                             <Text style={{ color: "red", fontSize: 20 }}>Total Price</Text>
-                                        </Left>
-                                        <Right>
-                                            <Text style={{ color: "blue", fontSize: 24 }}>WOW</Text>
-                                        </Right>
+                                        </View>
+                                        <View style={{ width: "30%" }}></View>
+                                        <View style={{ width: "35%" }}>
+                                            <Text style={{ color: "blue", fontSize: 22 }}>{this.props.totalAmount}</Text>
+                                        </View>
                                     </ListItem>
                                 </List>
                             </Content>
