@@ -33,6 +33,7 @@ import {
     Accordion,
     Footer,
     FooterTab,
+    CheckBox
 } from 'native-base';
 import CardImage from './img.jpeg'
 // import { ScrollView } from 'react-native-gesture-handler';
@@ -44,65 +45,116 @@ var Menus = [
     { menuName: "Menu 03", items: ["FRESH JUICES ON ARRIVAL", "GRILLED FISH", "CHICKEN BIHARI BOTI", "CHICKEN KARAHI", "MUTTON YAKHNI PULAO", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "RABRI KHEER", "LAB-E-SHEEREN"], "price": 20000 },
     { menuName: "Menu 04", items: ["FRESH JUICES ON ARRIVAL", "FRIED FISH ORLY", "CHICKEN STEAM", "CHICKEN PESHAWARI KARAHI", "KASHMIRI PULAO", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "SPECIAL ZARDA", "DOODH DULARI"], "price": 25000 }
 ]
-const dataArray = [
-    { title: "Prawn Tempura", content: "one" },
-    { title: "Chicken Satay", content: "two" },
-    { title: "Crispy Spring Rolls", content: "three" },
-    { title: "Tom Yum Soup", content: "three" },
-    { title: "Hot & Sour Soup", content: "three" }
+var PAStarters = [
+    { menuName: "Prawn Tempura", type: "Pan Asian", price: 100 },
+    { menuName: "Chicken Satay", type: "Pan Asian", price: 100 },
+    { menuName: "Crispy Spring Rolls", type: "Pan Asian", price: 100 },
+    { menuName: "Tom Yum Soup", type: "Pan Asian", price: 100 },
+    { menuName: "Hot & Sour Soup", type: "Pan Asian", price: 100 }]
+var PAMainCourse = [
+    { menuName: "Teppanyaki Grill Live", type: "Pan Asian", price: 100 },
+    { menuName: "Chicken- Beef- Prawn- Fish", type: "Pan Asian", price: 100 },
+    { menuName: "Sauces: Chili- Thai Red & Green Curry- Garlic", type: "Pan Asian", price: 100 },
+    { menuName: "Teriyaki Grill Live", type: "Pan Asian", price: 100 },
+    { menuName: "Chicken- Beef", type: "Pan Asian", price: 100 },
+    { menuName: "Sauce: Teriyaki", type: "Pan Asian", price: 100 },
+    { menuName: "Tiger Prawns", type: "Pan Asian", price: 100 },
+    { menuName: "Thai Green Curry", type: "Pan Asian", price: 100 },
+    { menuName: "Lemongrass Chicken", type: "Pan Asian", price: 100 },
+    { menuName: "Black Pepper Beef", type: "Pan Asian", price: 100 }
+]
+var PADesserts = [
+    { menuName: "Summer Breeze", type: "Pan Asian", price: 100 },
+    { menuName: "Ice Cream with Espresso or Chocolate Syrup", type: "Pan Asian", price: 100 },
+    { menuName: "Mango- Coconut Ice Creams", type: "Pan Asian", price: 100 },
+    { menuName: "Fresh Tropical Fruits", type: "Pan Asian", price: 100 }
+]
+const RMStarters = [
+    { menuName: "Murgh Tikka Lahori", type: "Royal Mughlai", price: 100 },
+    { menuName: "Chapli Kabab Peshawari", type: "Royal Mughlai", price: 100 },
+    { menuName: "Kabuli Chaanp", type: "Royal Mughlai", price: 100 },
+    { menuName: "Butterfly Jhinga", type: "Royal Mughlai", price: 100 },
+    { menuName: "Machi Anarkali", type: "Royal Mughlai", price: 100 }
 ];
-const dataArray1 = [
-    { title: "Teppanyaki Grill Live", content: "one" },
-    { title: "Chicken- Beef- Prawn- Fish", content: "two" },
-    { title: "Sauces: Chili- Thai Red & Green Curry- Garlic", content: "three" },
-    { title: "Teriyaki Grill Live", content: "three" },
-    { title: "Chicken- Beef", content: "three" },
-    { title: "Sauce: Teriyaki", content: "three" },
-    { title: "Tiger Prawns", content: "three" },
-    { title: "Thai Green Curry", content: "three" },
-    { title: "Lemongrass Chicken", content: "three" },
-    { title: "Black Pepper Beef", content: "three" },
+const RMMainCourse = [
+    { menuName: "Chicken Makhni", type: "Royal Mughlai", price: 100 },
+    { menuName: "Lamb Zafarani Korma", type: "Royal Mughlai", price: 100 },
+    { menuName: "Tawa Chicken", type: "Royal Mughlai", price: 100 },
+    { menuName: "Sag Gosht", type: "Royal Mughlai", price: 100 },
+    { menuName: "Tarka Dall", type: "Royal Mughlai", price: 100 },
+    { menuName: "Dal Makhni", type: "Royal Mughlai", price: 100 },
+    { menuName: "Sag GoshtAloo ki Tarkari", type: "Royal Mughlai", price: 100 },
+    { menuName: "Zafrani Biryani", type: "Royal Mughlai", price: 100 },
+    { menuName: "Afghani Pulao", type: "Royal Mughlai", price: 100 }
 ];
-const dataArray2 = [
-    { title: "Summer Breeze", content: "one" },
-    { title: "Ice Cream with Espresso or Chocolate Syrup", content: "two" },
-    { title: "Mango- Coconut Ice Creams", content: "three" },
-    { title: "Fresh Tropical Fruits", content: "three" }
+const RMBreads = [
+    { menuName: "Tandoori Naan", type: "Royal Mughlai", price: 100 },
+    { menuName: "Garlic Naan", type: "Royal Mughlai", price: 100 },
+    { menuName: "Sheermall", type: "Royal Mughlai", price: 100 },
+    { menuName: "Taftan", type: "Royal Mughlai", price: 100 },
+    { menuName: "Tandoori Roti", type: "Royal Mughlai", price: 100 }
 ];
-const dataArray1a = [
-    { title: "Murgh Tikka Lahori", content: "one" },
-    { title: "Chapli Kabab Peshawari", content: "two" },
-    { title: "Kabuli Chaanp", content: "three" },
-    { title: "Butterfly Jhinga", content: "three" },
-    { title: "Machi Anarkali", content: "three" }
+const RMDesserts = [
+    { menuName: "Shahi Tukra", type: "Royal Mughlai", price: 100 },
+    { menuName: "Shahi Kheer", type: "Royal Mughlai", price: 100 },
+    { menuName: "Daal ka Halwa", type: "Royal Mughlai", price: 100 }
 ];
-const dataArray2a = [
-    { title: "Chicken Makhni", content: "one" },
-    { title: "Lamb Zafarani Korma", content: "two" },
-    { title: "Tawa Chicken", content: "three" },
-    { title: "Sag Gosht", content: "three" },
-    { title: "Tarka Dall", content: "three" },
-    { title: "Dal Makhni", content: "three" },
-    { title: "Sag GoshtAloo ki Tarkari", content: "three" },
-    { title: "Zafrani Biryani", content: "three" },
-    { title: "Sag GoshtAloo ki Tarkari", content: "three" },
-    { title: "Afghani Pulao", content: "three" }
-];
-const dataArray3a = [
-    { title: "Tandoori Naan", content: "one" },
-    { title: "Garlic Naan", content: "two" },
-    { title: "Sheermall", content: "three" },
-    { title: "Taftan", content: "three" },
-    { title: "Tandoori Roti", content: "three" }
-];
-const dataArray4a = [
-    { title: "Shahi Tukra", content: "one" },
-    { title: "Shahi Kheer", content: "two" },
-    { title: "Daal ka Halwa", content: "three" }
-];
-// var Starters = ["Prawn Tempura", "Chicken Satay", "Crispy Spring Rolls", "Tom Yum Soup", "Hot & Sour Soup"]
-// var MainCourse = ["Teppanyaki Grill Live", "Chicken- Beef- Prawn- Fish", "Sauces: Chili- Thai Red & Green Curry- Garlic", "Teriyaki Grill Live", "Chicken- Beef", "Sauce: Teriyaki", "Tiger Prawns", "Thai Green Curry", "Lemongrass Chicken", "Black Pepper Beef"]
-// var Desserts = ["Summer Breeze", "Ice Cream with Espresso or Chocolate Syrup", "Mango- Coconut Ice Creams", "Fresh Tropical Fruits"]
+// const dataArray = [
+//     { title: "Prawn Tempura", content: "one" },
+//     { title: "Chicken Satay", content: "two" },
+//     { title: "Crispy Spring Rolls", content: "three" },
+//     { title: "Tom Yum Soup", content: "three" },
+//     { title: "Hot & Sour Soup", content: "three" }
+// ];
+// const dataArray1 = [
+//     { title: "Teppanyaki Grill Live", content: "one" },
+//     { title: "Chicken- Beef- Prawn- Fish", content: "two" },
+//     { title: "Sauces: Chili- Thai Red & Green Curry- Garlic", content: "three" },
+//     { title: "Teriyaki Grill Live", content: "three" },
+//     { title: "Chicken- Beef", content: "three" },
+//     { title: "Sauce: Teriyaki", content: "three" },
+//     { title: "Tiger Prawns", content: "three" },
+//     { title: "Thai Green Curry", content: "three" },
+//     { title: "Lemongrass Chicken", content: "three" },
+//     { title: "Black Pepper Beef", content: "three" },
+// ];
+// const dataArray2 = [
+//     { title: "Summer Breeze", content: "one" },
+//     { title: "Ice Cream with Espresso or Chocolate Syrup", content: "two" },
+//     { title: "Mango- Coconut Ice Creams", content: "three" },
+//     { title: "Fresh Tropical Fruits", content: "three" }
+// ];
+// const dataArray1a = [
+//     { title: "Murgh Tikka Lahori", content: "one" },
+//     { title: "Chapli Kabab Peshawari", content: "two" },
+//     { title: "Kabuli Chaanp", content: "three" },
+//     { title: "Butterfly Jhinga", content: "three" },
+//     { title: "Machi Anarkali", content: "three" }
+// ];
+// const dataArray2a = [
+//     { title: "Chicken Makhni", content: "one" },
+//     { title: "Lamb Zafarani Korma", content: "two" },
+//     { title: "Tawa Chicken", content: "three" },
+//     { title: "Sag Gosht", content: "three" },
+//     { title: "Tarka Dall", content: "three" },
+//     { title: "Dal Makhni", content: "three" },
+//     { title: "Sag GoshtAloo ki Tarkari", content: "three" },
+//     { title: "Zafrani Biryani", content: "three" },
+//     { title: "Sag GoshtAloo ki Tarkari", content: "three" },
+//     { title: "Afghani Pulao", content: "three" }
+// ];
+// const dataArray3a = [
+//     { title: "Tandoori Naan", content: "one" },
+//     { title: "Garlic Naan", content: "two" },
+//     { title: "Sheermall", content: "three" },
+//     { title: "Taftan", content: "three" },
+//     { title: "Tandoori Roti", content: "three" }
+// ];
+// const dataArray4a = [
+//     { title: "Shahi Tukra", content: "one" },
+//     { title: "Shahi Kheer", content: "two" },
+//     { title: "Daal ka Halwa", content: "three" }
+// ];
 export default class Screen extends Component {
     constructor(props) {
         super(props)
@@ -114,7 +166,7 @@ export default class Screen extends Component {
             tab2b: false,
             tab3b: false,
             tab4b: false,
-            qty: "",
+            qty: 1
             // Total: 0
         }
     }
@@ -123,20 +175,6 @@ export default class Screen extends Component {
             qty: ""
         })
     }
-    // componentWillMount(){
-    // this.pricecal();
-    // }
-    // pricecal = () => {
-    //     let tot = this.state.Total;
-    //     for (let i = 0; i < this.props.cardItemsdet.length; i++) {
-    //         tot += this.props.cardItemsdet[i].price * this.props.cardItemsdet[i].quantity;
-    //     }
-    //     this.setState({
-    //         Total: tot
-    //     })
-    //     console.log(tot);
-    //     console.log(this.state.Total);
-    // }
     render() {
         switch (this.props.ScrnChng) {
             case 0:
@@ -170,11 +208,11 @@ export default class Screen extends Component {
                                                                 style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 8, color: "red", backgroundColor: "none", fontSize: 19, paddingRight: "2%", paddingLeft: "2%" }}
                                                                 onChangeText={(qty) => this.setState({ qty })}
                                                                 value={this.state.qty}
-                                                                placeholder="Ppl"
+                                                                placeholder="1"
                                                                 placeholderTextColor="red"
                                                                 autoCapitalize='none'
                                                             />
-                                                            <Button onPress={() => { this.props.card(mu, this.state.qty); this.clear(); }}><Text>Add to Card</Text></Button>
+                                                            <Button onPress={() => { this.props.card(mu, this.state.qty); this.clear(); }}><Text>ORDER</Text></Button>
                                                         </View>
                                                     </Body>
                                                 </CardItem>
@@ -200,68 +238,133 @@ export default class Screen extends Component {
                                 </Segment>
                             </Body>
                         </Header>
-                        {/* <Content padder style={{ marginTop: 0, paddingTop: 0 }}> */}
-                        {this.state.tab1b ?
-                            <Content padder style={{ marginTop: 0, paddingTop: 0 }}>
-                                <Accordion
-                                    dataArray={dataArray1a}
-                                    icon="add"
-                                    expandedIcon="remove"
-                                    iconStyle={{ color: "green" }}
-                                    expandedIconStyle={{ color: "red" }}
-                                    headerStyle={{ backgroundColor: "#a4a3ab5e" }}
-                                    contentStyle={{ backgroundColor: "#ddecf8" }}
-                                />
-                            </Content>
-                            : null}
-                        {this.state.tab2b ?
-                            <Content padder style={{ marginTop: 0, paddingTop: 0 }}>
-                                <Accordion
-                                    dataArray={dataArray2a}
-                                    icon="add"
-                                    expandedIcon="remove"
-                                    iconStyle={{ color: "green" }}
-                                    expandedIconStyle={{ color: "red" }}
-                                    headerStyle={{ backgroundColor: "#a4a3ab5e" }}
-                                    contentStyle={{ backgroundColor: "#ddecf8" }}
-                                />
-                            </Content>
-                            : null}
-                        {this.state.tab3b ?
-                            <Content padder style={{ marginTop: 0, paddingTop: 0 }}>
-                                <Accordion
-                                    dataArray={dataArray4a}
-                                    icon="add"
-                                    expandedIcon="remove"
-                                    iconStyle={{ color: "green" }}
-                                    expandedIconStyle={{ color: "red" }}
-                                    headerStyle={{ backgroundColor: "#a4a3ab5e" }}
-                                    contentStyle={{ backgroundColor: "#ddecf8" }}
-                                />
-                                <Text style={{ textAlign: "center", fontSize: 19, fontWeight: "bold" }}>Breads</Text>
-                                <Accordion
-                                    dataArray={dataArray3a}
-                                    icon="add"
-                                    expandedIcon="remove"
-                                    iconStyle={{ color: "green" }}
-                                    expandedIconStyle={{ color: "red" }}
-                                    headerStyle={{ backgroundColor: "#a4a3ab5e" }}
-                                    contentStyle={{ backgroundColor: "#ddecf8" }}
-                                />
-                            </Content>
-                            : null}
-                        {/* {this.state.tab4b ?
-                                <Accordion
-                                    dataArray={dataArray4a}
-                                    icon="add"
-                                    expandedIcon="remove"
-                                    iconStyle={{ color: "green" }}
-                                    expandedIconStyle={{ color: "red" }}
-                                    headerStyle={{ backgroundColor: "#a4a3ab5e" }}
-                                    contentStyle={{ backgroundColor: "#ddecf8" }}
-                                />
-                                : null} */}
-                        {/* </Content> */}
+                        <Content padder style={{ marginTop: 0, paddingTop: 0 }}>
+                            {this.state.tab1b ?
+                                <List>
+                                    {
+                                        RMStarters.map((numbers) => {
+                                            return (
+                                                <ListItem thumbnail style={{ height: width / 4.2, borderBottomColor: "grey", borderBottomWidth: 1 }}>
+                                                    <Left>
+                                                        <Thumbnail square source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/sugarandspice-34c66.appspot.com/o/posts%2Fbiryani.jpg?alt=media&token=1683cab5-2fbf-4d06-b155-4ff570ab7b77' }} />
+                                                    </Left>
+                                                    <Body style={{ borderBottomWidth: 0 }}>
+                                                        <Text>{numbers.menuName}</Text>
+                                                        <Text note numberOfLines={1}>Its time to build a difference . .</Text>
+                                                    </Body>
+                                                    <Right style={{ borderBottomWidth: 0 }}>
+                                                        <TextInput
+                                                            style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 8, color: "red", backgroundColor: "none", fontSize: 19, paddingRight: "2%", paddingLeft: "2%" }}
+                                                            onChangeText={(qty) => this.setState({ qty })}
+                                                            value={this.state.qty}
+                                                            placeholder="1"
+                                                            placeholderTextColor="red"
+                                                            autoCapitalize='none'
+                                                        />
+                                                        <Button transparent onPress={() => { this.props.card(numbers, this.state.qty); this.clear(); }}>
+                                                            <Text>Order</Text>
+                                                        </Button>
+                                                    </Right>
+                                                </ListItem>
+                                            )
+                                        })}
+                                </List>
+                                : null}
+                            {this.state.tab2b ?
+                                <View>
+                                    <List>
+                                        {
+                                            RMMainCourse.map((numbers) => {
+                                                return (
+                                                    <ListItem thumbnail style={{ height: width / 4.2, borderBottomColor: "grey", borderBottomWidth: 1 }}>
+                                                        <Left>
+                                                            <Thumbnail square source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/sugarandspice-34c66.appspot.com/o/posts%2Fbiryani.jpg?alt=media&token=1683cab5-2fbf-4d06-b155-4ff570ab7b77' }} />
+                                                        </Left>
+                                                        <Body style={{ borderBottomWidth: 0 }}>
+                                                            <Text>{numbers.menuName}</Text>
+                                                            <Text note numberOfLines={1}>Its time to build a difference . .</Text>
+                                                        </Body>
+                                                        <Right style={{ borderBottomWidth: 0 }}>
+                                                            <TextInput
+                                                                style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 8, color: "red", backgroundColor: "none", fontSize: 19, paddingRight: "2%", paddingLeft: "2%" }}
+                                                                onChangeText={(qty) => this.setState({ qty })}
+                                                                value={this.state.qty}
+                                                                placeholder="1"
+                                                                placeholderTextColor="red"
+                                                                autoCapitalize='none'
+                                                            />
+                                                            <Button transparent onPress={() => { this.props.card(numbers, this.state.qty); this.clear(); }}>
+                                                                <Text>Order</Text>
+                                                            </Button>
+                                                        </Right>
+                                                    </ListItem>
+                                                )
+                                            })}
+                                    </List>
+                                    <Text style={{ textAlign: "center", fontSize: 23, fontWeight: "bold" }}>Breads</Text>
+                                    <List>
+                                        {
+                                            RMBreads.map((numbers) => {
+                                                return (
+                                                    <ListItem thumbnail style={{ height: width / 4.2, borderBottomColor: "grey", borderBottomWidth: 1 }}>
+                                                        <Left>
+                                                            <Thumbnail square source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/sugarandspice-34c66.appspot.com/o/posts%2Fbiryani.jpg?alt=media&token=1683cab5-2fbf-4d06-b155-4ff570ab7b77' }} />
+                                                        </Left>
+                                                        <Body style={{ borderBottomWidth: 0 }}>
+                                                            <Text>{numbers.menuName}</Text>
+                                                            <Text note numberOfLines={1}>Its time to build a difference . .</Text>
+                                                        </Body>
+                                                        <Right style={{ borderBottomWidth: 0 }}>
+                                                            <TextInput
+                                                                style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 8, color: "red", backgroundColor: "none", fontSize: 19, paddingRight: "2%", paddingLeft: "2%" }}
+                                                                onChangeText={(qty) => this.setState({ qty })}
+                                                                value={this.state.qty}
+                                                                placeholder="1"
+                                                                placeholderTextColor="red"
+                                                                autoCapitalize='none'
+                                                            />
+                                                            <Button transparent onPress={() => { this.props.card(numbers, this.state.qty); this.clear(); }}>
+                                                                <Text>Order</Text>
+                                                            </Button>
+                                                        </Right>
+                                                    </ListItem>
+                                                )
+                                            })}
+                                    </List>
+                                </View>
+                                : null}
+                            {this.state.tab3b ?
+                                <List>
+                                    {
+                                        RMDesserts.map((numbers) => {
+                                            return (
+                                                <ListItem thumbnail style={{ height: width / 4.2, borderBottomColor: "grey", borderBottomWidth: 1 }}>
+                                                    <Left>
+                                                        <Thumbnail square source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/sugarandspice-34c66.appspot.com/o/posts%2Fbiryani.jpg?alt=media&token=1683cab5-2fbf-4d06-b155-4ff570ab7b77' }} />
+                                                    </Left>
+                                                    <Body style={{ borderBottomWidth: 0 }}>
+                                                        <Text>{numbers.menuName}</Text>
+                                                        <Text note numberOfLines={1}>Its time to build a difference . .</Text>
+                                                    </Body>
+                                                    <Right style={{ borderBottomWidth: 0 }}>
+                                                        <TextInput
+                                                            style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 8, color: "red", backgroundColor: "none", fontSize: 19, paddingRight: "2%", paddingLeft: "2%" }}
+                                                            onChangeText={(qty) => this.setState({ qty })}
+                                                            value={this.state.qty}
+                                                            placeholder="1"
+                                                            placeholderTextColor="red"
+                                                            autoCapitalize='none'
+                                                        />
+                                                        <Button transparent onPress={() => { this.props.card(numbers, this.state.qty); this.clear(); }}>
+                                                            <Text>Order</Text>
+                                                        </Button>
+                                                    </Right>
+                                                </ListItem>
+                                            )
+                                        })}
+                                </List>
+                                : null}
+                        </Content>
                     </Container>
                 )
                 break;
@@ -279,101 +382,97 @@ export default class Screen extends Component {
                         </Header>
                         <Content padder style={{ marginTop: 0, paddingTop: 0 }}>
                             {this.state.tab1 ?
-                                // <Card>
-                                //     <CardItem cardBody>
-                                //         <Image source={CardImage} style={{ height: 200, width: null, flex: 1 }} />
-                                //     </CardItem>
-                                //     <CardItem>
-                                //         <Body>
-                                //             <View style={{ width: width / 1.1 }}>
-                                //                 {
-                                //                     Starters.map((numbers) => {
-                                //                         return (
-                                //                             <Text style={styles.cardText}>{numbers}</Text>
-                                //                         )
-                                //                     })}
-                                //             </View>
-                                //             {/* <Button onPress={() => { alert(index) }}><Text>Add to Card</Text></Button> */}
-                                //         </Body>
-                                //     </CardItem>
-                                // </Card>
-                                // <Container>
-                                // <Header style={styles.hdr}>
-                                //     <Title style={styles.txt}>Search</Title>
-                                // </Header>
-                                // <Content padder>
-                                <Accordion
-                                    dataArray={dataArray}
-                                    icon="add"
-                                    expandedIcon="remove"
-                                    iconStyle={{ color: "green" }}
-                                    expandedIconStyle={{ color: "red" }}
-                                    headerStyle={{ backgroundColor: "#a4a3ab5e" }}
-                                    contentStyle={{ backgroundColor: "#ddecf8" }}
-                                />
-                                // </Content>
+                                <List>
+                                    {
+                                        PAStarters.map((numbers) => {
+                                            return (
+                                                <ListItem thumbnail style={{ height: width / 4.2, borderBottomColor: "grey", borderBottomWidth: 1 }}>
+                                                    <Left>
+                                                        <Thumbnail square source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/sugarandspice-34c66.appspot.com/o/posts%2Fbiryani.jpg?alt=media&token=1683cab5-2fbf-4d06-b155-4ff570ab7b77' }} />
+                                                    </Left>
+                                                    <Body style={{ borderBottomWidth: 0 }}>
+                                                        <Text>{numbers.menuName}</Text>
+                                                        <Text note numberOfLines={1}>Its time to build a difference . .</Text>
+                                                    </Body>
+                                                    <Right style={{ borderBottomWidth: 0 }}>
+                                                        <TextInput
+                                                            style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 8, color: "red", backgroundColor: "none", fontSize: 19, paddingRight: "2%", paddingLeft: "2%" }}
+                                                            onChangeText={(qty) => this.setState({ qty })}
+                                                            value={this.state.qty}
+                                                            placeholder="1"
+                                                            placeholderTextColor="red"
+                                                            autoCapitalize='none'
+                                                        />
+                                                        <Button transparent onPress={() => { this.props.card(numbers, this.state.qty); this.clear(); }}>
+                                                            <Text>Order</Text>
+                                                        </Button>
+                                                    </Right>
+                                                </ListItem>
+                                            )
+                                        })}
+                                </List>
                                 : null}
                             {this.state.tab2 ?
-                                // <Card>
-                                //     <CardItem cardBody>
-                                //         <Image source={CardImage} style={{ height: 200, width: null, flex: 1 }} />
-                                //     </CardItem>
-                                //     <CardItem>
-                                //         <Body>
-                                //             <View style={{ width: width / 1.1 }}>
-                                //                 {
-                                //                     MainCourse.map((numbers) => {
-                                //                         return (
-                                //                             <Text style={styles.cardText}>{numbers}</Text>
-                                //                         )
-                                //                     })}
-                                //             </View>
-                                //             {/* <Button onPress={() => { alert(index) }}><Text>Add to Card</Text></Button> */}
-                                //         </Body>
-                                //     </CardItem>
-                                // </Card>
-                                // <Content padder>
-                                <Accordion
-                                    dataArray={dataArray1}
-                                    icon="add"
-                                    expandedIcon="remove"
-                                    iconStyle={{ color: "green" }}
-                                    expandedIconStyle={{ color: "red" }}
-                                    headerStyle={{ backgroundColor: "#a4a3ab5e" }}
-                                    contentStyle={{ backgroundColor: "#ddecf8" }}
-                                />
-                                // </Content>
+                                <List>
+                                    {
+                                        PAMainCourse.map((numbers) => {
+                                            return (
+                                                <ListItem thumbnail style={{ height: width / 4.2, borderBottomColor: "grey", borderBottomWidth: 1 }}>
+                                                    <Left>
+                                                        <Thumbnail square source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/sugarandspice-34c66.appspot.com/o/posts%2Fbiryani.jpg?alt=media&token=1683cab5-2fbf-4d06-b155-4ff570ab7b77' }} />
+                                                    </Left>
+                                                    <Body style={{ borderBottomWidth: 0 }}>
+                                                        <Text>{numbers.menuName}</Text>
+                                                        <Text note numberOfLines={1}>Its time to build a difference . .</Text>
+                                                    </Body>
+                                                    <Right style={{ borderBottomWidth: 0 }}>
+                                                        <TextInput
+                                                            style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 8, color: "red", backgroundColor: "none", fontSize: 19, paddingRight: "2%", paddingLeft: "2%" }}
+                                                            onChangeText={(qty) => this.setState({ qty })}
+                                                            value={this.state.qty}
+                                                            placeholder="1"
+                                                            placeholderTextColor="red"
+                                                            autoCapitalize='none'
+                                                        />
+                                                        <Button transparent onPress={() => { this.props.card(numbers, this.state.qty); this.clear(); }}>
+                                                            <Text>Order</Text>
+                                                        </Button>
+                                                    </Right>
+                                                </ListItem>
+                                            )
+                                        })}
+                                </List>
                                 : null}
                             {this.state.tab3 ?
-                                // <Card>
-                                //     <CardItem cardBody>
-                                //         <Image source={CardImage} style={{ height: 200, width: null, flex: 1 }} />
-                                //     </CardItem>
-                                //     <CardItem>
-                                //         <Body>
-                                //             <View style={{ width: width / 1.1 }}>
-                                //                 {
-                                //                     Desserts.map((numbers) => {
-                                //                         return (
-                                //                             <Text style={styles.cardText}>{numbers}</Text>
-                                //                         )
-                                //                     })}
-                                //             </View>
-                                //             {/* <Button onPress={() => { alert(index) }}><Text>Add to Card</Text></Button> */}
-                                //         </Body>
-                                //     </CardItem>
-                                // </Card>
-                                // <Content padder>
-                                <Accordion
-                                    dataArray={dataArray2}
-                                    icon="add"
-                                    expandedIcon="remove"
-                                    iconStyle={{ color: "green" }}
-                                    expandedIconStyle={{ color: "red" }}
-                                    headerStyle={{ backgroundColor: "#a4a3ab5e" }}
-                                    contentStyle={{ backgroundColor: "#ddecf8" }}
-                                />
-                                // </Content>
+                                <List>
+                                    {
+                                        PADesserts.map((numbers) => {
+                                            return (
+                                                <ListItem thumbnail style={{ height: width / 4.2, borderBottomColor: "grey", borderBottomWidth: 1 }}>
+                                                    <Left>
+                                                        <Thumbnail square source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/sugarandspice-34c66.appspot.com/o/posts%2Fbiryani.jpg?alt=media&token=1683cab5-2fbf-4d06-b155-4ff570ab7b77' }} />
+                                                    </Left>
+                                                    <Body style={{ borderBottomWidth: 0 }}>
+                                                        <Text>{numbers.menuName}</Text>
+                                                        <Text note numberOfLines={1}>Its time to build a difference . .</Text>
+                                                    </Body>
+                                                    <Right style={{ borderBottomWidth: 0 }}>
+                                                        <TextInput
+                                                            style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 8, color: "red", backgroundColor: "none", fontSize: 19, paddingRight: "2%", paddingLeft: "2%" }}
+                                                            onChangeText={(qty) => this.setState({ qty })}
+                                                            value={this.state.qty}
+                                                            placeholder="1"
+                                                            placeholderTextColor="red"
+                                                            autoCapitalize='none'
+                                                        />
+                                                        <Button transparent onPress={() => { this.props.card(numbers, this.state.qty); this.clear(); }}>
+                                                            <Text>Order</Text>
+                                                        </Button>
+                                                    </Right>
+                                                </ListItem>
+                                            )
+                                        })}
+                                </List>
                                 : null}
                         </Content>
                     </Container>
@@ -508,7 +607,7 @@ export default class Screen extends Component {
                                                 {/* <View style={{ width: "35%" }}></View> */}
                                                 <Right style={{ display: "flex", flexDirection: "row" }}>
                                                     {/* <View style={{ width: "20%",backgroundColor:"green", display: "flex", flexDirection: "row"}}> */}
-                                                    <Text>{itm.quantity}*</Text>
+                                                    <Text>{itm.quantity}x</Text>
                                                     <Text>{itm.price}</Text>
                                                     {/* </View> */}
                                                 </Right>
@@ -525,6 +624,18 @@ export default class Screen extends Component {
                                             <Text style={{ color: "blue", fontSize: 22 }}>{this.props.totalAmount}</Text>
                                         </View>
                                     </ListItem>
+                                    {/* <Button onPress={() => this.props.navigation.navigate('Home')}><Text>
+                                        ADD DETAILS
+                                    </Text></Button> */}
+                                    <Button
+                                        full
+                                        primary
+                                        style={{ backgroundColor: "red" }}
+                                        onPress={() => this.props.navig.navigate('SelectCity')}
+                                    >
+                                        <Text>
+                                            ORDER
+                                        </Text></Button>
                                 </List>
                             </Content>
                         </ScrollView>

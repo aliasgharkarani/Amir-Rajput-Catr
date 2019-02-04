@@ -35,32 +35,12 @@ export default class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      stm: true,
+      // stm: true,
     }
     // this.onSubmit = this.onSubmit.bind(this);
   }
-  UNSAFE_componentWillMount() {
-    setTimeout(() => {
-      this.setState({
-        stm: false
-      })
-    }, 2500)
-  }
   render() {
     return (
-      this.state.stm ? <View style={styles.container1}>
-        <View style={{ height: width / 1.1 }}></View>
-
-        <View style={{ justifyContent: "flex-end", alignItems: "center", height: width / 4 }}>
-          <View style={{ width: width / 1.01, height: width / 1.5 }}>
-            <Image
-              source={require("../assets/logo1.png")} resizeMode="contain" style={{ height: "100%", width: "100%" }} />
-          </View>
-        </View>
-        <View style={{ justifyContent: "flex-end", display: "flex", height: width / 1.8 }}>
-          <Text style={{ color: "#7e1416", fontSize: 20, textAlign: "center" }}>Brands</Text>
-        </View>
-      </View> :
         <Container>
           <Header style={styles.hdr}>
             <Text style={styles.heading}>Delivery details</Text>
