@@ -166,13 +166,58 @@ export default class Screen extends Component {
             tab2b: false,
             tab3b: false,
             tab4b: false,
-            qty: 1
-            // Total: 0
+            qty: 1,
+            a3: 0,
+            a2: 0,
+            a1: 0,
+            a0: 0,
+            b0: 0,
+            b1: 0,
+            b2: 0,
+            b3: 0,
+            b4: 0,
+            c0: 0,
+            c1: 0,
+            c2: 0,
+            c3: 0,
+            c4: 0,
+            c5: 0,
+            c6: 0,
+            c7: 0,
+            c8: 0,
+            d0: 0,
+            d1: 0,
+            d2: 0,
+            d3: 0,
+            d4: 0,
+            e0: 0,
+            e1: 0,
+            e2: 0,
+            f0: 0,
+            f1: 0,
+            f2: 0,
+            f3: 0,
+            f4: 0,
+            g0: 0,
+            g1: 0,
+            g2: 0,
+            g3: 0,
+            g4: 0,
+            g5: 0,
+            g6: 0,
+            g7: 0,
+            g8: 0,
+            g9: 0,
+            h0: 0,
+            h1: 0,
+            h2: 0,
+            h3: 0
         }
     }
-    clear = () => {
+    clear = (abc) => {
         this.setState({
-            qty: ""
+            qty: "",
+            [abc]: 0
         })
     }
     render() {
@@ -206,13 +251,14 @@ export default class Screen extends Component {
                                                             <TextInput
                                                                 // underlineColorAndroid="white"
                                                                 style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 8, color: "red", backgroundColor: "none", fontSize: 19, paddingRight: "2%", paddingLeft: "2%" }}
-                                                                onChangeText={(qty) => this.setState({ qty })}
-                                                                value={this.state.qty}
+                                                                onChangeText={(qty) => this.setState({ ["a" + index]: qty })}
+                                                                value={this.state["a" + index]}
+                                                                name={"a" + index}
                                                                 placeholder="1"
                                                                 placeholderTextColor="red"
                                                                 autoCapitalize='none'
                                                             />
-                                                            <Button onPress={() => { this.props.card(mu, this.state.qty); this.clear(); }}><Text>ORDER</Text></Button>
+                                                            <Button onPress={() => { this.props.card(mu, this.state["a" + index]); this.clear("a" + index); }}><Text>ORDER</Text></Button>
                                                         </View>
                                                     </Body>
                                                 </CardItem>
@@ -242,7 +288,7 @@ export default class Screen extends Component {
                             {this.state.tab1b ?
                                 <List>
                                     {
-                                        RMStarters.map((numbers) => {
+                                        RMStarters.map((numbers, index) => {
                                             return (
                                                 <ListItem thumbnail style={{ height: width / 4.2, borderBottomColor: "grey", borderBottomWidth: 1 }}>
                                                     <Left>
@@ -254,16 +300,16 @@ export default class Screen extends Component {
                                                     </Body>
                                                     <Right style={{ borderBottomWidth: 0 }}>
                                                         <TextInput
+                                                            // underlineColorAndroid="white"
                                                             style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 8, color: "red", backgroundColor: "none", fontSize: 19, paddingRight: "2%", paddingLeft: "2%" }}
-                                                            onChangeText={(qty) => this.setState({ qty })}
-                                                            value={this.state.qty}
+                                                            onChangeText={(qty) => this.setState({ ["b" + index]: qty })}
+                                                            value={this.state["b" + index]}
+                                                            name={"b" + index}
                                                             placeholder="1"
                                                             placeholderTextColor="red"
                                                             autoCapitalize='none'
                                                         />
-                                                        <Button transparent onPress={() => { this.props.card(numbers, this.state.qty); this.clear(); }}>
-                                                            <Text>Order</Text>
-                                                        </Button>
+                                                        <Button onPress={() => { this.props.card(numbers, this.state["b" + index]); this.clear("b" + index); }}><Text>ORDER</Text></Button>
                                                     </Right>
                                                 </ListItem>
                                             )
@@ -274,7 +320,7 @@ export default class Screen extends Component {
                                 <View>
                                     <List>
                                         {
-                                            RMMainCourse.map((numbers) => {
+                                            RMMainCourse.map((numbers, index) => {
                                                 return (
                                                     <ListItem thumbnail style={{ height: width / 4.2, borderBottomColor: "grey", borderBottomWidth: 1 }}>
                                                         <Left>
@@ -286,16 +332,16 @@ export default class Screen extends Component {
                                                         </Body>
                                                         <Right style={{ borderBottomWidth: 0 }}>
                                                             <TextInput
+                                                                // underlineColorAndroid="white"
                                                                 style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 8, color: "red", backgroundColor: "none", fontSize: 19, paddingRight: "2%", paddingLeft: "2%" }}
-                                                                onChangeText={(qty) => this.setState({ qty })}
-                                                                value={this.state.qty}
+                                                                onChangeText={(qty) => this.setState({ ["c" + index]: qty })}
+                                                                value={this.state["c" + index]}
+                                                                name={"c" + index}
                                                                 placeholder="1"
                                                                 placeholderTextColor="red"
                                                                 autoCapitalize='none'
                                                             />
-                                                            <Button transparent onPress={() => { this.props.card(numbers, this.state.qty); this.clear(); }}>
-                                                                <Text>Order</Text>
-                                                            </Button>
+                                                            <Button onPress={() => { this.props.card(numbers, this.state["c" + index]); this.clear("c" + index); }}><Text>ORDER</Text></Button>
                                                         </Right>
                                                     </ListItem>
                                                 )
@@ -304,7 +350,7 @@ export default class Screen extends Component {
                                     <Text style={{ textAlign: "center", fontSize: 23, fontWeight: "bold" }}>Breads</Text>
                                     <List>
                                         {
-                                            RMBreads.map((numbers) => {
+                                            RMBreads.map((numbers, index) => {
                                                 return (
                                                     <ListItem thumbnail style={{ height: width / 4.2, borderBottomColor: "grey", borderBottomWidth: 1 }}>
                                                         <Left>
@@ -316,16 +362,16 @@ export default class Screen extends Component {
                                                         </Body>
                                                         <Right style={{ borderBottomWidth: 0 }}>
                                                             <TextInput
+                                                                // underlineColorAndroid="white"
                                                                 style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 8, color: "red", backgroundColor: "none", fontSize: 19, paddingRight: "2%", paddingLeft: "2%" }}
-                                                                onChangeText={(qty) => this.setState({ qty })}
-                                                                value={this.state.qty}
+                                                                onChangeText={(qty) => this.setState({ ["d" + index]: qty })}
+                                                                value={this.state["d" + index]}
+                                                                name={"d" + index}
                                                                 placeholder="1"
                                                                 placeholderTextColor="red"
                                                                 autoCapitalize='none'
                                                             />
-                                                            <Button transparent onPress={() => { this.props.card(numbers, this.state.qty); this.clear(); }}>
-                                                                <Text>Order</Text>
-                                                            </Button>
+                                                            <Button onPress={() => { this.props.card(numbers, this.state["d" + index]); this.clear("d" + index); }}><Text>ORDER</Text></Button>
                                                         </Right>
                                                     </ListItem>
                                                 )
@@ -336,7 +382,7 @@ export default class Screen extends Component {
                             {this.state.tab3b ?
                                 <List>
                                     {
-                                        RMDesserts.map((numbers) => {
+                                        RMDesserts.map((numbers, index) => {
                                             return (
                                                 <ListItem thumbnail style={{ height: width / 4.2, borderBottomColor: "grey", borderBottomWidth: 1 }}>
                                                     <Left>
@@ -348,16 +394,16 @@ export default class Screen extends Component {
                                                     </Body>
                                                     <Right style={{ borderBottomWidth: 0 }}>
                                                         <TextInput
+                                                            // underlineColorAndroid="white"
                                                             style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 8, color: "red", backgroundColor: "none", fontSize: 19, paddingRight: "2%", paddingLeft: "2%" }}
-                                                            onChangeText={(qty) => this.setState({ qty })}
-                                                            value={this.state.qty}
+                                                            onChangeText={(qty) => this.setState({ ["e" + index]: qty })}
+                                                            value={this.state["e" + index]}
+                                                            name={"e" + index}
                                                             placeholder="1"
                                                             placeholderTextColor="red"
                                                             autoCapitalize='none'
                                                         />
-                                                        <Button transparent onPress={() => { this.props.card(numbers, this.state.qty); this.clear(); }}>
-                                                            <Text>Order</Text>
-                                                        </Button>
+                                                        <Button onPress={() => { this.props.card(numbers, this.state["e" + index]); this.clear("e" + index); }}><Text>ORDER</Text></Button>
                                                     </Right>
                                                 </ListItem>
                                             )
@@ -384,7 +430,7 @@ export default class Screen extends Component {
                             {this.state.tab1 ?
                                 <List>
                                     {
-                                        PAStarters.map((numbers) => {
+                                        PAStarters.map((numbers, index) => {
                                             return (
                                                 <ListItem thumbnail style={{ height: width / 4.2, borderBottomColor: "grey", borderBottomWidth: 1 }}>
                                                     <Left>
@@ -396,16 +442,16 @@ export default class Screen extends Component {
                                                     </Body>
                                                     <Right style={{ borderBottomWidth: 0 }}>
                                                         <TextInput
+                                                            // underlineColorAndroid="white"
                                                             style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 8, color: "red", backgroundColor: "none", fontSize: 19, paddingRight: "2%", paddingLeft: "2%" }}
-                                                            onChangeText={(qty) => this.setState({ qty })}
-                                                            value={this.state.qty}
+                                                            onChangeText={(qty) => this.setState({ ["f" + index]: qty })}
+                                                            value={this.state["f" + index]}
+                                                            name={"f" + index}
                                                             placeholder="1"
                                                             placeholderTextColor="red"
                                                             autoCapitalize='none'
                                                         />
-                                                        <Button transparent onPress={() => { this.props.card(numbers, this.state.qty); this.clear(); }}>
-                                                            <Text>Order</Text>
-                                                        </Button>
+                                                        <Button onPress={() => { this.props.card(numbers, this.state["f" + index]); this.clear("f" + index); }}><Text>ORDER</Text></Button>
                                                     </Right>
                                                 </ListItem>
                                             )
@@ -415,7 +461,7 @@ export default class Screen extends Component {
                             {this.state.tab2 ?
                                 <List>
                                     {
-                                        PAMainCourse.map((numbers) => {
+                                        PAMainCourse.map((numbers, index) => {
                                             return (
                                                 <ListItem thumbnail style={{ height: width / 4.2, borderBottomColor: "grey", borderBottomWidth: 1 }}>
                                                     <Left>
@@ -427,16 +473,16 @@ export default class Screen extends Component {
                                                     </Body>
                                                     <Right style={{ borderBottomWidth: 0 }}>
                                                         <TextInput
+                                                            // underlineColorAndroid="white"
                                                             style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 8, color: "red", backgroundColor: "none", fontSize: 19, paddingRight: "2%", paddingLeft: "2%" }}
-                                                            onChangeText={(qty) => this.setState({ qty })}
-                                                            value={this.state.qty}
+                                                            onChangeText={(qty) => this.setState({ ["g" + index]: qty })}
+                                                            value={this.state["g" + index]}
+                                                            name={"g" + index}
                                                             placeholder="1"
                                                             placeholderTextColor="red"
                                                             autoCapitalize='none'
                                                         />
-                                                        <Button transparent onPress={() => { this.props.card(numbers, this.state.qty); this.clear(); }}>
-                                                            <Text>Order</Text>
-                                                        </Button>
+                                                        <Button onPress={() => { this.props.card(numbers, this.state["g" + index]); this.clear("g" + index); }}><Text>ORDER</Text></Button>
                                                     </Right>
                                                 </ListItem>
                                             )
@@ -446,7 +492,7 @@ export default class Screen extends Component {
                             {this.state.tab3 ?
                                 <List>
                                     {
-                                        PADesserts.map((numbers) => {
+                                        PADesserts.map((numbers, index) => {
                                             return (
                                                 <ListItem thumbnail style={{ height: width / 4.2, borderBottomColor: "grey", borderBottomWidth: 1 }}>
                                                     <Left>
@@ -458,16 +504,16 @@ export default class Screen extends Component {
                                                     </Body>
                                                     <Right style={{ borderBottomWidth: 0 }}>
                                                         <TextInput
+                                                            // underlineColorAndroid="white"
                                                             style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 8, color: "red", backgroundColor: "none", fontSize: 19, paddingRight: "2%", paddingLeft: "2%" }}
-                                                            onChangeText={(qty) => this.setState({ qty })}
-                                                            value={this.state.qty}
+                                                            onChangeText={(qty) => this.setState({ ["h" + index]: qty })}
+                                                            value={this.state["h" + index]}
+                                                            name={"h" + index}
                                                             placeholder="1"
                                                             placeholderTextColor="red"
                                                             autoCapitalize='none'
                                                         />
-                                                        <Button transparent onPress={() => { this.props.card(numbers, this.state.qty); this.clear(); }}>
-                                                            <Text>Order</Text>
-                                                        </Button>
+                                                        <Button onPress={() => { this.props.card(numbers, this.state["h" + index]); this.clear("h" + index); }}><Text>ORDER</Text></Button>
                                                     </Right>
                                                 </ListItem>
                                             )
