@@ -159,11 +159,11 @@ export default class Screen extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            tab1: true,
-            tab2: false,
+            tab1: false,
+            tab2: true,
             tab3: false,
-            tab1b: true,
-            tab2b: false,
+            tab1b: false,
+            tab2b: true,
             tab3b: false,
             tab4b: false,
             qty: 1,
@@ -277,9 +277,9 @@ export default class Screen extends Component {
                         <Header hasSegment style={{ backgroundColor: "none" }}>
                             <Body>
                                 <Segment style={{ backgroundColor: "none", borderColor: "#C21807", borderWidth: 1 }}>
-                                    <Button style={{ backgroundColor: "none", borderColor: "#C21807", borderWidth: 1 }} first onPress={() => { this.setState({ tab1b: true, tab2b: false, tab3b: false, tab4b: false }) }}><Text style={{ color: "#C21807" }}>Starters</Text></Button>
-                                    <Button style={{ backgroundColor: "none", borderColor: "#C21807", borderWidth: 1 }} last onPress={() => { this.setState({ tab1b: false, tab2b: true, tab3b: false, tab4b: false }) }}><Text style={{ color: "#C21807" }}>Main Course</Text></Button>
-                                    <Button style={{ backgroundColor: "none", borderColor: "#C21807", borderWidth: 1 }} last onPress={() => { this.setState({ tab1b: false, tab2b: false, tab3b: true, tab4b: false }) }}><Text style={{ color: "#C21807" }}>Desserts</Text></Button>
+                                    <Button style={{ backgroundColor: this.state.tab1b ? "yellow" : "white", borderColor: "#C21807", borderWidth: 1 }} first onPress={() => { this.setState({ tab1b: true, tab2b: false, tab3b: false, tab4b: false }) }}><Text style={{ color: "#C21807" }}>Starters</Text></Button>
+                                    <Button style={{ backgroundColor: this.state.tab2b ? "yellow" : "white", borderColor: "#C21807", borderWidth: 1 }} last onPress={() => { this.setState({ tab1b: false, tab2b: true, tab3b: false, tab4b: false }) }}><Text style={{ color: "#C21807" }}>Main Course</Text></Button>
+                                    <Button style={{ backgroundColor: this.state.tab3b ? "yellow" : "white", borderColor: "#C21807", borderWidth: 1 }} last onPress={() => { this.setState({ tab1b: false, tab2b: false, tab3b: true, tab4b: false }) }}><Text style={{ color: "#C21807" }}>Desserts</Text></Button>
                                     {/* <Button style={{ backgroundColor: "none", borderColor: "#C21807", borderWidth: 1 }} last onPress={() => { this.setState({ tab1b: false, tab2b: false, tab3b: true, tab4b: false }) }}><Text style={{ color: "#C21807" }}>Breads</Text></Button> */}
                                 </Segment>
                             </Body>
@@ -420,9 +420,9 @@ export default class Screen extends Component {
                         <Header hasSegment style={{ backgroundColor: "none" }}>
                             <Body>
                                 <Segment style={{ backgroundColor: "none", borderColor: "#C21807", borderWidth: 1 }}>
-                                    <Button style={{ backgroundColor: "none", borderColor: "#C21807", borderWidth: 1 }} first onPress={() => { this.setState({ tab1: true, tab2: false, tab3: false }) }}><Text style={{ color: "#C21807" }}>Starters</Text></Button>
-                                    <Button style={{ backgroundColor: "none", borderColor: "#C21807", borderWidth: 1 }} last onPress={() => { this.setState({ tab1: false, tab2: true, tab3: false }) }}><Text style={{ color: "#C21807" }}>Main Course</Text></Button>
-                                    <Button style={{ backgroundColor: "none", borderColor: "#C21807", borderWidth: 1 }} last onPress={() => { this.setState({ tab1: false, tab2: false, tab3: true }) }}><Text style={{ color: "#C21807" }}>Desserts</Text></Button>
+                                    <Button style={{ backgroundColor: this.state.tab1 ? "yellow" : "white", borderColor: "#C21807", borderWidth: 1 }} first onPress={() => { this.setState({ tab1: true, tab2: false, tab3: false }) }}><Text style={{ color: "#C21807" }}>Starters</Text></Button>
+                                    <Button style={{ backgroundColor: this.state.tab2 ? "yellow" : "white", borderColor: "#C21807", borderWidth: 1 }} last onPress={() => { this.setState({ tab1: false, tab2: true, tab3: false }) }}><Text style={{ color: "#C21807" }}>Main Course</Text></Button>
+                                    <Button style={{ backgroundColor: this.state.tab3 ? "yellow" : "white", borderColor: "#C21807", borderWidth: 1 }} last onPress={() => { this.setState({ tab1: false, tab2: false, tab3: true }) }}><Text style={{ color: "#C21807" }}>Desserts</Text></Button>
                                 </Segment>
                             </Body>
                         </Header>
