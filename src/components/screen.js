@@ -36,14 +36,24 @@ import {
     CheckBox
 } from 'native-base';
 import CardImage from './img.jpeg'
+import Menu1 from '../assets/menu1.jpeg'
+import Menu2 from '../assets/menu2.jpeg'
+import Menu3 from '../assets/menu3.jpeg'
+import Menu4 from '../assets/menu4.jpeg'
+
+import StarterRMTikka from '../assets/tikka.jpg'
+import StarterRMChapliK from '../assets/ChapliK.jpg'
+import StarterRMChaap from '../assets/chaap.jpg'
+import StarterRMButterflyJhinga from '../assets/BUTTERFLY_JHIN_.jpg'
+import StarterRMMachiAnarkali  from '../assets/anarkali.jpg'
 // import { ScrollView } from 'react-native-gesture-handler';
 var height = Dimensions.get('window').height;
 var width = Dimensions.get("window").width;
 var Menus = [
-    { menuName: "Menu 01", items: ["FRESH JUICES ON ARRIVAL", "FRIED FISH LAHORI", "CHICKEN RESHMI KABAB", "MUTTON KUNNA", "CHICKEN BIRYANI", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "GULAB JAMAN", "CREAM CARAMEL"], "price": 10000 },
-    { menuName: "Menu 02", items: ["FRESH JUICES ON ARRIVAL", "CHAPLI / SEEKH KABAB", "CHICKEN MALAI BOTI", "CHICKEN ZAFRANI BIRYANI", "CHICKEN BADAMI QORMA", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "GAJAR KA HALWA", "FRUIT TRIFFLE"], "price": 15000 },
-    { menuName: "Menu 03", items: ["FRESH JUICES ON ARRIVAL", "GRILLED FISH", "CHICKEN BIHARI BOTI", "CHICKEN KARAHI", "MUTTON YAKHNI PULAO", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "RABRI KHEER", "LAB-E-SHEEREN"], "price": 20000 },
-    { menuName: "Menu 04", items: ["FRESH JUICES ON ARRIVAL", "FRIED FISH ORLY", "CHICKEN STEAM", "CHICKEN PESHAWARI KARAHI", "KASHMIRI PULAO", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "SPECIAL ZARDA", "DOODH DULARI"], "price": 25000 }
+    { pic:Menu1,menuName: "Menu 01", items: ["FRESH JUICES ON ARRIVAL", "FRIED FISH LAHORI", "CHICKEN RESHMI KABAB", "MUTTON KUNNA", "CHICKEN BIRYANI", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "GULAB JAMAN", "CREAM CARAMEL"], "price": 10000 },
+    { pic:Menu2,menuName: "Menu 02", items: ["FRESH JUICES ON ARRIVAL", "CHAPLI / SEEKH KABAB", "CHICKEN MALAI BOTI", "CHICKEN ZAFRANI BIRYANI", "CHICKEN BADAMI QORMA", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "GAJAR KA HALWA", "FRUIT TRIFFLE"], "price": 15000 },
+    { pic:Menu3,menuName: "Menu 03", items: ["FRESH JUICES ON ARRIVAL", "GRILLED FISH", "CHICKEN BIHARI BOTI", "CHICKEN KARAHI", "MUTTON YAKHNI PULAO", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "RABRI KHEER", "LAB-E-SHEEREN"], "price": 20000 },
+    { pic:Menu4,menuName: "Menu 04", items: ["FRESH JUICES ON ARRIVAL", "FRIED FISH ORLY", "CHICKEN STEAM", "CHICKEN PESHAWARI KARAHI", "KASHMIRI PULAO", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "SPECIAL ZARDA", "DOODH DULARI"], "price": 25000 }
 ]
 var PAStarters = [
     { menuName: "Prawn Tempura", type: "Pan Asian", price: 100 },
@@ -70,11 +80,11 @@ var PADesserts = [
     { menuName: "Fresh Tropical Fruits", type: "Pan Asian", price: 100 }
 ]
 const RMStarters = [
-    { menuName: "Murgh Tikka Lahori", type: "Royal Mughlai", price: 100 },
-    { menuName: "Chapli Kabab Peshawari", type: "Royal Mughlai", price: 100 },
-    { menuName: "Kabuli Chaanp", type: "Royal Mughlai", price: 100 },
-    { menuName: "Butterfly Jhinga", type: "Royal Mughlai", price: 100 },
-    { menuName: "Machi Anarkali", type: "Royal Mughlai", price: 100 }
+    { pic:StarterRMTikka,menuName: "Murgh Tikka Lahori", type: "Royal Mughlai", price: 100 },
+    { pic:StarterRMChapliK,menuName: "Chapli Kabab Peshawari", type: "Royal Mughlai", price: 100 },
+    { pic:StarterRMChaap,menuName: "Kabuli Chaap", type: "Royal Mughlai", price: 100 },
+    { pic:StarterRMButterflyJhinga,menuName: "Butterfly Jhinga", type: "Royal Mughlai", price: 100 },
+    { pic:StarterRMMachiAnarkali,menuName: "Machi Anarkali", type: "Royal Mughlai", price: 100 }
 ];
 const RMMainCourse = [
     { menuName: "Chicken Makhni", type: "Royal Mughlai", price: 100 },
@@ -232,7 +242,7 @@ export default class Screen extends Component {
                                         return (
                                             <Card>
                                                 <CardItem cardBody>
-                                                    <Image source={CardImage} style={{ height: 200, width: null, flex: 1 }} />
+                                                    <Image source={mu.pic} style={{ height: 200, width: null, flex: 1 }} />
                                                 </CardItem>
                                                 <CardItem>
                                                     <Body>
@@ -292,7 +302,7 @@ export default class Screen extends Component {
                                             return (
                                                 <ListItem thumbnail style={{ height: width / 4.2, borderBottomColor: "grey", borderBottomWidth: 1 }}>
                                                     <Left>
-                                                        <Thumbnail square source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/sugarandspice-34c66.appspot.com/o/posts%2Fbiryani.jpg?alt=media&token=1683cab5-2fbf-4d06-b155-4ff570ab7b77' }} />
+                                                        <Thumbnail square source={numbers.pic} />
                                                     </Left>
                                                     <Body style={{ borderBottomWidth: 0 }}>
                                                         <Text>{numbers.menuName}</Text>
