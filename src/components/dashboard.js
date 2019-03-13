@@ -1,4 +1,4 @@
-import React, { Component} from 'react';
+import React, { Component } from 'react';
 import Screen from './screen'
 import {
     StyleSheet,
@@ -29,7 +29,6 @@ export default class FooterTabsBadgeExample extends Component {
         }, 2500)
     }
     AddTOCARD = (OrdrD, qty) => {
-        // console.log(OrdrD, "orderDetail");
         let temporder = this.state.order;
         let tot = this.state.Total;
         tot += OrdrD.price * qty;
@@ -47,6 +46,26 @@ export default class FooterTabsBadgeExample extends Component {
             orderDetails: temporderDetails,
             Total: tot
         })
+    }
+    DeleteToCard = (i) => {
+        // let temporder = this.state.order;
+        // let tot = this.state.Total;
+        // tot += OrdrD.price * qty;
+        // ++temporder;
+        // let obj = {
+        //     quantity: qty,
+        //     MenuName: OrdrD.menuName,
+        //     price: OrdrD.price
+        // };
+        // console.log(obj," New Object!!!");
+        let temporderDetails = [...this.state.orderDetails];
+        temporderDetails.splice(i,1)
+        this.setState({
+            // order: temporder,
+            orderDetails: temporderDetails,
+            // Total: tot
+        })
+        alert('Trash' + i)
     }
     render() {
         return (
@@ -77,7 +96,7 @@ export default class FooterTabsBadgeExample extends Component {
                         </TouchableOpacity>
                     </Header>
                     <Content contentContainerStyle={{ flex: 1 }}>
-                        <Screen card={this.AddTOCARD} navig={this.props.navigation} cardItemsno={this.state.order} totalAmount={this.state.Total} cardItemsdet={this.state.orderDetails} ScrnChng={this.state.ScreenDisplay} />
+                        <Screen delete={this.DeleteToCard} card={this.AddTOCARD} navig={this.props.navigation} cardItemsno={this.state.order} totalAmount={this.state.Total} cardItemsdet={this.state.orderDetails} ScrnChng={this.state.ScreenDisplay} />
                     </Content>
                     <Footer style={{ backgroundColor: "#C21807" }}>
                         <FooterTab style={{ backgroundColor: "#C21807" }}>

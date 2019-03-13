@@ -589,7 +589,7 @@ export default class Screen extends Component {
                                             </View>
                                         }
                                         right={
-                                            <Button danger onPress={() => alert('Trash')}>
+                                            <Button danger onPress={() => this.props.delete(i)}>
                                                 <Icon active name="trash" />
                                             </Button>
                                         }
@@ -608,7 +608,7 @@ export default class Screen extends Component {
                                         <Text>
                                             ORDER
                                          </Text></Button>
-                                    :null
+                                    : null
                             }
                         </Content>
                     </Container>
