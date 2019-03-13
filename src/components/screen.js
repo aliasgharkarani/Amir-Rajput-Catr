@@ -46,6 +46,49 @@ import StarterRMChapliK from '../assets/ChapliK.jpg'
 import StarterRMChaap from '../assets/chaap.jpg'
 import StarterRMButterflyJhinga from '../assets/BUTTERFLY_JHIN_.jpg'
 import StarterRMMachiAnarkali  from '../assets/anarkali.jpg'
+
+import MainCourseRMChickenM from '../assets/chickenm.jpg'
+import MainCourseRMLambKorma from '../assets/lambkorma.jpg'
+import MainCourseRMTawaChicken from '../assets/tawachicken.jpg'
+import MainCourseRMSagosht from '../assets/sagosht.jpg'
+import MainCourseRMTarkaDall  from '../assets/tadkadal.jpg'
+import MainCourseRMDallMakhni  from '../assets/DalMakhani.jpg'
+import MainCourseRMAlooTakari  from '../assets/SaagAloo.jpg'
+import MainCourseRMZafraniBiryani  from '../assets/ZafraniBiryani.jpg'
+import MainCourseRMAfghaniPulao  from '../assets/AfghaniPulao.jpg'
+
+import BreadsRMTandooriNaan  from '../assets/Tandoorinaan.jpg'
+import BreadsRMGarlicNaan  from '../assets/GarlicNaan.jpg'
+import BreadsRMSheermall  from '../assets/Sheermal.jpg'
+import BreadsRMTaftan  from '../assets/Taftan.jpg'
+import BreadsRMTandooriRoti  from '../assets/tandooriroti.jpg'
+
+import DessertsRMShahiTukra  from '../assets/ShahiTukra.jpg'
+import DessertsRMShahiKheer  from '../assets/ShahiKheer.jpg'
+import DessertsRMDalHalwa  from '../assets/Dalhalwa.jpg'
+
+import StarterPAPrawnTempura from '../assets/prawntempura.jpg'
+import StarterPAChickenSatay from '../assets/chickensatay.jpg'
+import StarterPACrispySpringRolls from '../assets/crispyroll.jpg'
+import StarterPATomYumSoup from '../assets/tomyumsoup.jpg'
+import StarterPAHotSourSoup from '../assets/H&Tsoup.jpg'
+
+import MainCoursePATeppanyakiGrillLive from '../assets/teppanyakigrill.jpg'
+import MainCoursePAChickenBeefPrawnFish from '../assets/chickenprawnsbeef.jpg'
+import MainCoursePASaucesChiliThaiRedGreenCurryGarlic from '../assets/curry.jpg'
+import MainCoursePATeriyakiGrillLive from '../assets/TeriyakiGrill.jpg'
+import MainCoursePAChickenBeef from '../assets/chickenbeef.jpg'
+import MainCoursePASauceTeriyaki from '../assets/SauceTeriyaki.jpg'
+import MainCoursePATigerPrawns from '../assets/tigerprawns.jpg'
+import MainCoursePAThaiGreenCurry from '../assets/ThaiGreenCurry.jpg'
+import MainCoursePALemongrassChicken from '../assets/lemongrasschicken.jpg'
+import MainCoursePABlackPepperBeef from '../assets/blackpepperbeef.jpg'
+
+import DessertsPASummerBreeze from '../assets/SummerBreeze.jpg'
+import DessertsPAIceCreamwithEspressoorChocolateSyrup from '../assets/ice-creamwithespresso.jpg'
+import DessertsPAMangoCoconutIceCreams from '../assets/mangococnuticecream.jpg'
+import DessertsPAFreshTropicalFruits from '../assets/freshtropicalfruits.jpg'
+
 // import { ScrollView } from 'react-native-gesture-handler';
 var height = Dimensions.get('window').height;
 var width = Dimensions.get("window").width;
@@ -56,29 +99,29 @@ var Menus = [
     { pic:Menu4,menuName: "Menu 04", items: ["FRESH JUICES ON ARRIVAL", "FRIED FISH ORLY", "CHICKEN STEAM", "CHICKEN PESHAWARI KARAHI", "KASHMIRI PULAO", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "SPECIAL ZARDA", "DOODH DULARI"], "price": 25000 }
 ]
 var PAStarters = [
-    { menuName: "Prawn Tempura", type: "Pan Asian", price: 100 },
-    { menuName: "Chicken Satay", type: "Pan Asian", price: 100 },
-    { menuName: "Crispy Spring Rolls", type: "Pan Asian", price: 100 },
-    { menuName: "Tom Yum Soup", type: "Pan Asian", price: 100 },
-    { menuName: "Hot & Sour Soup", type: "Pan Asian", price: 100 }]
+    { pic:StarterPAPrawnTempura,menuName: "Prawn Tempura", type: "Pan Asian", price: 100 },
+    { pic:StarterPAChickenSatay,menuName: "Chicken Satay", type: "Pan Asian", price: 100 },
+    { pic:StarterPACrispySpringRolls,menuName: "Crispy Spring Rolls", type: "Pan Asian", price: 100 },
+    { pic:StarterPATomYumSoup,menuName: "Tom Yum Soup", type: "Pan Asian", price: 100 },
+    { pic:StarterPAHotSourSoup,menuName: "Hot & Sour Soup", type: "Pan Asian", price: 100 }]
 var PAMainCourse = [
-    { menuName: "Teppanyaki Grill Live", type: "Pan Asian", price: 100 },
-    { menuName: "Chicken- Beef- Prawn- Fish", type: "Pan Asian", price: 100 },
-    { menuName: "Sauces: Chili- Thai Red & Green Curry- Garlic", type: "Pan Asian", price: 100 },
-    { menuName: "Teriyaki Grill Live", type: "Pan Asian", price: 100 },
-    { menuName: "Chicken- Beef", type: "Pan Asian", price: 100 },
-    { menuName: "Sauce: Teriyaki", type: "Pan Asian", price: 100 },
-    { menuName: "Tiger Prawns", type: "Pan Asian", price: 100 },
-    { menuName: "Thai Green Curry", type: "Pan Asian", price: 100 },
-    { menuName: "Lemongrass Chicken", type: "Pan Asian", price: 100 },
-    { menuName: "Black Pepper Beef", type: "Pan Asian", price: 100 }
+    { pic:MainCoursePATeppanyakiGrillLive,menuName: "Teppanyaki Grill Live", type: "Pan Asian", price: 100 },
+    { pic:MainCoursePAChickenBeefPrawnFish,menuName: "Chicken- Beef- Prawn- Fish", type: "Pan Asian", price: 100 },
+    { pic:MainCoursePASaucesChiliThaiRedGreenCurryGarlic,menuName: "Sauces: Chili- Thai Red & Green Curry- Garlic", type: "Pan Asian", price: 100 },
+    { pic:MainCoursePATeriyakiGrillLive,menuName: "Teriyaki Grill Live", type: "Pan Asian", price: 100 },
+    { pic:MainCoursePAChickenBeef,menuName: "Chicken- Beef", type: "Pan Asian", price: 100 },
+    { pic:MainCoursePASauceTeriyaki,menuName: "Sauce: Teriyaki", type: "Pan Asian", price: 100 },
+    { pic:MainCoursePATigerPrawns,menuName: "Tiger Prawns", type: "Pan Asian", price: 100 },
+    { pic:MainCoursePAThaiGreenCurry,menuName: "Thai Green Curry", type: "Pan Asian", price: 100 },
+    { pic:MainCoursePALemongrassChicken,menuName: "Lemongrass Chicken", type: "Pan Asian", price: 100 },
+    { pic:MainCoursePABlackPepperBeef,menuName: "Black Pepper Beef", type: "Pan Asian", price: 100 }
 ]
 var PADesserts = [
-    { menuName: "Summer Breeze", type: "Pan Asian", price: 100 },
-    { menuName: "Ice Cream with Espresso or Chocolate Syrup", type: "Pan Asian", price: 100 },
-    { menuName: "Mango- Coconut Ice Creams", type: "Pan Asian", price: 100 },
-    { menuName: "Fresh Tropical Fruits", type: "Pan Asian", price: 100 }
-]
+    { pic:DessertsPASummerBreeze,menuName: "Summer Breeze", type: "Pan Asian", price: 100 },
+    { pic:DessertsPAIceCreamwithEspressoorChocolateSyrup,menuName: "Ice Cream with Espresso or Chocolate Syrup", type: "Pan Asian", price: 100 },
+    { pic:DessertsPAMangoCoconutIceCreams,menuName: "Mango- Coconut Ice Creams", type: "Pan Asian", price: 100 },
+    { pic:DessertsPAFreshTropicalFruits,menuName: "Fresh Tropical Fruits", type: "Pan Asian", price: 100 }
+] 
 const RMStarters = [
     { pic:StarterRMTikka,menuName: "Murgh Tikka Lahori", type: "Royal Mughlai", price: 100 },
     { pic:StarterRMChapliK,menuName: "Chapli Kabab Peshawari", type: "Royal Mughlai", price: 100 },
@@ -87,84 +130,28 @@ const RMStarters = [
     { pic:StarterRMMachiAnarkali,menuName: "Machi Anarkali", type: "Royal Mughlai", price: 100 }
 ];
 const RMMainCourse = [
-    { menuName: "Chicken Makhni", type: "Royal Mughlai", price: 100 },
-    { menuName: "Lamb Zafarani Korma", type: "Royal Mughlai", price: 100 },
-    { menuName: "Tawa Chicken", type: "Royal Mughlai", price: 100 },
-    { menuName: "Sag Gosht", type: "Royal Mughlai", price: 100 },
-    { menuName: "Tarka Dall", type: "Royal Mughlai", price: 100 },
-    { menuName: "Dal Makhni", type: "Royal Mughlai", price: 100 },
-    { menuName: "Sag GoshtAloo ki Tarkari", type: "Royal Mughlai", price: 100 },
-    { menuName: "Zafrani Biryani", type: "Royal Mughlai", price: 100 },
-    { menuName: "Afghani Pulao", type: "Royal Mughlai", price: 100 }
+    { pic:MainCourseRMChickenM,menuName: "Chicken Makhni", type: "Royal Mughlai", price: 100 },
+    { pic:MainCourseRMLambKorma,menuName: "Lamb Zafarani Korma", type: "Royal Mughlai", price: 100 },
+    { pic:MainCourseRMTawaChicken,menuName: "Tawa Chicken", type: "Royal Mughlai", price: 100 },
+    { pic:MainCourseRMSagosht,menuName: "Sag Gosht", type: "Royal Mughlai", price: 100 },
+    { pic:MainCourseRMTarkaDall,menuName: "Tarka Dall", type: "Royal Mughlai", price: 100 },
+    { pic:MainCourseRMDallMakhni,menuName: "Dal Makhni", type: "Royal Mughlai", price: 100 },
+    { pic:MainCourseRMAlooTakari,menuName: "Sag GoshtAloo ki Tarkari", type: "Royal Mughlai", price: 100 },
+    { pic:MainCourseRMZafraniBiryani,menuName: "Zafrani Biryani", type: "Royal Mughlai", price: 100 },
+    { pic:MainCourseRMAfghaniPulao,menuName: "Afghani Pulao", type: "Royal Mughlai", price: 100 }
 ];
 const RMBreads = [
-    { menuName: "Tandoori Naan", type: "Royal Mughlai", price: 100 },
-    { menuName: "Garlic Naan", type: "Royal Mughlai", price: 100 },
-    { menuName: "Sheermall", type: "Royal Mughlai", price: 100 },
-    { menuName: "Taftan", type: "Royal Mughlai", price: 100 },
-    { menuName: "Tandoori Roti", type: "Royal Mughlai", price: 100 }
+    { pic:BreadsRMTandooriNaan,menuName: "Tandoori Naan", type: "Royal Mughlai", price: 100 },
+    { pic:BreadsRMGarlicNaan,menuName: "Garlic Naan", type: "Royal Mughlai", price: 100 },
+    { pic:BreadsRMSheermall,menuName: "Sheermall", type: "Royal Mughlai", price: 100 },
+    { pic:BreadsRMTaftan,menuName: "Taftan", type: "Royal Mughlai", price: 100 },
+    { pic:BreadsRMTandooriRoti,menuName: "Tandoori Roti", type: "Royal Mughlai", price: 100 }
 ];
 const RMDesserts = [
-    { menuName: "Shahi Tukra", type: "Royal Mughlai", price: 100 },
-    { menuName: "Shahi Kheer", type: "Royal Mughlai", price: 100 },
-    { menuName: "Daal ka Halwa", type: "Royal Mughlai", price: 100 }
+    { pic:DessertsRMShahiTukra,menuName: "Shahi Tukra", type: "Royal Mughlai", price: 100 },
+    { pic:DessertsRMShahiKheer,menuName: "Shahi Kheer", type: "Royal Mughlai", price: 100 },
+    { pic:DessertsRMDalHalwa,menuName: "Daal ka Halwa", type: "Royal Mughlai", price: 100 }
 ];
-// const dataArray = [
-//     { title: "Prawn Tempura", content: "one" },
-//     { title: "Chicken Satay", content: "two" },
-//     { title: "Crispy Spring Rolls", content: "three" },
-//     { title: "Tom Yum Soup", content: "three" },
-//     { title: "Hot & Sour Soup", content: "three" }
-// ];
-// const dataArray1 = [
-//     { title: "Teppanyaki Grill Live", content: "one" },
-//     { title: "Chicken- Beef- Prawn- Fish", content: "two" },
-//     { title: "Sauces: Chili- Thai Red & Green Curry- Garlic", content: "three" },
-//     { title: "Teriyaki Grill Live", content: "three" },
-//     { title: "Chicken- Beef", content: "three" },
-//     { title: "Sauce: Teriyaki", content: "three" },
-//     { title: "Tiger Prawns", content: "three" },
-//     { title: "Thai Green Curry", content: "three" },
-//     { title: "Lemongrass Chicken", content: "three" },
-//     { title: "Black Pepper Beef", content: "three" },
-// ];
-// const dataArray2 = [
-//     { title: "Summer Breeze", content: "one" },
-//     { title: "Ice Cream with Espresso or Chocolate Syrup", content: "two" },
-//     { title: "Mango- Coconut Ice Creams", content: "three" },
-//     { title: "Fresh Tropical Fruits", content: "three" }
-// ];
-// const dataArray1a = [
-//     { title: "Murgh Tikka Lahori", content: "one" },
-//     { title: "Chapli Kabab Peshawari", content: "two" },
-//     { title: "Kabuli Chaanp", content: "three" },
-//     { title: "Butterfly Jhinga", content: "three" },
-//     { title: "Machi Anarkali", content: "three" }
-// ];
-// const dataArray2a = [
-//     { title: "Chicken Makhni", content: "one" },
-//     { title: "Lamb Zafarani Korma", content: "two" },
-//     { title: "Tawa Chicken", content: "three" },
-//     { title: "Sag Gosht", content: "three" },
-//     { title: "Tarka Dall", content: "three" },
-//     { title: "Dal Makhni", content: "three" },
-//     { title: "Sag GoshtAloo ki Tarkari", content: "three" },
-//     { title: "Zafrani Biryani", content: "three" },
-//     { title: "Sag GoshtAloo ki Tarkari", content: "three" },
-//     { title: "Afghani Pulao", content: "three" }
-// ];
-// const dataArray3a = [
-//     { title: "Tandoori Naan", content: "one" },
-//     { title: "Garlic Naan", content: "two" },
-//     { title: "Sheermall", content: "three" },
-//     { title: "Taftan", content: "three" },
-//     { title: "Tandoori Roti", content: "three" }
-// ];
-// const dataArray4a = [
-//     { title: "Shahi Tukra", content: "one" },
-//     { title: "Shahi Kheer", content: "two" },
-//     { title: "Daal ka Halwa", content: "three" }
-// ];
 export default class Screen extends Component {
     constructor(props) {
         super(props)
@@ -334,7 +321,7 @@ export default class Screen extends Component {
                                                 return (
                                                     <ListItem thumbnail style={{ height: width / 4.2, borderBottomColor: "grey", borderBottomWidth: 1 }}>
                                                         <Left>
-                                                            <Thumbnail square source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/sugarandspice-34c66.appspot.com/o/posts%2Fbiryani.jpg?alt=media&token=1683cab5-2fbf-4d06-b155-4ff570ab7b77' }} />
+                                                            <Thumbnail square source={numbers.pic} />
                                                         </Left>
                                                         <Body style={{ borderBottomWidth: 0 }}>
                                                             <Text>{numbers.menuName}</Text>
@@ -364,7 +351,7 @@ export default class Screen extends Component {
                                                 return (
                                                     <ListItem thumbnail style={{ height: width / 4.2, borderBottomColor: "grey", borderBottomWidth: 1 }}>
                                                         <Left>
-                                                            <Thumbnail square source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/sugarandspice-34c66.appspot.com/o/posts%2Fbiryani.jpg?alt=media&token=1683cab5-2fbf-4d06-b155-4ff570ab7b77' }} />
+                                                            <Thumbnail square source={numbers.pic} />
                                                         </Left>
                                                         <Body style={{ borderBottomWidth: 0 }}>
                                                             <Text>{numbers.menuName}</Text>
@@ -396,7 +383,7 @@ export default class Screen extends Component {
                                             return (
                                                 <ListItem thumbnail style={{ height: width / 4.2, borderBottomColor: "grey", borderBottomWidth: 1 }}>
                                                     <Left>
-                                                        <Thumbnail square source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/sugarandspice-34c66.appspot.com/o/posts%2Fbiryani.jpg?alt=media&token=1683cab5-2fbf-4d06-b155-4ff570ab7b77' }} />
+                                                        <Thumbnail square source={numbers.pic} />
                                                     </Left>
                                                     <Body style={{ borderBottomWidth: 0 }}>
                                                         <Text>{numbers.menuName}</Text>
@@ -444,7 +431,7 @@ export default class Screen extends Component {
                                             return (
                                                 <ListItem thumbnail style={{ height: width / 4.2, borderBottomColor: "grey", borderBottomWidth: 1 }}>
                                                     <Left>
-                                                        <Thumbnail square source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/sugarandspice-34c66.appspot.com/o/posts%2Fbiryani.jpg?alt=media&token=1683cab5-2fbf-4d06-b155-4ff570ab7b77' }} />
+                                                        <Thumbnail square source={numbers.pic} />
                                                     </Left>
                                                     <Body style={{ borderBottomWidth: 0 }}>
                                                         <Text>{numbers.menuName}</Text>
@@ -475,7 +462,7 @@ export default class Screen extends Component {
                                             return (
                                                 <ListItem thumbnail style={{ height: width / 4.2, borderBottomColor: "grey", borderBottomWidth: 1 }}>
                                                     <Left>
-                                                        <Thumbnail square source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/sugarandspice-34c66.appspot.com/o/posts%2Fbiryani.jpg?alt=media&token=1683cab5-2fbf-4d06-b155-4ff570ab7b77' }} />
+                                                        <Thumbnail square source={numbers.pic} />
                                                     </Left>
                                                     <Body style={{ borderBottomWidth: 0 }}>
                                                         <Text>{numbers.menuName}</Text>
@@ -506,7 +493,7 @@ export default class Screen extends Component {
                                             return (
                                                 <ListItem thumbnail style={{ height: width / 4.2, borderBottomColor: "grey", borderBottomWidth: 1 }}>
                                                     <Left>
-                                                        <Thumbnail square source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/sugarandspice-34c66.appspot.com/o/posts%2Fbiryani.jpg?alt=media&token=1683cab5-2fbf-4d06-b155-4ff570ab7b77' }} />
+                                                        <Thumbnail square source={numbers.pic} />
                                                     </Left>
                                                     <Body style={{ borderBottomWidth: 0 }}>
                                                         <Text>{numbers.menuName}</Text>
@@ -536,118 +523,6 @@ export default class Screen extends Component {
                 break;
             case 3:
                 return (
-                    // <Container>
-                    //     {/* <Header style={styles.hdr1}>
-                    //         <Left avatar>
-                    //             <Thumbnail source={CardImage} style={styles.image1} />
-                    //         </Left>
-                    //         <Body>
-                    //             <Title>John Doe</Title>
-                    //         </Body>
-                    //         <Right />
-                    //     </Header> */}
-                    //     <Content>
-                    //         <ListItem icon>
-                    //             <Left>
-                    //                 <Button style={{ backgroundColor: "#C21807" }}>
-                    //                     <Icon active name="heart" />
-                    //                 </Button>
-                    //             </Left>
-                    //             <Body>
-                    //                 <Button
-                    //                     transparent
-                    //                     onPress={() => {
-                    //                         this.handleChange();
-                    //                     }}
-                    //                 >
-                    //                     <Text style={styles.textStyle1}>{this.props.cardItemsno}</Text>
-                    //                 </Button>
-                    //             </Body>
-                    //         </ListItem>
-                    //         <ListItem icon>
-                    //             <Left>
-                    //                 <Button style={{ backgroundColor: "#C21807" }}>
-                    //                     <Icon active name="wallet" />
-                    //                 </Button>
-                    //             </Left>
-                    //             <Body>
-                    //                 <Button
-                    //                     transparent
-                    //                     onPress={() => {
-                    //                         this.handleChange1();
-                    //                     }}
-                    //                 >
-                    //                     <Text style={styles.textStyle1}></Text>
-                    //                 </Button>
-                    //             </Body>
-                    //         </ListItem>
-                    //         <ListItem icon>
-                    //             <Left>
-                    //                 <Button style={{ backgroundColor: "#C21807" }}>
-                    //                     <Icon active name="help" />
-                    //                 </Button>
-                    //             </Left>
-                    //             <Body>
-                    //                 <Button transparent>
-                    //                     <Text style={styles.textStyle1}>HELP</Text>
-                    //                 </Button>
-                    //             </Body>
-                    //         </ListItem>
-                    //         <ListItem icon>
-                    //             <Left>
-                    //                 <Button style={{ backgroundColor: "#C21807" }}>
-                    //                     <Icon active name="share" />
-                    //                 </Button>
-                    //             </Left>
-                    //             <Body>
-                    //                 <Button transparent>
-                    //                     <Text style={styles.textStyle1}>FREE FOOD</Text>
-                    //                 </Button>
-                    //             </Body>
-                    //         </ListItem>
-                    //         <ListItem icon>
-                    //             <Left>
-                    //                 <Button style={{ backgroundColor: "#C21807" }}>
-                    //                     <Icon active name="star" />
-                    //                 </Button>
-                    //             </Left>
-                    //             <Body>
-                    //                 <Button transparent>
-                    //                     <Text style={styles.textStyle1}>PROMOTIONS</Text>
-                    //                 </Button>
-                    //             </Body>
-                    //         </ListItem>
-                    //         <ListItem icon>
-                    //             <Left>
-                    //                 <Button style={{ backgroundColor: "#C21807" }}>
-                    //                     <Icon active name="cart" />
-                    //                 </Button>
-                    //             </Left>
-                    //             <Body>
-                    //                 <Button transparent>
-                    //                     <Text style={styles.textStyle1}>DELIVER WITH ROTIAPP</Text>
-                    //                 </Button>
-                    //             </Body>
-                    //         </ListItem>
-                    //         <ListItem icon>
-                    //             <Left>
-                    //                 <Button style={{ backgroundColor: "#C21807" }}>
-                    //                     <Icon active name="person" />
-                    //                 </Button>
-                    //             </Left>
-                    //             <Body>
-                    //                 <Button
-                    //                     transparent
-                    //                     onPress={() => {
-                    //                         this.handleChange2();
-                    //                     }}
-                    //                 >
-                    //                     <Text style={styles.textStyle1}>SETTINGS</Text>
-                    //                 </Button>
-                    //             </Body>
-                    //         </ListItem>
-                    //     </Content>
-                    // </Container>
                     <Container>
                         <ScrollView>
                             <Content>
@@ -728,14 +603,7 @@ const styles = StyleSheet.create({
         fontSize: 17,
         color: 'grey',
         width: width / 1.9,
-        fontFamily: "monospace",
-        // display: "flex",
-        // flexDirection: "row",
-        // textAlign:"center"
-        // backgroundColor: "red",
-        // borderColor: "blue",
-        // borderWidth: 1
-
+        fontFamily: "monospace"
     },
     cardTime: {
         backgroundColor: 'lightgrey',
