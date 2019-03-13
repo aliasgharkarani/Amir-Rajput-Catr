@@ -33,7 +33,8 @@ import {
     Accordion,
     Footer,
     FooterTab,
-    CheckBox
+    CheckBox,
+    SwipeRow,
 } from 'native-base';
 import CardImage from './img.jpeg'
 import Menu1 from '../assets/menu1.jpeg'
@@ -45,27 +46,27 @@ import StarterRMTikka from '../assets/tikka.jpg'
 import StarterRMChapliK from '../assets/ChapliK.jpg'
 import StarterRMChaap from '../assets/chaap.jpg'
 import StarterRMButterflyJhinga from '../assets/BUTTERFLY_JHIN_.jpg'
-import StarterRMMachiAnarkali  from '../assets/anarkali.jpg'
+import StarterRMMachiAnarkali from '../assets/anarkali.jpg'
 
 import MainCourseRMChickenM from '../assets/chickenm.jpg'
 import MainCourseRMLambKorma from '../assets/lambkorma.jpg'
 import MainCourseRMTawaChicken from '../assets/tawachicken.jpg'
 import MainCourseRMSagosht from '../assets/sagosht.jpg'
-import MainCourseRMTarkaDall  from '../assets/tadkadal.jpg'
-import MainCourseRMDallMakhni  from '../assets/DalMakhani.jpg'
-import MainCourseRMAlooTakari  from '../assets/SaagAloo.jpg'
-import MainCourseRMZafraniBiryani  from '../assets/ZafraniBiryani.jpg'
-import MainCourseRMAfghaniPulao  from '../assets/AfghaniPulao.jpg'
+import MainCourseRMTarkaDall from '../assets/tadkadal.jpg'
+import MainCourseRMDallMakhni from '../assets/DalMakhani.jpg'
+import MainCourseRMAlooTakari from '../assets/SaagAloo.jpg'
+import MainCourseRMZafraniBiryani from '../assets/ZafraniBiryani.jpg'
+import MainCourseRMAfghaniPulao from '../assets/AfghaniPulao.jpg'
 
-import BreadsRMTandooriNaan  from '../assets/Tandoorinaan.jpg'
-import BreadsRMGarlicNaan  from '../assets/GarlicNaan.jpg'
-import BreadsRMSheermall  from '../assets/Sheermal.jpg'
-import BreadsRMTaftan  from '../assets/Taftan.jpg'
-import BreadsRMTandooriRoti  from '../assets/tandooriroti.jpg'
+import BreadsRMTandooriNaan from '../assets/Tandoorinaan.jpg'
+import BreadsRMGarlicNaan from '../assets/GarlicNaan.jpg'
+import BreadsRMSheermall from '../assets/Sheermal.jpg'
+import BreadsRMTaftan from '../assets/Taftan.jpg'
+import BreadsRMTandooriRoti from '../assets/tandooriroti.jpg'
 
-import DessertsRMShahiTukra  from '../assets/ShahiTukra.jpg'
-import DessertsRMShahiKheer  from '../assets/ShahiKheer.jpg'
-import DessertsRMDalHalwa  from '../assets/Dalhalwa.jpg'
+import DessertsRMShahiTukra from '../assets/ShahiTukra.jpg'
+import DessertsRMShahiKheer from '../assets/ShahiKheer.jpg'
+import DessertsRMDalHalwa from '../assets/Dalhalwa.jpg'
 
 import StarterPAPrawnTempura from '../assets/prawntempura.jpg'
 import StarterPAChickenSatay from '../assets/chickensatay.jpg'
@@ -93,64 +94,64 @@ import DessertsPAFreshTropicalFruits from '../assets/freshtropicalfruits.jpg'
 var height = Dimensions.get('window').height;
 var width = Dimensions.get("window").width;
 var Menus = [
-    { pic:Menu1,menuName: "Menu 01", items: ["FRESH JUICES ON ARRIVAL", "FRIED FISH LAHORI", "CHICKEN RESHMI KABAB", "MUTTON KUNNA", "CHICKEN BIRYANI", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "GULAB JAMAN", "CREAM CARAMEL"], "price": 10000 },
-    { pic:Menu2,menuName: "Menu 02", items: ["FRESH JUICES ON ARRIVAL", "CHAPLI / SEEKH KABAB", "CHICKEN MALAI BOTI", "CHICKEN ZAFRANI BIRYANI", "CHICKEN BADAMI QORMA", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "GAJAR KA HALWA", "FRUIT TRIFFLE"], "price": 15000 },
-    { pic:Menu3,menuName: "Menu 03", items: ["FRESH JUICES ON ARRIVAL", "GRILLED FISH", "CHICKEN BIHARI BOTI", "CHICKEN KARAHI", "MUTTON YAKHNI PULAO", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "RABRI KHEER", "LAB-E-SHEEREN"], "price": 20000 },
-    { pic:Menu4,menuName: "Menu 04", items: ["FRESH JUICES ON ARRIVAL", "FRIED FISH ORLY", "CHICKEN STEAM", "CHICKEN PESHAWARI KARAHI", "KASHMIRI PULAO", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "SPECIAL ZARDA", "DOODH DULARI"], "price": 25000 }
+    { pic: Menu1, menuName: "Menu 01", items: ["FRESH JUICES ON ARRIVAL", "FRIED FISH LAHORI", "CHICKEN RESHMI KABAB", "MUTTON KUNNA", "CHICKEN BIRYANI", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "GULAB JAMAN", "CREAM CARAMEL"], "price": 10000 },
+    { pic: Menu2, menuName: "Menu 02", items: ["FRESH JUICES ON ARRIVAL", "CHAPLI / SEEKH KABAB", "CHICKEN MALAI BOTI", "CHICKEN ZAFRANI BIRYANI", "CHICKEN BADAMI QORMA", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "GAJAR KA HALWA", "FRUIT TRIFFLE"], "price": 15000 },
+    { pic: Menu3, menuName: "Menu 03", items: ["FRESH JUICES ON ARRIVAL", "GRILLED FISH", "CHICKEN BIHARI BOTI", "CHICKEN KARAHI", "MUTTON YAKHNI PULAO", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "RABRI KHEER", "LAB-E-SHEEREN"], "price": 20000 },
+    { pic: Menu4, menuName: "Menu 04", items: ["FRESH JUICES ON ARRIVAL", "FRIED FISH ORLY", "CHICKEN STEAM", "CHICKEN PESHAWARI KARAHI", "KASHMIRI PULAO", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "SPECIAL ZARDA", "DOODH DULARI"], "price": 25000 }
 ]
 var PAStarters = [
-    { pic:StarterPAPrawnTempura,menuName: "Prawn Tempura", type: "Pan Asian", price: 100 },
-    { pic:StarterPAChickenSatay,menuName: "Chicken Satay", type: "Pan Asian", price: 100 },
-    { pic:StarterPACrispySpringRolls,menuName: "Crispy Spring Rolls", type: "Pan Asian", price: 100 },
-    { pic:StarterPATomYumSoup,menuName: "Tom Yum Soup", type: "Pan Asian", price: 100 },
-    { pic:StarterPAHotSourSoup,menuName: "Hot & Sour Soup", type: "Pan Asian", price: 100 }]
+    { pic: StarterPAPrawnTempura, menuName: "Prawn Tempura", type: "Pan Asian", price: 100 },
+    { pic: StarterPAChickenSatay, menuName: "Chicken Satay", type: "Pan Asian", price: 100 },
+    { pic: StarterPACrispySpringRolls, menuName: "Crispy Spring Rolls", type: "Pan Asian", price: 100 },
+    { pic: StarterPATomYumSoup, menuName: "Tom Yum Soup", type: "Pan Asian", price: 100 },
+    { pic: StarterPAHotSourSoup, menuName: "Hot & Sour Soup", type: "Pan Asian", price: 100 }]
 var PAMainCourse = [
-    { pic:MainCoursePATeppanyakiGrillLive,menuName: "Teppanyaki Grill Live", type: "Pan Asian", price: 100 },
-    { pic:MainCoursePAChickenBeefPrawnFish,menuName: "Chicken- Beef- Prawn- Fish", type: "Pan Asian", price: 100 },
-    { pic:MainCoursePASaucesChiliThaiRedGreenCurryGarlic,menuName: "Sauces: Chili- Thai Red & Green Curry- Garlic", type: "Pan Asian", price: 100 },
-    { pic:MainCoursePATeriyakiGrillLive,menuName: "Teriyaki Grill Live", type: "Pan Asian", price: 100 },
-    { pic:MainCoursePAChickenBeef,menuName: "Chicken- Beef", type: "Pan Asian", price: 100 },
-    { pic:MainCoursePASauceTeriyaki,menuName: "Sauce: Teriyaki", type: "Pan Asian", price: 100 },
-    { pic:MainCoursePATigerPrawns,menuName: "Tiger Prawns", type: "Pan Asian", price: 100 },
-    { pic:MainCoursePAThaiGreenCurry,menuName: "Thai Green Curry", type: "Pan Asian", price: 100 },
-    { pic:MainCoursePALemongrassChicken,menuName: "Lemongrass Chicken", type: "Pan Asian", price: 100 },
-    { pic:MainCoursePABlackPepperBeef,menuName: "Black Pepper Beef", type: "Pan Asian", price: 100 }
+    { pic: MainCoursePATeppanyakiGrillLive, menuName: "Teppanyaki Grill Live", type: "Pan Asian", price: 100 },
+    { pic: MainCoursePAChickenBeefPrawnFish, menuName: "Chicken- Beef- Prawn- Fish", type: "Pan Asian", price: 100 },
+    { pic: MainCoursePASaucesChiliThaiRedGreenCurryGarlic, menuName: "Sauces: Chili- Thai Red & Green Curry- Garlic", type: "Pan Asian", price: 100 },
+    { pic: MainCoursePATeriyakiGrillLive, menuName: "Teriyaki Grill Live", type: "Pan Asian", price: 100 },
+    { pic: MainCoursePAChickenBeef, menuName: "Chicken- Beef", type: "Pan Asian", price: 100 },
+    { pic: MainCoursePASauceTeriyaki, menuName: "Sauce: Teriyaki", type: "Pan Asian", price: 100 },
+    { pic: MainCoursePATigerPrawns, menuName: "Tiger Prawns", type: "Pan Asian", price: 100 },
+    { pic: MainCoursePAThaiGreenCurry, menuName: "Thai Green Curry", type: "Pan Asian", price: 100 },
+    { pic: MainCoursePALemongrassChicken, menuName: "Lemongrass Chicken", type: "Pan Asian", price: 100 },
+    { pic: MainCoursePABlackPepperBeef, menuName: "Black Pepper Beef", type: "Pan Asian", price: 100 }
 ]
 var PADesserts = [
-    { pic:DessertsPASummerBreeze,menuName: "Summer Breeze", type: "Pan Asian", price: 100 },
-    { pic:DessertsPAIceCreamwithEspressoorChocolateSyrup,menuName: "Ice Cream with Espresso or Chocolate Syrup", type: "Pan Asian", price: 100 },
-    { pic:DessertsPAMangoCoconutIceCreams,menuName: "Mango- Coconut Ice Creams", type: "Pan Asian", price: 100 },
-    { pic:DessertsPAFreshTropicalFruits,menuName: "Fresh Tropical Fruits", type: "Pan Asian", price: 100 }
-] 
+    { pic: DessertsPASummerBreeze, menuName: "Summer Breeze", type: "Pan Asian", price: 100 },
+    { pic: DessertsPAIceCreamwithEspressoorChocolateSyrup, menuName: "Ice Cream with Espresso or Chocolate Syrup", type: "Pan Asian", price: 100 },
+    { pic: DessertsPAMangoCoconutIceCreams, menuName: "Mango- Coconut Ice Creams", type: "Pan Asian", price: 100 },
+    { pic: DessertsPAFreshTropicalFruits, menuName: "Fresh Tropical Fruits", type: "Pan Asian", price: 100 }
+]
 const RMStarters = [
-    { pic:StarterRMTikka,menuName: "Murgh Tikka Lahori", type: "Royal Mughlai", price: 100 },
-    { pic:StarterRMChapliK,menuName: "Chapli Kabab Peshawari", type: "Royal Mughlai", price: 100 },
-    { pic:StarterRMChaap,menuName: "Kabuli Chaap", type: "Royal Mughlai", price: 100 },
-    { pic:StarterRMButterflyJhinga,menuName: "Butterfly Jhinga", type: "Royal Mughlai", price: 100 },
-    { pic:StarterRMMachiAnarkali,menuName: "Machi Anarkali", type: "Royal Mughlai", price: 100 }
+    { pic: StarterRMTikka, menuName: "Murgh Tikka Lahori", type: "Royal Mughlai", price: 100 },
+    { pic: StarterRMChapliK, menuName: "Chapli Kabab Peshawari", type: "Royal Mughlai", price: 100 },
+    { pic: StarterRMChaap, menuName: "Kabuli Chaap", type: "Royal Mughlai", price: 100 },
+    { pic: StarterRMButterflyJhinga, menuName: "Butterfly Jhinga", type: "Royal Mughlai", price: 100 },
+    { pic: StarterRMMachiAnarkali, menuName: "Machi Anarkali", type: "Royal Mughlai", price: 100 }
 ];
 const RMMainCourse = [
-    { pic:MainCourseRMChickenM,menuName: "Chicken Makhni", type: "Royal Mughlai", price: 100 },
-    { pic:MainCourseRMLambKorma,menuName: "Lamb Zafarani Korma", type: "Royal Mughlai", price: 100 },
-    { pic:MainCourseRMTawaChicken,menuName: "Tawa Chicken", type: "Royal Mughlai", price: 100 },
-    { pic:MainCourseRMSagosht,menuName: "Sag Gosht", type: "Royal Mughlai", price: 100 },
-    { pic:MainCourseRMTarkaDall,menuName: "Tarka Dall", type: "Royal Mughlai", price: 100 },
-    { pic:MainCourseRMDallMakhni,menuName: "Dal Makhni", type: "Royal Mughlai", price: 100 },
-    { pic:MainCourseRMAlooTakari,menuName: "Sag GoshtAloo ki Tarkari", type: "Royal Mughlai", price: 100 },
-    { pic:MainCourseRMZafraniBiryani,menuName: "Zafrani Biryani", type: "Royal Mughlai", price: 100 },
-    { pic:MainCourseRMAfghaniPulao,menuName: "Afghani Pulao", type: "Royal Mughlai", price: 100 }
+    { pic: MainCourseRMChickenM, menuName: "Chicken Makhni", type: "Royal Mughlai", price: 100 },
+    { pic: MainCourseRMLambKorma, menuName: "Lamb Zafarani Korma", type: "Royal Mughlai", price: 100 },
+    { pic: MainCourseRMTawaChicken, menuName: "Tawa Chicken", type: "Royal Mughlai", price: 100 },
+    { pic: MainCourseRMSagosht, menuName: "Sag Gosht", type: "Royal Mughlai", price: 100 },
+    { pic: MainCourseRMTarkaDall, menuName: "Tarka Dall", type: "Royal Mughlai", price: 100 },
+    { pic: MainCourseRMDallMakhni, menuName: "Dal Makhni", type: "Royal Mughlai", price: 100 },
+    { pic: MainCourseRMAlooTakari, menuName: "Sag GoshtAloo ki Tarkari", type: "Royal Mughlai", price: 100 },
+    { pic: MainCourseRMZafraniBiryani, menuName: "Zafrani Biryani", type: "Royal Mughlai", price: 100 },
+    { pic: MainCourseRMAfghaniPulao, menuName: "Afghani Pulao", type: "Royal Mughlai", price: 100 }
 ];
 const RMBreads = [
-    { pic:BreadsRMTandooriNaan,menuName: "Tandoori Naan", type: "Royal Mughlai", price: 100 },
-    { pic:BreadsRMGarlicNaan,menuName: "Garlic Naan", type: "Royal Mughlai", price: 100 },
-    { pic:BreadsRMSheermall,menuName: "Sheermall", type: "Royal Mughlai", price: 100 },
-    { pic:BreadsRMTaftan,menuName: "Taftan", type: "Royal Mughlai", price: 100 },
-    { pic:BreadsRMTandooriRoti,menuName: "Tandoori Roti", type: "Royal Mughlai", price: 100 }
+    { pic: BreadsRMTandooriNaan, menuName: "Tandoori Naan", type: "Royal Mughlai", price: 100 },
+    { pic: BreadsRMGarlicNaan, menuName: "Garlic Naan", type: "Royal Mughlai", price: 100 },
+    { pic: BreadsRMSheermall, menuName: "Sheermall", type: "Royal Mughlai", price: 100 },
+    { pic: BreadsRMTaftan, menuName: "Taftan", type: "Royal Mughlai", price: 100 },
+    { pic: BreadsRMTandooriRoti, menuName: "Tandoori Roti", type: "Royal Mughlai", price: 100 }
 ];
 const RMDesserts = [
-    { pic:DessertsRMShahiTukra,menuName: "Shahi Tukra", type: "Royal Mughlai", price: 100 },
-    { pic:DessertsRMShahiKheer,menuName: "Shahi Kheer", type: "Royal Mughlai", price: 100 },
-    { pic:DessertsRMDalHalwa,menuName: "Daal ka Halwa", type: "Royal Mughlai", price: 100 }
+    { pic: DessertsRMShahiTukra, menuName: "Shahi Tukra", type: "Royal Mughlai", price: 100 },
+    { pic: DessertsRMShahiKheer, menuName: "Shahi Kheer", type: "Royal Mughlai", price: 100 },
+    { pic: DessertsRMDalHalwa, menuName: "Daal ka Halwa", type: "Royal Mughlai", price: 100 }
 ];
 export default class Screen extends Component {
     constructor(props) {
@@ -523,41 +524,81 @@ export default class Screen extends Component {
                 break;
             case 3:
                 return (
+                    // <Container>
+                    //     <ScrollView>
+                    //         <Content>
+                    //             <List>
+                    //                 {this.props.cardItemsdet.map((itm, i) => {
+                    //                     return (
+                    //                         <ListItem selected>
+                    //                             <Left>
+                    //                                 {/* <View style={{ width: "20%",backgroundColor:"yellow" }}> */}
+                    //                                 <Text>{itm.MenuName}</Text>
+                    //                                 {/* </View> */}
+                    //                             </Left>
+                    //                             {/* <View style={{ width: "35%" }}></View> */}
+                    //                             <Right style={{ display: "flex", flexDirection: "row" }}>
+                    //                                 {/* <View style={{ width: "20%",backgroundColor:"green", display: "flex", flexDirection: "row"}}> */}
+                    //                                 <Text>{itm.quantity}x</Text>
+                    //                                 <Text>{itm.price}</Text>
+                    //                                 {/* </View> */}
+                    //                             </Right>
+                    //                         </ListItem>
+                    //                     )
+                    //                 })
+                    //                 }
+                    //                 <ListItem>
+                    //                     <View style={{ width: "35%" }}>
+                    //                         <Text style={{ color: "red", fontSize: 20 }}>Total Price</Text>
+                    //                     </View>
+                    //                     <View style={{ width: "30%" }}></View>
+                    //                     <View style={{ width: "35%" }}>
+                    //                         <Text style={{ color: "blue", fontSize: 22 }}>{this.props.totalAmount}</Text>
+                    //                     </View>
+                    //                 </ListItem>
+                    //                 {/* <Button onPress={() => this.props.navigation.navigate('Home')}><Text>
+                    //                     ADD DETAILS
+                    //                 </Text></Button> */}
+                    //                 <Button
+                    //                     full
+                    //                     primary
+                    //                     style={{ backgroundColor: "red" }}
+                    //                     onPress={() => this.props.navig.navigate('SelectCity')}
+                    //                 >
+                    //                     <Text>
+                    //                         ORDER
+                    //                     </Text></Button>
+                    //             </List>
+                    //         </Content>
+                    //     </ScrollView>
+                    //     {/* <Footer>
+                    //         <Button full style={{ elevation: 0, width: "100%" }}>
+                    //             <Text style={{ fontSize: 23, fontWeight: 'bold', color: "white" }}>Add Details</Text>
+                    //         </Button>
+                    //     </Footer> */}
+                    // </Container>
                     <Container>
-                        <ScrollView>
-                            <Content>
-                                <List>
-                                    {this.props.cardItemsdet.map((itm, i) => {
-                                        return (
-                                            <ListItem selected>
-                                                <Left>
-                                                    {/* <View style={{ width: "20%",backgroundColor:"yellow" }}> */}
-                                                    <Text>{itm.MenuName}</Text>
-                                                    {/* </View> */}
-                                                </Left>
-                                                {/* <View style={{ width: "35%" }}></View> */}
-                                                <Right style={{ display: "flex", flexDirection: "row" }}>
-                                                    {/* <View style={{ width: "20%",backgroundColor:"green", display: "flex", flexDirection: "row"}}> */}
-                                                    <Text>{itm.quantity}x</Text>
-                                                    <Text>{itm.price}</Text>
-                                                    {/* </View> */}
-                                                </Right>
-                                            </ListItem>
-                                        )
-                                    })
-                                    }
-                                    <ListItem>
-                                        <View style={{ width: "35%" }}>
-                                            <Text style={{ color: "red", fontSize: 20 }}>Total Price</Text>
-                                        </View>
-                                        <View style={{ width: "30%" }}></View>
-                                        <View style={{ width: "35%" }}>
-                                            <Text style={{ color: "blue", fontSize: 22 }}>{this.props.totalAmount}</Text>
-                                        </View>
-                                    </ListItem>
-                                    {/* <Button onPress={() => this.props.navigation.navigate('Home')}><Text>
-                                        ADD DETAILS
-                                    </Text></Button> */}
+                        <Content scrollEnabled={false}>
+                            {this.props.cardItemsdet.map((itm, i) => {
+                                return (
+                                    <SwipeRow
+                                        rightOpenValue={-75}
+                                        body={
+                                            <View>
+                                                <Text>{itm.MenuName}</Text>
+                                            </View>
+                                        }
+                                        right={
+                                            <Button danger onPress={() => alert('Trash')}>
+                                                <Icon active name="trash" />
+                                            </Button>
+                                        }
+                                    />
+                                )
+                            })
+                            }
+                            {
+                                this.props.cardItemsdet.length ?
                                     <Button
                                         full
                                         primary
@@ -566,15 +607,10 @@ export default class Screen extends Component {
                                     >
                                         <Text>
                                             ORDER
-                                        </Text></Button>
-                                </List>
-                            </Content>
-                        </ScrollView>
-                        {/* <Footer>
-                            <Button full style={{ elevation: 0, width: "100%" }}>
-                                <Text style={{ fontSize: 23, fontWeight: 'bold', color: "white" }}>Add Details</Text>
-                            </Button>
-                        </Footer> */}
+                                         </Text></Button>
+                                    :null
+                            }
+                        </Content>
                     </Container>
                 )
                 break;

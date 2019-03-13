@@ -93,10 +93,10 @@ export default class FooterTabsBadgeExample extends Component {
                                 <Icon name="nutrition" />
                                 <Text>Pan Asian</Text>
                             </Button>
-                            <Button style={{ elevation: 0 }} badge vertical onPress={() => { this.setState({ ScreenDisplay: 3, header: "CARD" }) }}>
+                            <Button style={{ elevation: 0 }} badge vertical onPress={() => { this.setState({ ScreenDisplay: 3, header: "CART" }) }}>
                                 <Badge><Text>{this.state.order}</Text></Badge>
                                 <Icon name="cart" />
-                                <Text>ORDER</Text>
+                                <Text>CART</Text>
                             </Button>
                         </FooterTab>
                     </Footer>
