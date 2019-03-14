@@ -48,10 +48,10 @@ export default class FooterTabsBadgeExample extends Component {
         })
     }
     DeleteToCard = (i) => {
-        // let temporder = this.state.order;
+        let temporder = this.state.order;
         // let tot = this.state.Total;
         // tot += OrdrD.price * qty;
-        // ++temporder;
+        --temporder;
         // let obj = {
         //     quantity: qty,
         //     MenuName: OrdrD.menuName,
@@ -61,7 +61,7 @@ export default class FooterTabsBadgeExample extends Component {
         let temporderDetails = [...this.state.orderDetails];
         temporderDetails.splice(i,1)
         this.setState({
-            // order: temporder,
+            order: temporder,
             orderDetails: temporderDetails,
             // Total: tot
         })
