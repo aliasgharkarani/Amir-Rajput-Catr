@@ -36,6 +36,7 @@ import {
     CheckBox,
     SwipeRow,
 } from 'native-base';
+const { height, width, fontScale } = Dimensions.get('window');
 import CardImage from './img.jpeg'
 import Menu1 from '../assets/menu1.jpeg'
 import Menu2 from '../assets/menu2.jpeg'
@@ -89,10 +90,11 @@ import DessertsPASummerBreeze from '../assets/SummerBreeze.jpg'
 import DessertsPAIceCreamwithEspressoorChocolateSyrup from '../assets/ice-creamwithespresso.jpg'
 import DessertsPAMangoCoconutIceCreams from '../assets/mangococnuticecream.jpg'
 import DessertsPAFreshTropicalFruits from '../assets/freshtropicalfruits.jpg'
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 // import { ScrollView } from 'react-native-gesture-handler';
-var height = Dimensions.get('window').height;
-var width = Dimensions.get("window").width;
+// var height = Dimensions.get('window').height;
+// var width = Dimensions.get("window").width;
 var Menus = [
     { pic: Menu1, menuName: "Menu 01", items: ["FRESH JUICES ON ARRIVAL", "FRIED FISH LAHORI", "CHICKEN RESHMI KABAB", "MUTTON KUNNA", "CHICKEN BIRYANI", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "GULAB JAMAN", "CREAM CARAMEL"], "price": 10000 },
     { pic: Menu2, menuName: "Menu 02", items: ["FRESH JUICES ON ARRIVAL", "CHAPLI / SEEKH KABAB", "CHICKEN MALAI BOTI", "CHICKEN ZAFRANI BIRYANI", "CHICKEN BADAMI QORMA", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "GAJAR KA HALWA", "FRUIT TRIFFLE"], "price": 15000 },
@@ -153,6 +155,11 @@ const RMDesserts = [
     { pic: DessertsRMShahiKheer, menuName: "Shahi Kheer", type: "Royal Mughlai", price: 100 },
     { pic: DessertsRMDalHalwa, menuName: "Daal ka Halwa", type: "Royal Mughlai", price: 100 }
 ];
+const Lunch = [
+    {menuName:'Lunch 01',items: ['Chicken Peshawari Karahi','Mutton Biryani','Chicken Tikka Boti','Chicken reshmi kabab','Fish Lahori','Chicken backed Mushroom','Salad Bar Continantal','Naan/Taftaan','Gajar Ka Halwa','Tea/Green Tea'],price: 1250 },
+    {menuName:'Lunch 02',items: ['Kashmiri pullo','Chicken White Qoura','Chicken Steam','Pasta (Two type)','Fried Fish With Breadcrum','Salad Bar Continantal','Naan/Taftaan','Shahi Kheer','Tea/Green Tea'],price: 950 },
+    {menuName:'Lunch 03',items: ['Peas Pullao','Chicken Strongonoff','Grilled Fish with Green Chatni','Mix Vegetable','Salad Bar Continanatal','Naan/Taftaan ','Tea/Green Tea'],price: 1050 },   
+];
 export default class Screen extends Component {
     constructor(props) {
         super(props)
@@ -164,6 +171,7 @@ export default class Screen extends Component {
             tab2b: true,
             tab3b: false,
             tab4b: false,
+            open:false,
             qty: 1,
             a3: 0,
             a2: 0,
@@ -222,51 +230,95 @@ export default class Screen extends Component {
         switch (this.props.ScrnChng) {
             case 0:
                 return (
-                    <View>
-                        <View>
-                            <ScrollView>
-                                {
-                                    Menus.map((mu, index) => {
-                                        return (
-                                            <Card>
-                                                <CardItem cardBody>
-                                                    <Image source={mu.pic} style={{ height: 200, width: null, flex: 1 }} />
-                                                </CardItem>
-                                                <CardItem>
-                                                    <Body>
-                                                        <Text style={styles.cardHeading}>{mu.menuName}</Text>
-                                                        <View style={{ width: width / 1.1 }}>
-                                                            {
-                                                                mu.items.map((numbers) => {
-                                                                    return (
-                                                                        <Text style={styles.cardText}>{numbers}</Text>
-                                                                    )
-                                                                })
-                                                            }
-                                                        </View>
-                                                        <View style={{ display: "flex", flexDirection: "row", width: width / 1.1, justifyContent: "space-between" }}>
-                                                            <Text style={styles.cardTime}>Rs.{mu.price}</Text>
-                                                            <TextInput
-                                                                // underlineColorAndroid="white"
-                                                                style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 8, color: "red", backgroundColor: "none", fontSize: 19, paddingRight: "2%", paddingLeft: "2%" }}
-                                                                onChangeText={(qty) => this.setState({ ["a" + index]: qty })}
-                                                                value={this.state["a" + index]}
-                                                                name={"a" + index}
-                                                                placeholder="1"
-                                                                placeholderTextColor="red"
-                                                                autoCapitalize='none'
-                                                            />
-                                                            <Button onPress={() => { this.props.card(mu, this.state["a" + index]); this.clear("a" + index); }}><Text>ORDER</Text></Button>
-                                                        </View>
-                                                    </Body>
-                                                </CardItem>
-                                            </Card>
-                                        )
-                                    })
-                                }
-                            </ScrollView>
-                        </View>
-                    </View>
+                    <Container>
+                        <Content padder>
+                            {
+                                Lunch.map((mu, index) => {
+                                    return (
+                                        <Card>
+                                            <CardItem header bordered>
+                                            <TouchableOpacity style={{width:width/1.2,height:width/15}} onPress={() =>this.setState({open:!this.state.open})}>
+                                                <Text>{mu.menuName}</Text>
+                                                </TouchableOpacity>
+                                            </CardItem>
+                                      
+                                      {
+                                        this.state.open?
+                                          <CardItem bordered>
+                                                <Body>
+                                                    <View>
+                                                        {
+                                                            mu.items.map((numbers) => {
+                                                                return (
+                                                                    <Text>
+                                                                        {numbers}
+                                                                    </Text>
+                                                                )
+                                                            })
+                                                        }
+                                                    </View>
+                                                </Body>
+                                            </CardItem>
+                                            :null
+                                      }   
+                                            <CardItem footer bordered>
+                                                <Text>{mu.price}</Text>
+                                            </CardItem>
+                                        </Card>
+                                    )
+                                })
+                            }
+                        </Content>
+                    </Container>
+                    // <View>
+
+                    //     <Text>Lunch</Text>
+                    //     <Text>High Tea</Text>
+                    //     <Text>Dinner</Text>
+                    // <View>
+                    // <ScrollView>
+                    //     {
+                    //         Menus.map((mu, index) => {
+                    //             return (
+                    //                 <Card>
+                    //                     <CardItem cardBody>
+                    //                         <Image source={mu.pic} style={{ height: 200, width: null, flex: 1 }} />
+                    //                     </CardItem>
+                    //                     <CardItem>
+                    //                         <Body>
+                    //                             <Text style={styles.cardHeading}>{mu.menuName}</Text>
+                    //                             <View style={{ width: width / 1.1 }}>
+                    //                                 {
+                    //                                     mu.items.map((numbers) => {
+                    //                                         return (
+                    //                                             <Text style={styles.cardText}>{numbers}</Text>
+                    //                                         )
+                    //                                     })
+                    //                                 }
+                    //                             </View>
+                    //                             <View style={{ display: "flex", flexDirection: "row", width: width / 1.1, justifyContent: "space-between" }}>
+                    //                                 <Text style={styles.cardTime}>Rs.{mu.price}</Text>
+                    //                                 <TextInput
+                    //                                     // underlineColorAndroid="white"
+                    //                                     style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 8, color: "red", backgroundColor: "none", fontSize: 19, paddingRight: "2%", paddingLeft: "2%" }}
+                    //                                     onChangeText={(qty) => this.setState({ ["a" + index]: qty })}
+                    //                                     value={this.state["a" + index]}
+                    //                                     name={"a" + index}
+                    //                                     placeholder="1"
+                    //                                     placeholderTextColor="red"
+                    //                                     autoCapitalize='none'
+                    //                                 />
+                    //                                 <Button onPress={() => { this.props.card(mu, this.state["a" + index]); this.clear("a" + index); }}><Text>ORDER</Text></Button>
+                    //                             </View>
+                    //                         </Body>
+                    //                     </CardItem>
+                    //                 </Card>
+                    //             )
+                    //         })
+                    //     }
+                    // </ScrollView>
+                    //    </View> 
+                    // </View>
                 )
                 break;
             case 1:
