@@ -36,9 +36,9 @@ export default class FooterTabsBadgeExample extends Component {
         let obj = {
             quantity: qty,
             MenuName: OrdrD.menuName,
-            price: OrdrD.price
+            price: OrdrD.price,
+            Total:OrdrD.price * qty
         };
-        // console.log(obj," New Object!!!");
         let temporderDetails = [...this.state.orderDetails];
         temporderDetails.push(obj)
         this.setState({
@@ -47,24 +47,18 @@ export default class FooterTabsBadgeExample extends Component {
             Total: tot
         })
     }
-    DeleteToCard = (i) => {
+    DeleteToCard = (index) => {
         let temporder = this.state.order;
-        // let tot = this.state.Total;
-        // tot += OrdrD.price * qty;
         --temporder;
-        // let obj = {
-        //     quantity: qty,
-        //     MenuName: OrdrD.menuName,
-        //     price: OrdrD.price
-        // };
-        // console.log(obj," New Object!!!");
+        let tot = this.state.Total;
+        tot -= this.state.orderDetails[index].Total;
         let temporderDetails = [...this.state.orderDetails];
-        temporderDetails.splice(i,1)
+        temporderDetails.splice(index,1)
         this.setState({
             order: temporder,
             orderDetails: temporderDetails,
+            Total: tot
         })
-        // alert('Trash' + i)
     }
     render() {
         return (

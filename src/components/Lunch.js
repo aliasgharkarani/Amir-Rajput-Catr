@@ -19,7 +19,8 @@ export default class Lunch extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            Lunch: []
+            Lunch: [],
+            open:false
         }
     }
     UNSAFE_componentWillMount() {
@@ -30,7 +31,7 @@ export default class Lunch extends Component {
             for (let i = (keys.length - 1); i >= 0; i--) {
                 array.push(product[keys[i]])
             }
-            console.log(array);
+            // console.log(array);
             this.setState({ Lunch: array });
         })
             .catch(err => {

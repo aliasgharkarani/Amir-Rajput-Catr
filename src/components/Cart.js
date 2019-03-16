@@ -7,17 +7,16 @@ import {
     Text,
     Container,
     Content,
-    Card,
-    CardItem,
-    Body,
     SwipeRow,
     Button,
-    Icon
+    Icon,
+    List,
+    ListItem,
+    Left,
+    Right
 } from 'native-base';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 const { width, fontScale } = Dimensions.get('window');
-import firebase from 'react-native-firebase'
-
 export default class Cart extends Component {
     constructor(props) {
         super(props)
@@ -25,41 +24,50 @@ export default class Cart extends Component {
         }
     }
     render() {
-                return (
-                    <Container>
-                    <Content scrollEnabled={false}>
-                        {this.props.cardItemsdet.map((itm, i) => {
-                            return (
-                                <SwipeRow
-                                    rightOpenValue={-75}
-                                    body={
-                                        <View>
-                                            <Text>{itm.MenuName}</Text>
-                                        </View>
-                                    }
-                                    right={
-                                        <Button danger onPress={() => this.props.delete(i)}>
-                                            <Icon active name="trash" />
-                                        </Button>
-                                    }
-                                />
-                            )
-                        })
-                        }
-                        {
-                            this.props.cardItemsdet.length ?
-                                <Button
-                                    full
-                                    primary
-                                    style={{ backgroundColor: "red" }}
-                                    onPress={() => this.props.navig.navigate('SelectCity')}
-                                >
-                                     <Text>
-                                         ORDER
-                                      </Text></Button>
-                                 : null
-                        }
-                    </Content>
-                </Container>
-                )}
+        return (
+            <Container>
+                <Content scrollEnabled={false}>
+                    {this.props.cardItemsdet.map((itm, index) => {
+                        return (
+                            <SwipeRow
+                                rightOpenValue={-75}
+                                body={<View style={{ width, display: "flex", flexDirection: "row" }}>
+                                    <View style={{ display: "flex", flexDirection: "row", justifyContent: "flex-start", width: width / 1.35 }}>
+                                        <Text>{itm.MenuName}-{itm.quantity}*{itm.price}</Text>
+                                    </View>
+                                    <View style={{ display: "flex", flexDirection: "row", justifyContent: "flex-end", width: width / 4 }}>
+                                        <Text>{itm.Total}</Text>
+                                    </View>
+                                </View>}
+                                right={
+                                    <Button danger onPress={() => this.props.deleteC(index)}>
+                                        <Icon active name="trash" />
+                                    </Button>}
+                            />)
+                    })}
+                    {this.props.cardItemsdet.length ?
+                        <View>
+                            <List>
+                                <ListItem>
+                                    <Left>
+                                        <Text style={{ color: "red", fontSize: 20 }}>Total Price</Text>
+                                    </Left>
+                                    <Right>
+                                        <Text style={{ color: "blue", fontSize: 23 }}>{this.props.totalAmount}</Text>
+                                    </Right>
+                                </ListItem>
+                            </List>
+                            <Button
+                                full
+                                primary
+                                style={{ backgroundColor: '#C21807' }}
+                                onPress={() => this.props.navig.navigate('SelectCity')}
+                            ><Text style={{ fontSize: 20 }}>ORDER</Text></Button>
+                        </View>
+                        : null
+                    }
+                </Content>
+            </Container>
+        )
+    }
 }
