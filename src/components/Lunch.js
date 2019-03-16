@@ -84,7 +84,7 @@ export default class Lunch extends Component {
                                             : null
                                     }
                                     <CardItem footer bordered>
-                                        <Text>{mu.Price} / Person</Text>
+                                        <Text>{mu.price} / Person</Text>
                                         <TextInput
                                                 style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 8, color: "red", backgroundColor: "none", fontSize: 19, paddingRight: "2%", paddingLeft: "2%" }}
                                                 onChangeText={(qty) => this.setState({ ["f" + index]: qty })}
