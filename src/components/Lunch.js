@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
     View,
     Dimensions,
+    TextInput
 } from 'react-native'
 import {
     Text,
@@ -10,6 +11,7 @@ import {
     Card,
     CardItem,
     Body,
+    Button
 } from 'native-base';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 const { width, fontScale } = Dimensions.get('window');
@@ -20,8 +22,20 @@ export default class Lunch extends Component {
         super(props)
         this.state = {
             Lunch: [],
-            open:false
+            l0:false,
+            l1:false,
+            l2:false,
+            f0:1,
+            f1:1,
+            f2:1,
+            qty:1
         }
+    }
+    clear = (abc) => {
+        this.setState({
+            qty: "",
+            [abc]: 0
+        })
     }
     UNSAFE_componentWillMount() {
         firebase.database().ref('Lunch').once("value").then(success => {
@@ -31,7 +45,6 @@ export default class Lunch extends Component {
             for (let i = (keys.length - 1); i >= 0; i--) {
                 array.push(product[keys[i]])
             }
-            // console.log(array);
             this.setState({ Lunch: array });
         })
             .catch(err => {
@@ -47,13 +60,12 @@ export default class Lunch extends Component {
                             return (
                                 <Card>
                                     <CardItem header bordered>
-                                        <TouchableOpacity style={{ width: width / 1.2, height: width / 15 }} onPress={() => this.setState({ open: !this.state.open })}>
+                                        <TouchableOpacity style={{ width: width / 1.2, height: width / 15 }} onPress={() => this.setState({ ["l"+index]: !this.state["l"+index] })}>
                                             <Text>{mu.menuName}</Text>
                                         </TouchableOpacity>
                                     </CardItem>
 
-                                    {
-                                        this.state.open ?
+                                    {this.state["l"+index] ?
                                             <CardItem bordered>
                                                 <Body>
                                                     <View>
@@ -72,7 +84,17 @@ export default class Lunch extends Component {
                                             : null
                                     }
                                     <CardItem footer bordered>
-                                        <Text>{mu.Price}/- Per Person</Text>
+                                        <Text>{mu.Price} / Person</Text>
+                                        <TextInput
+                                                style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 8, color: "red", backgroundColor: "none", fontSize: 19, paddingRight: "2%", paddingLeft: "2%" }}
+                                                onChangeText={(qty) => this.setState({ ["f" + index]: qty })}
+                                                value={this.state["f" + index]}
+                                                name={"f" + index}
+                                                placeholder="1"
+                                                placeholderTextColor="red"
+                                                autoCapitalize='none'
+                                            />
+                                            <Button onPress={() => { this.props.card(mu, this.state["f" + index]); this.clear("f" + index); }}><Text>ORDER</Text></Button>
                                     </CardItem>
                                 </Card>
                             )

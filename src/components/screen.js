@@ -20,7 +20,7 @@ export default class Screen extends Component {
     render() {
         switch (this.props.ScrnChng) {
             case 0:
-                return (<Lunch/>)
+                return (<Lunch card={this.props.card}/>)
                 // return (<Menus card={this.props.card}/>)
                 break;
             case 1:
