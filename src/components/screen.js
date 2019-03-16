@@ -154,6 +154,8 @@ const RMDesserts = [
     { pic: DessertsRMDalHalwa, menuName: "Daal ka Halwa", type: "Royal Mughlai", price: 100 }
 ];
 import Lunch from './Lunch.js'
+// import Cart from './card.js'
+import Cart from './Cart.js'
 // const Lunch = [
 //     {menuName:'Lunch 01',items: ['Chicken Peshawari Karahi','Mutton Biryani','Chicken Tikka Boti','Chicken reshmi kabab','Fish Lahori','Chicken backed Mushroom','Salad Bar Continantal','Naan/Taftaan','Gajar Ka Halwa','Tea/Green Tea'],price: 1250 },
 //     {menuName:'Lunch 02',items: ['Kashmiri pullo','Chicken White Qoura','Chicken Steam','Pasta (Two type)','Fried Fish With Breadcrum','Salad Bar Continantal','Naan/Taftaan','Shahi Kheer','Tea/Green Tea'],price: 950 },
@@ -614,41 +616,7 @@ export default class Screen extends Component {
                     //         </Button>
                     //     </Footer> */}
                     // </Container>
-                    <Container>
-                        <Content scrollEnabled={false}>
-                            {this.props.cardItemsdet.map((itm, i) => {
-                                return (
-                                    <SwipeRow
-                                        rightOpenValue={-75}
-                                        body={
-                                            <View>
-                                                <Text>{itm.MenuName}</Text>
-                                            </View>
-                                        }
-                                        right={
-                                            <Button danger onPress={() => this.props.delete(i)}>
-                                                <Icon active name="trash" />
-                                            </Button>
-                                        }
-                                    />
-                                )
-                            })
-                            }
-                            {
-                                this.props.cardItemsdet.length ?
-                                    <Button
-                                        full
-                                        primary
-                                        style={{ backgroundColor: "red" }}
-                                        onPress={() => this.props.navig.navigate('SelectCity')}
-                                    >
-                                        <Text>
-                                            ORDER
-                                         </Text></Button>
-                                    : null
-                            }
-                        </Content>
-                    </Container>
+                    <Cart cardItemsdet={this.props.cardItemsdet} delete={this.props.delete}/>
                 )
                 break;
             default:

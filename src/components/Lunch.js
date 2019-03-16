@@ -19,41 +19,41 @@ export default class Lunch extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            Lunch:[]
+            Lunch: []
         }
     }
-    UNSAFE_componentWillMount(){
+    UNSAFE_componentWillMount() {
         firebase.database().ref('Lunch').once("value").then(success => {
             const product = success.val();
             const keys = Object.keys(product);
             const array = [];
-            for(let i=(keys.length-1);i>=0;i--){
-              array.push(product[keys[i]])
+            for (let i = (keys.length - 1); i >= 0; i--) {
+                array.push(product[keys[i]])
             }
             console.log(array);
             this.setState({ Lunch: array });
-          })
+        })
             .catch(err => {
-              alert(err)
+                alert(err)
             })
     }
     render() {
-                return (
-                    <Container>
-                        <Content padder>
-                            {
-                                this.state.Lunch.map((mu, index) => {
-                                    return (
-                                        <Card>
-                                            <CardItem header bordered>
-                                            <TouchableOpacity style={{width:width/1.2,height:width/15}} onPress={() =>this.setState({open:!this.state.open})}>
-                                                <Text>{mu.menuName}</Text>
-                                                </TouchableOpacity>
-                                            </CardItem>
-                                      
-                                      {
-                                        this.state.open?
-                                          <CardItem bordered>
+        return (
+            <Container>
+                <Content padder>
+                    {
+                        this.state.Lunch.map((mu, index) => {
+                            return (
+                                <Card>
+                                    <CardItem header bordered>
+                                        <TouchableOpacity style={{ width: width / 1.2, height: width / 15 }} onPress={() => this.setState({ open: !this.state.open })}>
+                                            <Text>{mu.menuName}</Text>
+                                        </TouchableOpacity>
+                                    </CardItem>
+
+                                    {
+                                        this.state.open ?
+                                            <CardItem bordered>
                                                 <Body>
                                                     <View>
                                                         {
@@ -68,19 +68,20 @@ export default class Lunch extends Component {
                                                     </View>
                                                 </Body>
                                             </CardItem>
-                                            :null
-                                      }   
-                                            <CardItem footer bordered>
-                                                <Text>{mu.price}</Text>
-                                            </CardItem>
-                                        </Card>
-                                    )
-                                })
-                            }
-                        </Content>
-                    </Container>
+                                            : null
+                                    }
+                                    <CardItem footer bordered>
+                                        <Text>{mu.Price}/- Per Person</Text>
+                                    </CardItem>
+                                </Card>
+                            )
+                        })
+                    }
+                </Content>
+            </Container>
 
-                )}
+        )
+    }
 }
 // const styles = StyleSheet.create({
 //     container: {

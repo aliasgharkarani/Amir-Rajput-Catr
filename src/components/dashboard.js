@@ -64,7 +64,7 @@ export default class FooterTabsBadgeExample extends Component {
             order: temporder,
             orderDetails: temporderDetails,
         })
-        alert('Trash' + i)
+        // alert('Trash' + i)
     }
     render() {
         return (
