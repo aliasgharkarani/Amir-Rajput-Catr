@@ -63,7 +63,6 @@ export default class FooterTabsBadgeExample extends Component {
         this.setState({
             order: temporder,
             orderDetails: temporderDetails,
-            // Total: tot
         })
         alert('Trash' + i)
     }

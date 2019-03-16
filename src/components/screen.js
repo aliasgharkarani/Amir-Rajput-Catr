@@ -37,6 +37,7 @@ import {
     SwipeRow,
 } from 'native-base';
 const { height, width, fontScale } = Dimensions.get('window');
+import firebase from 'react-native-firebase'
 import CardImage from './img.jpeg'
 import Menu1 from '../assets/menu1.jpeg'
 import Menu2 from '../assets/menu2.jpeg'
@@ -92,9 +93,6 @@ import DessertsPAMangoCoconutIceCreams from '../assets/mangococnuticecream.jpg'
 import DessertsPAFreshTropicalFruits from '../assets/freshtropicalfruits.jpg'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-// import { ScrollView } from 'react-native-gesture-handler';
-// var height = Dimensions.get('window').height;
-// var width = Dimensions.get("window").width;
 var Menus = [
     { pic: Menu1, menuName: "Menu 01", items: ["FRESH JUICES ON ARRIVAL", "FRIED FISH LAHORI", "CHICKEN RESHMI KABAB", "MUTTON KUNNA", "CHICKEN BIRYANI", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "GULAB JAMAN", "CREAM CARAMEL"], "price": 10000 },
     { pic: Menu2, menuName: "Menu 02", items: ["FRESH JUICES ON ARRIVAL", "CHAPLI / SEEKH KABAB", "CHICKEN MALAI BOTI", "CHICKEN ZAFRANI BIRYANI", "CHICKEN BADAMI QORMA", "NAN & TAFTAN", "ASSORTED SALAD BAR", "ASSORTED CHATNIES", "GAJAR KA HALWA", "FRUIT TRIFFLE"], "price": 15000 },
@@ -155,11 +153,11 @@ const RMDesserts = [
     { pic: DessertsRMShahiKheer, menuName: "Shahi Kheer", type: "Royal Mughlai", price: 100 },
     { pic: DessertsRMDalHalwa, menuName: "Daal ka Halwa", type: "Royal Mughlai", price: 100 }
 ];
-const Lunch = [
-    {menuName:'Lunch 01',items: ['Chicken Peshawari Karahi','Mutton Biryani','Chicken Tikka Boti','Chicken reshmi kabab','Fish Lahori','Chicken backed Mushroom','Salad Bar Continantal','Naan/Taftaan','Gajar Ka Halwa','Tea/Green Tea'],price: 1250 },
-    {menuName:'Lunch 02',items: ['Kashmiri pullo','Chicken White Qoura','Chicken Steam','Pasta (Two type)','Fried Fish With Breadcrum','Salad Bar Continantal','Naan/Taftaan','Shahi Kheer','Tea/Green Tea'],price: 950 },
-    {menuName:'Lunch 03',items: ['Peas Pullao','Chicken Strongonoff','Grilled Fish with Green Chatni','Mix Vegetable','Salad Bar Continanatal','Naan/Taftaan ','Tea/Green Tea'],price: 1050 },   
-];
+// const Lunch = [
+//     {menuName:'Lunch 01',items: ['Chicken Peshawari Karahi','Mutton Biryani','Chicken Tikka Boti','Chicken reshmi kabab','Fish Lahori','Chicken backed Mushroom','Salad Bar Continantal','Naan/Taftaan','Gajar Ka Halwa','Tea/Green Tea'],price: 1250 },
+//     {menuName:'Lunch 02',items: ['Kashmiri pullo','Chicken White Qoura','Chicken Steam','Pasta (Two type)','Fried Fish With Breadcrum','Salad Bar Continantal','Naan/Taftaan','Shahi Kheer','Tea/Green Tea'],price: 950 },
+//     {menuName:'Lunch 03',items: ['Peas Pullao','Chicken Strongonoff','Grilled Fish with Green Chatni','Mix Vegetable','Salad Bar Continanatal','Naan/Taftaan ','Tea/Green Tea'],price: 1050 },   
+// ];
 export default class Screen extends Component {
     constructor(props) {
         super(props)
@@ -217,14 +215,39 @@ export default class Screen extends Component {
             h0: 0,
             h1: 0,
             h2: 0,
-            h3: 0
+            h3: 0,
+            Lunch:[]
         }
+        var config = {
+            apiKey: "AIzaSyAwWKfJzZCyxtKZ-y1Nww0OgrDsTB6qZhk",
+            authDomain: "amirrajput-412d2.firebaseapp.com",
+            databaseURL: "https://amirrajput-412d2.firebaseio.com",
+            projectId: "amirrajput-412d2",
+            storageBucket: "amirrajput-412d2.appspot.com",
+            messagingSenderId: "539969251887"
+          };
+        firebase.initializeApp(config);
     }
     clear = (abc) => {
         this.setState({
             qty: "",
             [abc]: 0
         })
+    }
+    UNSAFE_componentWillMount(){
+        firebase.database().ref('Lunch').once("value").then(success => {
+            const product = success.val();
+            const keys = Object.keys(product);
+            const array = [];
+            for(let i=(keys.length-1);i>=0;i--){
+              array.push(product[keys[i]])
+            }
+            console.log(array);
+            this.setState({ Lunch: array });
+          })
+            .catch(err => {
+              alert(err)
+            })
     }
     render() {
         switch (this.props.ScrnChng) {
@@ -233,7 +256,7 @@ export default class Screen extends Component {
                     <Container>
                         <Content padder>
                             {
-                                Lunch.map((mu, index) => {
+                                this.state.Lunch.map((mu, index) => {
                                     return (
                                         <Card>
                                             <CardItem header bordered>
