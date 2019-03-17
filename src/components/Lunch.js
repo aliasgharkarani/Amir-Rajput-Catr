@@ -72,7 +72,7 @@ export default class Lunch extends Component {
                                                         {
                                                             mu.items.map((numbers) => {
                                                                 return (
-                                                                    <Text>
+                                                                    <Text style={{fontFamily:"AguafinaScript-Regular"}}>
                                                                         {numbers}
                                                                     </Text>
                                                                 )
@@ -84,7 +84,7 @@ export default class Lunch extends Component {
                                             : null
                                     }
                                     <CardItem footer bordered>
-                                        <Text>{mu.price} / Person</Text>
+                                        <Text style={{fontFamily:"Roboto_medium"}}>{mu.price} / Person</Text>
                                         <TextInput
                                                 style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 8, color: "red", backgroundColor: "none", fontSize: 19, paddingRight: "2%", paddingLeft: "2%" }}
                                                 onChangeText={(qty) => this.setState({ ["f" + index]: qty })}
