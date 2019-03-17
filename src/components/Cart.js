@@ -53,7 +53,7 @@ export default class Cart extends Component {
                                         <Text style={{ color: "red", fontSize: 20 }}>Total Price</Text>
                                     </Left>
                                     <Right>
-                                        <Text style={{ color: "blue", fontSize: 23 }}>{this.props.totalAmount}</Text>
+                                        <Text style={{ color: "blue", fontSize: 20 }}>{this.props.totalAmount}</Text>
                                     </Right>
                                 </ListItem>
                             </List>
