@@ -65,7 +65,12 @@ export default class Lunch extends Component {
                                             <Text>{mu.menuName}</Text>
                                         </TouchableOpacity>
                                         <TouchableOpacity style={{width:width/4,height: width / 14,display:"flex",flexDirection:"row",justifyContent:"center" }} onPress={() => this.setState({ ["l"+index]: !this.state["l"+index] })}>
-                                            <Text style={{fontSize:25}}>+</Text>
+                                            {
+                                                this.state["l"+index]?                                                
+                                                <Text style={{fontSize:25}}>-</Text>    
+                                                :
+                                                <Text style={{fontSize:25}}>+</Text>                                                    
+                                            }
                                         </TouchableOpacity>
                                     </CardItem>
 
@@ -88,7 +93,7 @@ export default class Lunch extends Component {
                                             : null
                                     }
                                     <CardItem footer bordered>
-                                        <Text style={{width:width/1.85}}>{mu.price} / Person</Text>
+                                        <Text style={{width:width/2.2}}>{mu.price} / Person</Text>
                                         <TextInput
                                                 style={{ fontWeight: "bold",fontWeight: "bold", height: width / 8, width: width / 6, color: "red",fontSize: 19,display:"flex",flexDirection:"row",textAlign:"center" }}
                                                 onChangeText={(qty) => this.setState({ ["f" + index]: qty })}

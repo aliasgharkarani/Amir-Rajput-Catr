@@ -120,7 +120,7 @@ export default class PanAsian extends Component {
                                         </Body>
                                         <Right style={{ borderBottomWidth: 0 }}>
                                             <TextInput
-                                                style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 6.4,display:"flex",flexDirection:"row",textAlign:"center", color: "red", backgroundColor: "none", fontSize: 19}}                                               
+                                                style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 4.7,display:"flex",flexDirection:"row",textAlign:"center", color: "red", backgroundColor: "none", fontSize: 19}}                                               
                                                 onChangeText={(qty) => this.setState({ ["f" + index]: qty })}
                                                 value={this.state["f" + index]}
                                                 name={"f" + index}
@@ -150,7 +150,7 @@ export default class PanAsian extends Component {
                                             </Body>
                                             <Right style={{ borderBottomWidth: 0 }}>
                                                 <TextInput
-                                                    style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 6.4, display: "flex", flexDirection: "row", textAlign: "center", color: "red", backgroundColor: "none", fontSize: 19 }}
+                                                    style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 4.7, display: "flex", flexDirection: "row", textAlign: "center", color: "red", backgroundColor: "none", fontSize: 19 }}
                                                     onChangeText={(qty) => this.setState({ ["g" + index]: qty })}
                                                     value={this.state["g" + index]}
                                                     name={"g" + index}
@@ -181,7 +181,7 @@ export default class PanAsian extends Component {
                                         </Body>
                                         <Right style={{ borderBottomWidth: 0 }}>
                                             <TextInput
-                                                style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 6.4,display:"flex",flexDirection:"row",textAlign:"center", color: "red", backgroundColor: "none", fontSize: 19}}                                             
+                                                style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width /4.7,display:"flex",flexDirection:"row",textAlign:"center", color: "red", backgroundColor: "none", fontSize: 19}}                                             
                                                 onChangeText={(qty) => this.setState({ ["h" + index]: qty })}
                                                 value={this.state["h" + index]}
                                                 name={"h" + index}
