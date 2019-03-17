@@ -14,7 +14,7 @@ import {
     Button,
     Spinner
 } from 'native-base';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 const { width, fontScale } = Dimensions.get('window');
 import firebase from 'react-native-firebase'
 
@@ -23,13 +23,24 @@ export default class Lunch extends Component {
         super(props)
         this.state = {
             Lunch: [],
-            l0:false,
-            l1:false,
-            l2:false,
-            f0:1,
-            f1:1,
-            f2:1,
-            qty:1
+            l0: false,
+            l1: false,
+            l2: false,
+            lunchOpen:false,
+            HightTea: [],
+            h0: false,
+            h1: false,
+            h2: false,
+            HightTeaOpen:false,
+            Dinner:[],
+            d0: false,
+            d1: false,
+            d2: false,
+            DinnerOpen:false,
+            f0: 1,
+            f1: 1,
+            f2: 1,
+            qty: 1,
         }
     }
     clear = (abc) => {
@@ -56,137 +67,272 @@ export default class Lunch extends Component {
         return (
             <Container>
                 <Content padder>
-                    {this.state.Lunch.length?
-                        this.state.Lunch.map((mu, index) => {
-                            return (
-                                <Card>
-                                    <CardItem header bordered>
-                                        <TouchableOpacity style={{ width: width / 1.5, height: width / 15 }}>
-                                            <Text>{mu.menuName}</Text>
-                                        </TouchableOpacity>
-                                        <TouchableOpacity style={{width:width/4,height: width / 14,display:"flex",flexDirection:"row",justifyContent:"center" }} onPress={() => this.setState({ ["l"+index]: !this.state["l"+index] })}>
-                                            {
-                                                this.state["l"+index]?                                                
-                                                <Text style={{fontSize:25}}>-</Text>    
-                                                :
-                                                <Text style={{fontSize:25}}>+</Text>                                                    
-                                            }
-                                        </TouchableOpacity>
-                                    </CardItem>
+                    <Card>
+                        <CardItem header bordered>
+                            <TouchableOpacity style={{ width: width / 1.5, height: width / 15 }}>
+                                <Text>Lunch</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={{ width: width / 4, height: width / 11, display: "flex", flexDirection: "row", justifyContent: "center" }} onPress={() => this.setState({ lunchOpen: !this.state.lunchOpen })}>
+                                {this.state.lunchOpen?
+                                        <Text style={{ fontSize: 30 }}>-</Text>
+                                        :
+                                        <Text style={{ fontSize: 30 }}>+</Text>
+                                }
+                            </TouchableOpacity>
+                        </CardItem>
 
-                                    {this.state["l"+index] ?
-                                            <CardItem bordered>
-                                                <Body>
-                                                    <View>
+                        {this.state.lunchOpen?
+                            <CardItem bordered>
+                            <ScrollView>
+                                {
+                                    this.state.Lunch.map((mu, index) => {
+                                        return (
+                                           <Card style={{backgroundColor:"green",margin:0,padding:0}}>
+                                                <CardItem header bordered>
+                                                    <TouchableOpacity style={{ width: width / 1.8, height: width / 15 }}>
+                                                        <Text>{mu.menuName}</Text>
+                                                    </TouchableOpacity>
+                                                    <TouchableOpacity style={{ width: width / 4, height: width / 14, display: "flex", flexDirection: "row", justifyContent: "center" }} onPress={() => this.setState({ ["l" + index]: !this.state["l" + index] })}>
                                                         {
-                                                            mu.items.map((numbers) => {
-                                                                return (
-                                                                    <Text style={{fontFamily:"AguafinaScript-Regular"}}>
-                                                                        {numbers}
-                                                                    </Text>
-                                                                )
-                                                            })
+                                                            this.state["l" + index] ?
+                                                                <Text style={{ fontSize: 25 }}>-</Text>
+                                                                :
+                                                                <Text style={{ fontSize: 25 }}>+</Text>
                                                         }
-                                                    </View>
-                                                </Body>
-                                            </CardItem>
-                                            : null
-                                    }
-                                    <CardItem footer bordered>
-                                        <Text style={{width:width/2.2}}>{mu.price} / Person</Text>
-                                        <TextInput
-                                                style={{ fontWeight: "bold",fontWeight: "bold", height: width / 8, width: width / 6, color: "red",fontSize: 19,display:"flex",flexDirection:"row",textAlign:"center" }}
-                                                onChangeText={(qty) => this.setState({ ["f" + index]: qty })}
-                                                value={this.state["f" + index]}
-                                                name={"f" + index}
-                                                placeholder="1"
-                                                placeholderTextColor="red"
-                                                autoCapitalize='none'
-                                            />
-                                            <Button style={{alignSelf:"center"}} onPress={() => { this.props.card(mu, this.state["f" + index]); this.clear("f" + index); }}><Text>ORDER</Text></Button>
-                                    </CardItem>
-                                </Card>
-                            )
-                        }):
-                        <Spinner color='blue' />
-                    }
+                                                    </TouchableOpacity>
+                                                </CardItem>
+
+                                                {this.state["l" + index] ?
+                                                    <CardItem bordered>
+                                                        <Body>
+                                                            <View>
+                                                                {
+                                                                    mu.items.map((numbers) => {
+                                                                        return (
+                                                                            <Text style={{ fontFamily: "AguafinaScript-Regular" }}>
+                                                                                {numbers}
+                                                                            </Text>
+                                                                        )
+                                                                    })
+                                                                }
+                                                            </View>
+                                                        </Body>
+                                                    </CardItem>
+                                                    : null
+                                                }
+                                                <CardItem footer bordered>
+                                                    <Text style={{ width: width / 2.7 }}>{mu.price} / Person</Text>
+                                                    <TextInput
+                                                        style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 6, color: "red", fontSize: 19, display: "flex", flexDirection: "row", textAlign: "center" }}
+                                                        onChangeText={(qty) => this.setState({ ["f" + index]: qty })}
+                                                        value={this.state["f" + index]}
+                                                        name={"f" + index}
+                                                        placeholder="1"
+                                                        placeholderTextColor="red"
+                                                        autoCapitalize='none'
+                                                    />
+                                                    <Button style={{ alignSelf: "center" }} onPress={() => { this.props.card(mu, this.state["f" + index]); this.clear("f" + index); }}><Text>ORDER</Text></Button>
+                                                </CardItem>
+                                            </Card>
+                                        )
+                                    })
+                                 }
+                                 </ScrollView>
+                            </CardItem>
+                            : null
+                        }
+                        {/* <CardItem footer bordered>
+                            <Text style={{ width: width / 2.2 }}>{mu.price} / Person</Text>
+                            <TextInput
+                                style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 6, color: "red", fontSize: 19, display: "flex", flexDirection: "row", textAlign: "center" }}
+                                onChangeText={(qty) => this.setState({ ["f" + index]: qty })}
+                                value={this.state["f" + index]}
+                                name={"f" + index}
+                                placeholder="1"
+                                placeholderTextColor="red"
+                                autoCapitalize='none'
+                            />
+                            <Button style={{ alignSelf: "center" }} onPress={() => { this.props.card(mu, this.state["f" + index]); this.clear("f" + index); }}><Text>ORDER</Text></Button>
+                        </CardItem> */}
+                    </Card>
+                    <Card>
+                        <CardItem header bordered>
+                            <TouchableOpacity style={{ width: width / 1.5, height: width / 15 }}>
+                                <Text>High Tea</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={{ width: width / 4, height: width / 11, display: "flex", flexDirection: "row", justifyContent: "center" }} onPress={() => this.setState({ HightTeaOpen: !this.state.HightTeaOpen })}>
+                                {this.state.HightTeaOpen?
+                                        <Text style={{ fontSize: 30 }}>-</Text>
+                                        :
+                                        <Text style={{ fontSize: 30 }}>+</Text>
+                                }
+                            </TouchableOpacity>
+                        </CardItem>
+
+                        {this.state.HightTeaOpen?
+                            <CardItem bordered>
+                            <ScrollView>
+                                {
+                                    this.state.Lunch.map((mu, index) => {
+                                        return (
+                                           <Card style={{backgroundColor:"green",margin:0,padding:0}}>
+                                                <CardItem header bordered>
+                                                    <TouchableOpacity style={{ width: width / 1.8, height: width / 15 }}>
+                                                        <Text>{mu.menuName}</Text>
+                                                    </TouchableOpacity>
+                                                    <TouchableOpacity style={{ width: width / 4, height: width / 14, display: "flex", flexDirection: "row", justifyContent: "center" }} onPress={() => this.setState({ ["h" + index]: !this.state["h" + index] })}>
+                                                        {
+                                                            this.state["h" + index] ?
+                                                                <Text style={{ fontSize: 25 }}>-</Text>
+                                                                :
+                                                                <Text style={{ fontSize: 25 }}>+</Text>
+                                                        }
+                                                    </TouchableOpacity>
+                                                </CardItem>
+
+                                                {this.state["h" + index] ?
+                                                    <CardItem bordered>
+                                                        <Body>
+                                                            <View>
+                                                                {
+                                                                    mu.items.map((numbers) => {
+                                                                        return (
+                                                                            <Text style={{ fontFamily: "AguafinaScript-Regular" }}>
+                                                                                {numbers}
+                                                                            </Text>
+                                                                        )
+                                                                    })
+                                                                }
+                                                            </View>
+                                                        </Body>
+                                                    </CardItem>
+                                                    : null
+                                                }
+                                                <CardItem footer bordered>
+                                                    <Text style={{ width: width / 2.7 }}>{mu.price} / Person</Text>
+                                                    <TextInput
+                                                        style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 6, color: "red", fontSize: 19, display: "flex", flexDirection: "row", textAlign: "center" }}
+                                                        onChangeText={(qty) => this.setState({ ["f" + index]: qty })}
+                                                        value={this.state["f" + index]}
+                                                        name={"f" + index}
+                                                        placeholder="1"
+                                                        placeholderTextColor="red"
+                                                        autoCapitalize='none'
+                                                    />
+                                                    <Button style={{ alignSelf: "center" }} onPress={() => { this.props.card(mu, this.state["f" + index]); this.clear("f" + index); }}><Text>ORDER</Text></Button>
+                                                </CardItem>
+                                            </Card>
+                                        )
+                                    })
+                                 }
+                                 </ScrollView>
+                            </CardItem>
+                            : null
+                        }
+                        {/* <CardItem footer bordered>
+                            <Text style={{ width: width / 2.2 }}>{mu.price} / Person</Text>
+                            <TextInput
+                                style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 6, color: "red", fontSize: 19, display: "flex", flexDirection: "row", textAlign: "center" }}
+                                onChangeText={(qty) => this.setState({ ["f" + index]: qty })}
+                                value={this.state["f" + index]}
+                                name={"f" + index}
+                                placeholder="1"
+                                placeholderTextColor="red"
+                                autoCapitalize='none'
+                            />
+                            <Button style={{ alignSelf: "center" }} onPress={() => { this.props.card(mu, this.state["f" + index]); this.clear("f" + index); }}><Text>ORDER</Text></Button>
+                        </CardItem> */}
+                    </Card>
+                    <Card>
+                        <CardItem header bordered>
+                            <TouchableOpacity style={{ width: width / 1.5, height: width / 15 }}>
+                                <Text>Dinner</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={{ width: width / 4, height: width / 11, display: "flex", flexDirection: "row", justifyContent: "center" }} onPress={() => this.setState({ DinnerOpen: !this.state.DinnerOpen })}>
+                                {this.state.DinnerOpen?
+                                        <Text style={{ fontSize: 30 }}>-</Text>
+                                        :
+                                        <Text style={{ fontSize: 30 }}>+</Text>
+                                }
+                            </TouchableOpacity>
+                        </CardItem>
+
+                        {this.state.DinnerOpen?
+                            <CardItem bordered>
+                            <ScrollView>
+                                {
+                                    this.state.Lunch.map((mu, index) => {
+                                        return (
+                                           <Card style={{backgroundColor:"green",margin:0,padding:0}}>
+                                                <CardItem header bordered>
+                                                    <TouchableOpacity style={{ width: width / 1.8, height: width / 15 }}>
+                                                        <Text>{mu.menuName}</Text>
+                                                    </TouchableOpacity>
+                                                    <TouchableOpacity style={{ width: width / 4, height: width / 14, display: "flex", flexDirection: "row", justifyContent: "center" }} onPress={() => this.setState({ ["d" + index]: !this.state["d" + index] })}>
+                                                        {
+                                                            this.state["d" + index] ?
+                                                                <Text style={{ fontSize: 25 }}>-</Text>
+                                                                :
+                                                                <Text style={{ fontSize: 25 }}>+</Text>
+                                                        }
+                                                    </TouchableOpacity>
+                                                </CardItem>
+
+                                                {this.state["d" + index] ?
+                                                    <CardItem bordered>
+                                                        <Body>
+                                                            <View>
+                                                                {
+                                                                    mu.items.map((numbers) => {
+                                                                        return (
+                                                                            <Text style={{ fontFamily: "AguafinaScript-Regular" }}>
+                                                                                {numbers}
+                                                                            </Text>
+                                                                        )
+                                                                    })
+                                                                }
+                                                            </View>
+                                                        </Body>
+                                                    </CardItem>
+                                                    : null
+                                                }
+                                                <CardItem footer bordered>
+                                                    <Text style={{ width: width / 2.7 }}>{mu.price} / Person</Text>
+                                                    <TextInput
+                                                        style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 6, color: "red", fontSize: 19, display: "flex", flexDirection: "row", textAlign: "center" }}
+                                                        onChangeText={(qty) => this.setState({ ["f" + index]: qty })}
+                                                        value={this.state["f" + index]}
+                                                        name={"f" + index}
+                                                        placeholder="1"
+                                                        placeholderTextColor="red"
+                                                        autoCapitalize='none'
+                                                    />
+                                                    <Button style={{ alignSelf: "center" }} onPress={() => { this.props.card(mu, this.state["f" + index]); this.clear("f" + index); }}><Text>ORDER</Text></Button>
+                                                </CardItem>
+                                            </Card>
+                                        )
+                                    })
+                                 }
+                                 </ScrollView>
+                            </CardItem>
+                            : null
+                        }
+                        {/* <CardItem footer bordered>
+                            <Text style={{ width: width / 2.2 }}>{mu.price} / Person</Text>
+                            <TextInput
+                                style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 6, color: "red", fontSize: 19, display: "flex", flexDirection: "row", textAlign: "center" }}
+                                onChangeText={(qty) => this.setState({ ["f" + index]: qty })}
+                                value={this.state["f" + index]}
+                                name={"f" + index}
+                                placeholder="1"
+                                placeholderTextColor="red"
+                                autoCapitalize='none'
+                            />
+                            <Button style={{ alignSelf: "center" }} onPress={() => { this.props.card(mu, this.state["f" + index]); this.clear("f" + index); }}><Text>ORDER</Text></Button>
+                        </CardItem> */}
+                    </Card>
                 </Content>
             </Container>
         )
     }
 }
-// const styles = StyleSheet.create({
-//     container: {
-//         flex: 1,
-//         justifyContent: 'space-between',
-//         alignItems: 'stretch',
-//         height: height / 1.2,
-//     },
-//     heading: {
-//         fontSize: 20,
-//         color: 'white'
-//     },
-//     cardHeading: {
-//         fontSize: 22
-//     },
-//     cardText: {
-//         fontSize: 17,
-//         color: 'grey',
-//         width: width / 1.9,
-//         fontFamily: "monospace"
-//     },
-//     cardTime: {
-//         backgroundColor: 'lightgrey',
-//         fontSize: 18,
-//         alignSelf: "center"
-//     },
-//     hdr: {
-//         backgroundColor: "#C21807",
-//         alignItems: "center"
-//     },
-//     container1: {
-//         flex: 1,
-//         justifyContent: "space-between",
-//         alignItems: "stretch"
-//     },
-//     iconSearch1: {
-//         padding: 5
-//     },
-//     txt: {
-//         fontSize: 20,
-//     },
-//     hdr: {
-//         backgroundColor: '#C21807',
-//         alignItems: 'center',
-//     },
-//     bgImage1: {
-//         marginTop: 5,
-//         flex: 1,
-//         width: width,
-//         height: height / 3,
-//         justifyContent: "flex-end",
-//         alignItems: "flex-end",
-//         resizeMode: "cover",
-//         position: "relative",
-//         opacity: 0.5
-//     },
-//     catName: {
-//         fontSize: 40,
-//         color: "white",
-//         padding: 10,
-//         position: "absolute",
-//         top: 150,
-//         left: 130
-//     },
-//     textStyle1: {
-//         color: "black"
-//     },
-//     image1: {
-//         width: 35,
-//         height: 35,
-//         borderRadius: 15
-//     },
-//     hdr1: {
-//         backgroundColor: '#C21807'
-//     }
-// });
