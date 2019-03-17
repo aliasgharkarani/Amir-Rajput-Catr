@@ -11,7 +11,8 @@ import {
     Card,
     CardItem,
     Body,
-    Button
+    Button,
+    Spinner
 } from 'native-base';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 const { width, fontScale } = Dimensions.get('window');
@@ -55,13 +56,16 @@ export default class Lunch extends Component {
         return (
             <Container>
                 <Content padder>
-                    {
+                    {this.state.Lunch.length?
                         this.state.Lunch.map((mu, index) => {
                             return (
                                 <Card>
                                     <CardItem header bordered>
-                                        <TouchableOpacity style={{ width: width / 1.2, height: width / 15 }} onPress={() => this.setState({ ["l"+index]: !this.state["l"+index] })}>
+                                        <TouchableOpacity style={{ width: width / 1.5, height: width / 15 }}>
                                             <Text>{mu.menuName}</Text>
+                                        </TouchableOpacity>
+                                        <TouchableOpacity style={{width:width/4,height: width / 14,display:"flex",flexDirection:"row",justifyContent:"center" }} onPress={() => this.setState({ ["l"+index]: !this.state["l"+index] })}>
+                                            <Text style={{fontSize:25}}>+</Text>
                                         </TouchableOpacity>
                                     </CardItem>
 
@@ -84,9 +88,9 @@ export default class Lunch extends Component {
                                             : null
                                     }
                                     <CardItem footer bordered>
-                                        <Text style={{fontFamily:"Roboto_medium"}}>{mu.price} / Person</Text>
+                                        <Text style={{width:width/1.85}}>{mu.price} / Person</Text>
                                         <TextInput
-                                                style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 8, color: "red", backgroundColor: "none", fontSize: 19, paddingRight: "2%", paddingLeft: "2%" }}
+                                                style={{ fontWeight: "bold",fontWeight: "bold", height: width / 8, width: width / 6, color: "red",fontSize: 19,display:"flex",flexDirection:"row",textAlign:"center" }}
                                                 onChangeText={(qty) => this.setState({ ["f" + index]: qty })}
                                                 value={this.state["f" + index]}
                                                 name={"f" + index}
@@ -94,15 +98,15 @@ export default class Lunch extends Component {
                                                 placeholderTextColor="red"
                                                 autoCapitalize='none'
                                             />
-                                            <Button onPress={() => { this.props.card(mu, this.state["f" + index]); this.clear("f" + index); }}><Text>ORDER</Text></Button>
+                                            <Button style={{alignSelf:"center"}} onPress={() => { this.props.card(mu, this.state["f" + index]); this.clear("f" + index); }}><Text>ORDER</Text></Button>
                                     </CardItem>
                                 </Card>
                             )
-                        })
+                        }):
+                        <Spinner color='blue' />
                     }
                 </Content>
             </Container>
-
         )
     }
 }

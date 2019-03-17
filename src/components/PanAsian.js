@@ -18,7 +18,8 @@ import {
     ListItem,
     Left,
     Right,
-    Thumbnail
+    Thumbnail,
+    Spinner
 } from 'native-base';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 const { width, fontScale } = Dimensions.get('window');
@@ -119,7 +120,7 @@ export default class PanAsian extends Component {
                                         </Body>
                                         <Right style={{ borderBottomWidth: 0 }}>
                                             <TextInput
-                                                style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 8, color: "red", backgroundColor: "none", fontSize: 19, paddingRight: "2%", paddingLeft: "2%" }}
+                                                style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 6.4,display:"flex",flexDirection:"row",textAlign:"center", color: "red", backgroundColor: "none", fontSize: 19}}                                               
                                                 onChangeText={(qty) => this.setState({ ["f" + index]: qty })}
                                                 value={this.state["f" + index]}
                                                 name={"f" + index}
@@ -136,32 +137,34 @@ export default class PanAsian extends Component {
                         : null}
                     {this.state.tab2 ?
                         <List>
-                            {this.state.MainCourse && this.state.MainCourse.map((numbers, index) => {
-                                return (
-                                    <ListItem thumbnail style={{ height: width / 4.2, borderBottomColor: "grey", borderBottomWidth: 1 }}>
-                                        <Left>
-                                            <Thumbnail square source={{ uri: numbers.pics }} />
-                                        </Left>
-                                        <Body style={{ borderBottomWidth: 0 }}>
-                                            <Text>{numbers.menuName}</Text>
-                                            <Text note numberOfLines={1}>Its time to build a difference . .</Text>
-                                        </Body>
-                                        <Right style={{ borderBottomWidth: 0 }}>
-                                            <TextInput
-                                                // underlineColorAndroid="white"
-                                                style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 8, color: "red", backgroundColor: "none", fontSize: 19, paddingRight: "2%", paddingLeft: "2%" }}
-                                                onChangeText={(qty) => this.setState({ ["g" + index]: qty })}
-                                                value={this.state["g" + index]}
-                                                name={"g" + index}
-                                                placeholder="1"
-                                                placeholderTextColor="red"
-                                                autoCapitalize='none'
-                                            />
-                                            <Button onPress={() => { this.props.card(numbers, this.state["g" + index]); this.clear("g" + index); }}><Text>ORDER</Text></Button>
-                                        </Right>
-                                    </ListItem>
-                                )
-                            })}
+                            {this.state.MainCourse.length ?
+                                this.state.MainCourse.map((numbers, index) => {
+                                    return (
+                                        <ListItem thumbnail style={{ height: width / 4.2, borderBottomColor: "grey", borderBottomWidth: 1 }}>
+                                            <Left>
+                                                <Thumbnail square source={{ uri: numbers.pics }} />
+                                            </Left>
+                                            <Body style={{ borderBottomWidth: 0 }}>
+                                                <Text>{numbers.menuName}</Text>
+                                                <Text note numberOfLines={1}>Its time to build a difference . .</Text>
+                                            </Body>
+                                            <Right style={{ borderBottomWidth: 0 }}>
+                                                <TextInput
+                                                    style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 6.4, display: "flex", flexDirection: "row", textAlign: "center", color: "red", backgroundColor: "none", fontSize: 19 }}
+                                                    onChangeText={(qty) => this.setState({ ["g" + index]: qty })}
+                                                    value={this.state["g" + index]}
+                                                    name={"g" + index}
+                                                    placeholder="1"
+                                                    placeholderTextColor="red"
+                                                    autoCapitalize='none'
+                                                />
+                                                <Button onPress={() => { this.props.card(numbers, this.state["g" + index]); this.clear("g" + index); }}><Text>ORDER</Text></Button>
+                                            </Right>
+                                        </ListItem>
+                                    )
+                                }) :
+                                <Spinner color='blue' />
+                            }
                         </List>
                         : null}
                     {this.state.tab3 ?
@@ -178,7 +181,7 @@ export default class PanAsian extends Component {
                                         </Body>
                                         <Right style={{ borderBottomWidth: 0 }}>
                                             <TextInput
-                                                style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 8, color: "red", backgroundColor: "none", fontSize: 19, paddingRight: "2%", paddingLeft: "2%" }}
+                                                style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 6.4,display:"flex",flexDirection:"row",textAlign:"center", color: "red", backgroundColor: "none", fontSize: 19}}                                             
                                                 onChangeText={(qty) => this.setState({ ["h" + index]: qty })}
                                                 value={this.state["h" + index]}
                                                 name={"h" + index}
