@@ -4793,6 +4793,13 @@ react-native-safe-area-view@^0.13.0:
   resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-1.0.0-alpha.22.tgz#7a120377b52aa9bbb94d0b8541a014026be9289b"
   integrity sha512-kSyAt0AeVU6N7ZonfV6dP6iZF8B7Bce+tk3eujXhzBGsLg0VSLnU7uE9VqJF0xdQrHR91ZjGgVMieo/8df9KTA==
 
+react-native-swiper-flatlist@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/react-native-swiper-flatlist/-/react-native-swiper-flatlist-1.0.9.tgz#e1840d64b78e8db25d5e1cd7d8fd44b7eb9571ab"
+  integrity sha512-6DoM/0lYWqz89Gy8RGwQjiCZQSQ4Zo9TRcQzGNEeo68j+ripYsA1LUnFPRwNVDxOmpsbROqkun7rPlL+gOEfrA==
+  dependencies:
+    prop-types "^15.6.2"
+
 react-native-tab-view@^1.0.0, react-native-tab-view@^1.2.0:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-1.3.2.tgz#c4e43a538dcacce151938745cea09176beeccbc3"

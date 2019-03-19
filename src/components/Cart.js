@@ -61,7 +61,7 @@ export default class Cart extends Component {
                                 full
                                 primary
                                 style={{ backgroundColor: '#C21807' }}
-                                onPress={() => this.props.navig.navigate('SelectCity')}
+                                onPress={() => this.props.navigation1.navigate('SelectCity',{order: this.props.cardItemsdet,cost:this.props.totalAmount})}
                             ><Text style={{ fontSize: 20 }}>ORDER</Text></Button>
                         </View>
                         : null

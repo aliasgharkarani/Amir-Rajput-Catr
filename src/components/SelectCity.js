@@ -30,6 +30,7 @@ import {
 } from 'native-base';
 // import { bold } from 'ansi-colors';
 // import { createStackNavigator, createAppContainer } from "react-navigation";
+import firebase from 'react-native-firebase'
 const { height, width, fontScale } = Dimensions.get('window');
 export default class Main extends Component {
   constructor(props) {
@@ -37,8 +38,39 @@ export default class Main extends Component {
     this.state = {
       // stm: true,
     }
-    // this.onSubmit = this.onSubmit.bind(this);
+    this.AddToDB = this.AddToDB.bind(this);
   }
+  AddToDB() {
+    // let name1 = this.state.name;
+    // let ph = this.state.phoneno;
+    // let email1 = this.state.email;
+    // let location1 = this.state.location;
+
+    // if (name1.length > 1 && ph.length == 11 && email1.length > 5 && location1.length > 6) {
+        firebase.database().ref(`Orders/AAK-0304`).set({
+            // name: name1,
+            // phoneno1: ph,
+            // email: email1,
+            // location: location1,
+            ordered: this.props.navigation.state.params.order,
+            totalPrice: this.props.navigation.state.params.cost
+        }).then((d) => {
+            // this.setState({
+            //     name: "",
+            //     phoneno: "",
+            //     email: "",
+            //     location: ""
+            // })
+            this.props.navigation.navigate('Details')
+            ToastAndroid.show("Your Order is Booked , Thanks for contacting!", ToastAndroid.SHORT);                
+        }).catch((er) => {
+            ToastAndroid.show("Sorry Not Sent", ToastAndroid.SHORT);
+        })
+    }
+    // else {
+    //     ToastAndroid.show("Add Correct Data", ToastAndroid.SHORT);
+    // }
+  // }
   render() {
     return (
         <Container>
@@ -85,7 +117,7 @@ export default class Main extends Component {
               full
               primary
               style={styles.nextBtn}
-              onPress={() => this.props.navigation.navigate('Dashboard')}
+              onPress={() => this.AddToDB()}
             >
               <Text style={styles.btnText}>Book</Text>
             </Button>

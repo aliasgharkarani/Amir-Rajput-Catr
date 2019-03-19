@@ -30,7 +30,7 @@ export default class Screen extends Component {
                 return (<PanAsian card={this.props.card}/>)
                 break;
             case 3:
-                return (<Cart cardItemsdet={this.props.cardItemsdet} deleteC={this.props.delete} totalAmount={this.props.totalAmount} navig={this.props.navigation}/>)
+                return (<Cart cardItemsdet={this.props.cardItemsdet} deleteC={this.props.delete} totalAmount={this.props.totalAmount} navigation1={this.props.navig}/>)
                 break;
             default:
                 return (
