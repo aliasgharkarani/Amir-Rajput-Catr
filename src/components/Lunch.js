@@ -62,6 +62,32 @@ export default class Lunch extends Component {
             .catch(err => {
                 alert(err)
             })
+            
+        firebase.database().ref('HighTea').once("value").then(success => {
+            const product1 = success.val();
+            const keys1 = Object.keys(product1);
+            const array1 = [];
+            for (let i = (keys1.length - 1); i >= 0; i--) {
+                array1.push(product1[keys1[i]])
+            }
+            this.setState({ HightTea: array1 });
+        })
+            .catch(err => {
+                alert(err)
+            })
+            
+        firebase.database().ref('Dinner').once("value").then(success => {
+            const product2 = success.val();
+            const keys2 = Object.keys(product2);
+            const array2 = [];
+            for (let i = (keys2.length - 1); i >= 0; i--) {
+                array2.push(product2[keys2[i]])
+            }
+            this.setState({ Dinner: array2 });
+        })
+            .catch(err => {
+                alert(err)
+            })
     }
     render() {
         return (
@@ -173,7 +199,7 @@ export default class Lunch extends Component {
                             <CardItem bordered>
                             <ScrollView>
                                 {
-                                    this.state.Lunch.map((mu, index) => {
+                                    this.state.HightTea.map((mu, index) => {
                                         return (
                                            <Card style={{backgroundColor:"green",margin:0,padding:0}}>
                                                 <CardItem header bordered>
@@ -261,7 +287,7 @@ export default class Lunch extends Component {
                             <CardItem bordered>
                             <ScrollView>
                                 {
-                                    this.state.Lunch.map((mu, index) => {
+                                    this.state.Dinner.map((mu, index) => {
                                         return (
                                            <Card style={{backgroundColor:"green",margin:0,padding:0}}>
                                                 <CardItem header bordered>
