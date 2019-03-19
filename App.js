@@ -8,6 +8,11 @@ import Screen from './src/components/screen'
 import Dashboard from './src/components/dashboard'
 import Card from './src/components/card'
 import Cart from './src/components/Cart'
+import lunch1 from './src/components/lunch1'
+import hightea from './src/components/hightea'
+import dinner from './src/components/dinner'
+import Lunch from './src/components/Lunch'
+import menu from './src/components/menu'
 class HomeScreen extends React.Component {
   render() {
     return (
@@ -31,8 +36,38 @@ const AppNavigator = createStackNavigator({
       header: null,
     }
   },
-  Details:{
+  lunch1: {
+    screen: lunch1,
+    navigationOptions: {
+      header: null,
+    }
+  },
+  hightea: {
+    screen: hightea,
+    navigationOptions: {
+      header: null,
+    }
+  },
+  dinner: {
+    screen: dinner,
+    navigationOptions: {
+      header: null,
+    }
+  },
+  Lunch: {
+    screen: Lunch,
+    navigationOptions: {
+      header: null,
+    }
+  },
+  Details: {
     screen: Details,
+    navigationOptions: {
+      header: null,
+    }
+  },
+  menu: {
+    screen: menu,
     navigationOptions: {
       header: null,
     }

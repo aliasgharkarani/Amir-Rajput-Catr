@@ -12,9 +12,16 @@ import {
     Card,
     CardItem,
     Body,
-    Button
+    Button,
+    Container,
+    Content,
+    Header,
+    Right,
+    Left,
+    Icon,
+    Title
 } from 'native-base';
-const { width, fontScale,height } = Dimensions.get('window');
+const { width, fontScale, height } = Dimensions.get('window');
 import firebase from 'react-native-firebase'
 export default class Menus extends Component {
     constructor(props) {
@@ -26,7 +33,7 @@ export default class Menus extends Component {
             a2: 0,
             a1: 0,
             a0: 0,
-            qty:1
+            qty: 1
         }
     }
     UNSAFE_componentWillMount() {
@@ -51,13 +58,30 @@ export default class Menus extends Component {
     }
     render() {
         return (
-                <View>
-                    <ScrollView>
-                        {this.state.Menus && this.state.Menus.map((mu, index) => {
+            <Container style={{ backgroundColor: "#87cefa" }}>
+                <Header transparent>
+                    <Left>
+                        <Button transparent onPress={() => this.props.navigation.navigate('Dashboard')}>
+                            <Icon name="arrow-back" />
+                        </Button>
+                    </Left>
+                    <Body>
+                        <Title>Menus</Title>
+                    </Body>
+                    <Right>
+                        <Button transparent>
+                            {/* <Text>Cancel</Text> */}
+                        </Button>
+                    </Right>
+                </Header>
+                <Content padder>
+                    <View>
+                        <ScrollView>
+                            {this.state.Menus && this.state.Menus.map((mu, index) => {
                                 return (
                                     <Card>
                                         <CardItem cardBody>
-                                            <Image source={{uri: mu.pics}} style={{ height: 200, width: null, flex: 1 }} />
+                                            <Image source={{ uri: mu.pics }} style={{ height: 200, width: null, flex: 1 }} />
                                         </CardItem>
                                         <CardItem>
                                             <Body>
@@ -71,10 +95,10 @@ export default class Menus extends Component {
                                                         })
                                                     }
                                                 </View>
-                                                <View style={{ display: "flex", flexDirection: "row", width: width / 1.1, justifyContent: "space-between" }}>
+                                                <View style={{ display: "flex", flexDirection: "row", width: width / 1.25, justifyContent: "space-between" }}>
                                                     <Text style={styles.cardTime}>Rs.{mu.price}</Text>
                                                     <TextInput
-                                                        style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 8, color: "red", backgroundColor: "none", fontSize: 19, paddingRight: "2%", paddingLeft: "2%" }}
+                                                        style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 13, color: "red", backgroundColor: "none", fontSize: 19}}
                                                         onChangeText={(qty) => this.setState({ ["a" + index]: qty })}
                                                         value={this.state["a" + index]}
                                                         name={"a" + index}
@@ -89,9 +113,11 @@ export default class Menus extends Component {
                                     </Card>
                                 )
                             })
-                        }
-                    </ScrollView>
-                </View>
+                            }
+                        </ScrollView>
+                    </View>
+                </Content>
+            </Container>
         )
     }
 }
