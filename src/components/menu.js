@@ -23,7 +23,8 @@ import {
 } from 'native-base';
 const { width, fontScale, height } = Dimensions.get('window');
 import firebase from 'react-native-firebase'
-export default class Menus extends Component {
+import { connect } from 'react-redux'
+class Menus extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -98,7 +99,7 @@ export default class Menus extends Component {
                                                 <View style={{ display: "flex", flexDirection: "row", width: width / 1.25, justifyContent: "space-between" }}>
                                                     <Text style={styles.cardTime}>Rs.{mu.price}</Text>
                                                     <TextInput
-                                                        style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 13, color: "red", backgroundColor: "none", fontSize: 19}}
+                                                        style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 13, color: "red", backgroundColor: "none", fontSize: 19 }}
                                                         onChangeText={(qty) => this.setState({ ["a" + index]: qty })}
                                                         value={this.state["a" + index]}
                                                         name={"a" + index}
@@ -106,7 +107,7 @@ export default class Menus extends Component {
                                                         placeholderTextColor="red"
                                                         autoCapitalize='none'
                                                     />
-                                                    <Button onPress={() => { this.props.card(mu, this.state["a" + index]); this.clear("a" + index); }}><Text>ORDER</Text></Button>
+                                                    <Button onPress={() => { this.props.AddOrder(mu, this.state["a" + index]); this.clear("a" + index); }}><Text>ORDER</Text></Button>
                                                 </View>
                                             </Body>
                                         </CardItem>
@@ -196,3 +197,14 @@ const styles = StyleSheet.create({
         backgroundColor: '#C21807'
     }
 });
+const mapDispatchToProps = (dispatch) => {
+    return {
+        AddOrder: (OrdrD, qty) => { dispatch({ type: 'ADD_TODO', OrderDetails: OrdrD, Quantity: qty }) }
+    }
+}
+const mapStateToProps = (state) => {
+    return {
+        todo: state.todo
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Menus)

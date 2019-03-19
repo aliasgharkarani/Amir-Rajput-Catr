@@ -1,10 +1,12 @@
 /** @format */
-
+import React from 'react';
 import {AppRegistry} from 'react-native';
 import App from './App';
 import firebase from 'react-native-firebase'
-// import Main from './main'
 import {name as appName} from './app.json';
+import { Provider } from 'react-redux';
+import store from './src/store'
+
 console.disableYellowBox=true;
 var config = {
     apiKey: "AIzaSyAwWKfJzZCyxtKZ-y1Nww0OgrDsTB6qZhk",
@@ -15,4 +17,9 @@ var config = {
     messagingSenderId: "539969251887"
   };
 firebase.initializeApp(config);
-AppRegistry.registerComponent(appName, () => App);
+const withRedux = () => (
+  <Provider store={store}>
+    <App />
+  </Provider>
+);
+AppRegistry.registerComponent(appName, () =>  withRedux);

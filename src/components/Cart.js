@@ -17,35 +17,34 @@ import {
 } from 'native-base';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 const { width, fontScale } = Dimensions.get('window');
-export default class Cart extends Component {
+import { connect } from 'react-redux'
+class Cart extends Component {
     constructor(props) {
-        super(props)
-        this.state = {
-        }
+        super(props);
     }
     render() {
         return (
             <Container>
                 <Content scrollEnabled={false}>
-                    {this.props.cardItemsdet.map((itm, index) => {
+                    {this.props.todo.map((itm, index) => {
                         return (
                             <SwipeRow
                                 rightOpenValue={-75}
                                 body={<View style={{ width, display: "flex", flexDirection: "row" }}>
                                     <View style={{ display: "flex", flexDirection: "row", justifyContent: "flex-start", width: width / 1.35 }}>
-                                        <Text>{itm.MenuName}-{itm.quantity}*{itm.price}</Text>
+                                        <Text>{itm.MenuName}-{itm.Quantity}*{itm.Price}</Text>
                                     </View>
                                     <View style={{ display: "flex", flexDirection: "row", justifyContent: "flex-end", width: width / 4 }}>
                                         <Text>{itm.Total}</Text>
                                     </View>
                                 </View>}
                                 right={
-                                    <Button danger onPress={() => this.props.deleteC(index)}>
+                                    <Button danger onPress={() => this.props.deletePost(index)}>
                                         <Icon active name="trash" />
                                     </Button>}
                             />)
                     })}
-                    {this.props.cardItemsdet.length ?
+                    {this.props.todo.length ?
                         <View>
                             <List>
                                 <ListItem>
@@ -53,7 +52,7 @@ export default class Cart extends Component {
                                         <Text style={{ color: "red", fontSize: 20 }}>Total Price</Text>
                                     </Left>
                                     <Right>
-                                        <Text style={{ color: "blue", fontSize: 20 }}>{this.props.totalAmount}</Text>
+                                        <Text style={{ color: "blue", fontSize: 20 }}>{this.props.total}</Text>
                                     </Right>
                                 </ListItem>
                             </List>
@@ -71,3 +70,15 @@ export default class Cart extends Component {
         )
     }
 }
+const mapDispatchToProps = (dispatch) => {
+    return {
+        deletePost:(id)=>{ dispatch({ type:'DELETE_TODO',index:id}) }        
+    }
+}
+const mapStateToProps = (state) => {
+    return {
+        todo: state.todo,
+        total:state.total
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Cart)

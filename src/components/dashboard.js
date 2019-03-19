@@ -9,15 +9,17 @@ import {
 import { Container, Header, Content, Footer, FooterTab, Button, Icon, Text, Badge, Left, Body, Title, Right, List, ListItem, View } from 'native-base';
 var height = Dimensions.get('window').height;
 var width = Dimensions.get("window").width;
-export default class FooterTabsBadgeExample extends Component {
+import { connect } from 'react-redux'
+class dashboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            // todo:props.todo,
             ScreenDisplay: 0,
-            order: 0,
-            orderDetails: [],
+            // order: props.order,
+            // orderDetails: [],
             header: "Traditional Set Menus",
-            Total: 0,
+            // Total: 0,
             stm: true
         }
     }
@@ -26,40 +28,41 @@ export default class FooterTabsBadgeExample extends Component {
             this.setState({
                 stm: false
             })
+            // alert(this.props.todo.length);
         }, 2500)
     }
-    AddTOCARD = (OrdrD, qty) => {
-        let temporder = this.state.order;
-        let tot = this.state.Total;
-        tot += OrdrD.price * qty;
-        ++temporder;
-        let obj = {
-            quantity: qty,
-            MenuName: OrdrD.menuName,
-            price: OrdrD.price,
-            Total:OrdrD.price * qty
-        };
-        let temporderDetails = [...this.state.orderDetails];
-        temporderDetails.push(obj)
-        this.setState({
-            order: temporder,
-            orderDetails: temporderDetails,
-            Total: tot
-        })
-    }
-    DeleteToCard = (index) => {
-        let temporder = this.state.order;
-        --temporder;
-        let tot = this.state.Total;
-        tot -= this.state.orderDetails[index].Total;
-        let temporderDetails = [...this.state.orderDetails];
-        temporderDetails.splice(index,1)
-        this.setState({
-            order: temporder,
-            orderDetails: temporderDetails,
-            Total: tot
-        })
-    }
+    // AddTOCARD = (OrdrD, qty) => {
+    //     let temporder = this.state.order;
+    //     let tot = this.state.Total;
+    //     tot += OrdrD.price * qty;
+    //     ++temporder;
+    //     let obj = {
+    //         quantity: qty,
+    //         MenuName: OrdrD.menuName,
+    //         price: OrdrD.price,
+    //         Total: OrdrD.price * qty
+    //     };
+    //     let temporderDetails = [...this.state.orderDetails];
+    //     temporderDetails.push(obj)
+    //     this.setState({
+    //         order: temporder,
+    //         orderDetails: temporderDetails,
+    //         Total: tot
+    //     })
+    // }
+    // DeleteToCard = (index) => {
+    //     // let temporder = this.state.order;
+    //     // --temporder;
+    //     // let tot = this.state.Total;
+    //     // tot -= this.state.orderDetails[index].Total;
+    //     // let temporderDetails = [...this.state.orderDetails];
+    //     // temporderDetails.splice(index, 1)
+    //     // this.setState({
+    //     //     order: temporder,
+    //     //     orderDetails: temporderDetails,
+    //     //     Total: tot
+    //     // })
+    // }
     render() {
         return (
             this.state.stm ? <View style={styles.container1}>
@@ -83,13 +86,13 @@ export default class FooterTabsBadgeExample extends Component {
                         </TouchableOpacity>
                         <TouchableOpacity activeOpacity={1} style={{ width: "30%", backgroundColor: "#C21807" }}>
                             <Button style={{ elevation: 0, backgroundColor: "#C21807", width: "100%" }} onPress={() => { this.setState({ ScreenDisplay: 3, header: "MY ORDER" }) }} badge vertical>
-                                <Badge style={{ width: 22, marginBottom: -7, zIndex: 10 }}><Text style={{ fontSize: 13, color: "white", width: 22, alignSelf: "center" }}>{this.state.order}</Text></Badge>
+                                <Badge style={{ width: 22, marginBottom: -7, zIndex: 10 }}><Text style={{ fontSize: 13, color: "white", width: 22, alignSelf: "center" }}>{this.props.order}</Text></Badge>
                                 <Icon name="cart" />
                             </Button>
                         </TouchableOpacity>
                     </Header>
                     <Content contentContainerStyle={{ flex: 1 }}>
-                        <Screen delete={this.DeleteToCard} card={this.AddTOCARD} navig={this.props.navigation} cardItemsno={this.state.order} totalAmount={this.state.Total} cardItemsdet={this.state.orderDetails} ScrnChng={this.state.ScreenDisplay} />
+                        <Screen delete={this.DeleteToCard} card={this.AddTOCARD} navig={this.props.navigation} cardItemsno={this.props.order} totalAmount={this.state.Total} cardItemsdet={this.state.orderDetails} ScrnChng={this.state.ScreenDisplay} />
                     </Content>
                     <Footer style={{ backgroundColor: "#C21807" }}>
                         <FooterTab style={{ backgroundColor: "#C21807" }}>
@@ -106,7 +109,7 @@ export default class FooterTabsBadgeExample extends Component {
                                 <Text>Pan Asian</Text>
                             </Button>
                             <Button style={{ elevation: 0 }} badge vertical onPress={() => { this.setState({ ScreenDisplay: 3, header: "CART" }) }}>
-                                <Badge><Text>{this.state.order}</Text></Badge>
+                                <Badge><Text>{this.props.order}</Text></Badge>
                                 <Icon name="cart" />
                                 <Text>CART</Text>
                             </Button>
@@ -128,3 +131,15 @@ const styles = StyleSheet.create({
         height: width / 6.5
     }
 });
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        // AddOrder: (OrdrD,qty) => { dispatch({ type: 'ADD_TODO', OrderDetails: OrdrD, Quantity: qty }) }
+    }
+}
+const mapStateToProps = (state) => {
+    return {
+        order: state.order
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(dashboard)

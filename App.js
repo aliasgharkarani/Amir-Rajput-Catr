@@ -13,13 +13,23 @@ import hightea from './src/components/hightea'
 import dinner from './src/components/dinner'
 import Lunch from './src/components/Lunch'
 import menu from './src/components/menu'
+// class App extends React.Component {
+//   render() {
+//     return (
+//       <Provider store={store}>
+//               <AppNavigator />
+//            </Provider>
+//     );
+//   }
+// }
 class HomeScreen extends React.Component {
   render() {
-    return (
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text>Home Screen</Text>
-      </View>
-    );
+      return (
+          // <Provider store={Store}>
+          //     <AppNavigator />
+          // </Provider>
+          <Text>abc</Text>
+      )
   }
 }
 
