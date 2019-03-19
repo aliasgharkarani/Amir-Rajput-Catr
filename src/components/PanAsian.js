@@ -116,7 +116,7 @@ export default class PanAsian extends Component {
                                         </Left>
                                         <Body style={{ borderBottomWidth: 0 }}>
                                             <Text>{numbers.menuName}</Text>
-                                            <Text note numberOfLines={1}>Its time to build a difference . .</Text>
+                                            <Text note numberOfLines={1}>Rs.{numbers.price}/ Person</Text>
                                         </Body>
                                         <Right style={{ borderBottomWidth: 0 }}>
                                             <TextInput
@@ -146,7 +146,7 @@ export default class PanAsian extends Component {
                                             </Left>
                                             <Body style={{ borderBottomWidth: 0 }}>
                                                 <Text>{numbers.menuName}</Text>
-                                                <Text note numberOfLines={1}>Its time to build a difference . .</Text>
+                                                <Text note numberOfLines={1}>Rs.{numbers.price}/ Person</Text>
                                             </Body>
                                             <Right style={{ borderBottomWidth: 0 }}>
                                                 <TextInput
@@ -177,7 +177,7 @@ export default class PanAsian extends Component {
                                         </Left>
                                         <Body style={{ borderBottomWidth: 0 }}>
                                             <Text>{numbers.menuName}</Text>
-                                            <Text note numberOfLines={1}>Its time to build a difference . .</Text>
+                                            <Text note numberOfLines={1}>Rs.{numbers.price}/ Person</Text>
                                         </Body>
                                         <Right style={{ borderBottomWidth: 0 }}>
                                             <TextInput
