@@ -28,11 +28,10 @@ import {
   Header,
   ListItem,
 } from 'native-base';
-// import { bold } from 'ansi-colors';
-// import { createStackNavigator, createAppContainer } from "react-navigation";
 import firebase from 'react-native-firebase'
 const { height, width, fontScale } = Dimensions.get('window');
-export default class Main extends Component {
+import { connect } from 'react-redux'
+class SelectCity extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -43,37 +42,29 @@ export default class Main extends Component {
     }
     this.AddToDB = this.AddToDB.bind(this);
   }
-  AddToDB() {
-    // let name1 = this.state.name;
-    // let ph = this.state.phoneno;
-    // let email1 = this.state.email;
-    // let location1 = this.state.location;
-
-    // if (name1.length > 1 && ph.length == 11 && email1.length > 5 && location1.length > 6) {
-    firebase.database().ref(`Orders/${this.state.name}-${this.state.mobile}`).set({
-      name: this.state.name,
-      phoneno: this.state.mobile,
-      email: this.state.email,
-      location: this.state.address,
-      ordered: this.props.navigation.state.params.order,
-      totalPrice: this.props.navigation.state.params.cost
-    }).then((d) => {
-      // this.setState({
-      //     name: "",
-      //     phoneno: "",
-      //     email: "",
-      //     location: ""
-      // })
-      this.props.navigation.navigate('Details')
-      ToastAndroid.show("Your Order is Booked , Thanks for contacting!", ToastAndroid.SHORT);
-    }).catch((er) => {
-      ToastAndroid.show("Sorry Not Sent", ToastAndroid.SHORT);
-    })
+  AddToDB() { 
+    if (this.state.name.length > 1 && this.state.phoneno.length == 11 && this.state.email.length > 5 && this.state.location.length > 6) {
+      firebase.database().ref(`Orders/${this.state.name}-${this.state.mobile}`).set({
+        name: this.state.name,
+        phoneno: this.state.mobile,
+        email: this.state.email,
+        location: this.state.address,
+        ordered: this.props.todo,
+        totalPrice: this.props.total
+      }).then((d) => {
+        this.setState({
+          name: "",
+          phoneno: "",
+          email: "",
+          location: ""
+        })
+        this.props.navigation.navigate('Details');
+        ToastAndroid.show("Your Order is Booked , Thanks for contacting!", ToastAndroid.SHORT);
+      }).catch((er) => {
+        ToastAndroid.show("Sorry Not Sent", ToastAndroid.SHORT);
+      })
+    }
   }
-  // else {
-  //     ToastAndroid.show("Add Correct Data", ToastAndroid.SHORT);
-  // }
-  // }
   render() {
     return (
       <Container>
@@ -176,4 +167,16 @@ const styles = StyleSheet.create({
     margin: 5,
     padding: 5
   }
-});
+}); SelectCity
+const mapDispatchToProps = (dispatch) => {
+  return {
+    // AddOrder: (OrdrD, qty) => { dispatch({ type: 'ADD_TODO', OrderDetails: OrdrD, Quantity: qty }) }
+  }
+}
+const mapStateToProps = (state) => {
+  return {
+    todo: state.todo,
+    total: state.total,
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(SelectCity)

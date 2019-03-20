@@ -26,12 +26,12 @@ export default class Lunch extends Component {
         this.state = {
         }
     }
-    clear = (abc) => {
-        this.setState({
-            qty: "",
-            [abc]: 0
-        })
-    }
+    // clear = (abc) => {
+    //     this.setState({
+    //         qty: "",
+    //         [abc]: 0
+    //     })
+    // }
     render() {
         return (
             <Container>

@@ -1,6 +1,6 @@
 const initialState = {
     todo: [],
-    total: "",
+    total: 0,
     order: 0
 }
 
@@ -31,10 +31,19 @@ const rootReducer = (state = initialState, action) => {
         tot -= state.todo[action.index].Total;
         let temporderDetails = [...state.todo];
         temporderDetails.splice(action.index, 1)
-        return {
-            todo: temporderDetails,
-            total: tot,
-            order: temporder
+        if (!temporderDetails.length) {
+            return {
+                todo: [],
+                total: 0,
+                order: 0
+            }
+        }
+        else {
+            return {
+                todo: temporderDetails,
+                total: tot,
+                order: temporder
+            }
         }
     }
     return state;

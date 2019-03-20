@@ -14,12 +14,8 @@ class dashboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            // todo:props.todo,
             ScreenDisplay: 0,
-            // order: props.order,
-            // orderDetails: [],
             header: "Traditional Set Menus",
-            // Total: 0,
             stm: true
         }
     }
@@ -131,7 +127,6 @@ const styles = StyleSheet.create({
         height: width / 6.5
     }
 });
-
 const mapDispatchToProps = (dispatch) => {
     return {
         // AddOrder: (OrdrD,qty) => { dispatch({ type: 'ADD_TODO', OrderDetails: OrdrD, Quantity: qty }) }

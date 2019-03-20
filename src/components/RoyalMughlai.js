@@ -24,7 +24,8 @@ import {
 import { TouchableOpacity } from 'react-native-gesture-handler';
 const { width, fontScale } = Dimensions.get('window');
 import firebase from 'react-native-firebase'
-export default class RoyalMughlai extends Component {
+import { connect } from 'react-redux'
+class RoyalMughlai extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -133,7 +134,7 @@ export default class RoyalMughlai extends Component {
                                             </Body>
                                             <Right style={{ borderBottomWidth: 0 }}>
                                                 <TextInput
-                                                    style={{ fontWeight: "bold", fontWeight: "bold", height: width / 15,margin:0,padding:0, width: width / 4.7,display:"flex",flexDirection:"row",textAlign:"center", color: "red", backgroundColor: "none", fontSize: 19}}
+                                                    style={{ fontWeight: "bold", fontWeight: "bold", height: width / 15, margin: 0, padding: 0, width: width / 4.7, display: "flex", flexDirection: "row", textAlign: "center", color: "red", backgroundColor: "none", fontSize: 19 }}
                                                     onChangeText={(qty) => this.setState({ ["b" + index]: qty })}
                                                     value={this.state["b" + index]}
                                                     name={"b" + index}
@@ -141,7 +142,7 @@ export default class RoyalMughlai extends Component {
                                                     placeholderTextColor="red"
                                                     autoCapitalize='none'
                                                 />
-                                                <Button onPress={() => { this.props.card(numbers, this.state["b" + index]); this.clear("b" + index); }}><Text>ORDER</Text></Button>
+                                                <Button onPress={() => { this.props.AddOrder(numbers, this.state["b" + index]); this.clear("b" + index); }}><Text>ORDER</Text></Button>
                                             </Right>
                                         </ListItem>
                                     )
@@ -164,15 +165,15 @@ export default class RoyalMughlai extends Component {
                                                 </Body>
                                                 <Right style={{ borderBottomWidth: 0 }}>
                                                     <TextInput
-                                                       style={{ fontWeight: "bold", fontWeight: "bold", height: width / 15,margin:0,padding:0, width: width / 4.7,display:"flex",flexDirection:"row",textAlign:"center", color: "red",backgroundColor:"none", fontSize: 19}}
-                                                       onChangeText={(qty) => this.setState({ ["c" + index]: qty })}
+                                                        style={{ fontWeight: "bold", fontWeight: "bold", height: width / 15, margin: 0, padding: 0, width: width / 4.7, display: "flex", flexDirection: "row", textAlign: "center", color: "red", backgroundColor: "none", fontSize: 19 }}
+                                                        onChangeText={(qty) => this.setState({ ["c" + index]: qty })}
                                                         value={this.state["c" + index]}
                                                         name={"c" + index}
                                                         placeholder="1"
                                                         placeholderTextColor="red"
                                                         autoCapitalize='none'
                                                     />
-                                                    <Button style={{margin:0,padding:0}} onPress={() => { this.props.card(numbers, this.state["c" + index]); this.clear("c" + index); }}><Text>ORDER</Text></Button>
+                                                    <Button style={{ margin: 0, padding: 0 }} onPress={() => { this.props.AddOrder(numbers, this.state["c" + index]); this.clear("c" + index); }}><Text>ORDER</Text></Button>
                                                 </Right>
                                             </ListItem>
                                         )
@@ -194,7 +195,7 @@ export default class RoyalMughlai extends Component {
                                             </Body>
                                             <Right style={{ borderBottomWidth: 0 }}>
                                                 <TextInput
-                                                    style={{ fontWeight: "bold", fontWeight: "bold", height: width / 15,margin:0,padding:0, width: width / 4.7,display:"flex",flexDirection:"row",textAlign:"center", color: "red", backgroundColor: "none", fontSize: 19}}                                                    
+                                                    style={{ fontWeight: "bold", fontWeight: "bold", height: width / 15, margin: 0, padding: 0, width: width / 4.7, display: "flex", flexDirection: "row", textAlign: "center", color: "red", backgroundColor: "none", fontSize: 19 }}
                                                     onChangeText={(qty) => this.setState({ ["d" + index]: qty })}
                                                     value={this.state["d" + index]}
                                                     name={"d" + index}
@@ -202,7 +203,7 @@ export default class RoyalMughlai extends Component {
                                                     placeholderTextColor="red"
                                                     autoCapitalize='none'
                                                 />
-                                                <Button onPress={() => { this.props.card(numbers, this.state["d" + index]); this.clear("d" + index); }}><Text>ORDER</Text></Button>
+                                                <Button onPress={() => { this.props.AddOrder(numbers, this.state["d" + index]); this.clear("d" + index); }}><Text>ORDER</Text></Button>
                                             </Right>
                                         </ListItem>
                                     )
@@ -224,7 +225,7 @@ export default class RoyalMughlai extends Component {
                                         </Body>
                                         <Right style={{ borderBottomWidth: 0 }}>
                                             <TextInput
-                                                style={{ fontWeight: "bold", fontWeight: "bold", height: width / 15,margin:0,padding:0, width: width / 4.7,display:"flex",flexDirection:"row",textAlign:"center", color: "red", backgroundColor: "none", fontSize: 19}}                                                
+                                                style={{ fontWeight: "bold", fontWeight: "bold", height: width / 15, margin: 0, padding: 0, width: width / 4.7, display: "flex", flexDirection: "row", textAlign: "center", color: "red", backgroundColor: "none", fontSize: 19 }}
                                                 onChangeText={(qty) => this.setState({ ["e" + index]: qty })}
                                                 value={this.state["e" + index]}
                                                 name={"e" + index}
@@ -232,7 +233,7 @@ export default class RoyalMughlai extends Component {
                                                 placeholderTextColor="red"
                                                 autoCapitalize='none'
                                             />
-                                            <Button onPress={() => { this.props.card(numbers, this.state["e" + index]); this.clear("e" + index); }}><Text>ORDER</Text></Button>
+                                            <Button onPress={() => { this.props.AddOrder(numbers, this.state["e" + index]); this.clear("e" + index); }}><Text>ORDER</Text></Button>
                                         </Right>
                                     </ListItem>
                                 )
@@ -244,3 +245,14 @@ export default class RoyalMughlai extends Component {
         )
     }
 }
+const mapDispatchToProps = (dispatch) => {
+    return {
+        AddOrder: (OrdrD, qty) => { dispatch({ type: 'ADD_TODO', OrderDetails: OrdrD, Quantity: qty }) }
+    }
+}
+const mapStateToProps = (state) => {
+    return {
+        order: state.order
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(RoyalMughlai)

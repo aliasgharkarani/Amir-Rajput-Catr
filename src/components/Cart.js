@@ -60,7 +60,7 @@ class Cart extends Component {
                                 full
                                 primary
                                 style={{ backgroundColor: '#C21807' }}
-                                onPress={() => this.props.navigation1.navigate('SelectCity',{order: this.props.cardItemsdet,cost:this.props.totalAmount})}
+                                onPress={() => this.props.navigation1.navigate('SelectCity')}
                             ><Text style={{ fontSize: 20 }}>ORDER</Text></Button>
                         </View>
                         : null
@@ -72,13 +72,13 @@ class Cart extends Component {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        deletePost:(id)=>{ dispatch({ type:'DELETE_TODO',index:id}) }        
+        deletePost: (id) => { dispatch({ type: 'DELETE_TODO', index: id }) }
     }
 }
 const mapStateToProps = (state) => {
     return {
         todo: state.todo,
-        total:state.total
+        total: state.total
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Cart)

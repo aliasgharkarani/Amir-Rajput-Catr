@@ -9,8 +9,9 @@ import {
 } from 'react-native'
 import firebase from 'react-native-firebase'
 const { width, height, fontScale } = Dimensions.get('window');
+import { connect } from 'react-redux'
 import { Container, Header, Title, Content, Button, Icon, Left, Right, Body, Text, Card, CardItem } from "native-base";
-export default class HeaderTransparent extends Component {
+class hightea extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -38,6 +39,12 @@ export default class HeaderTransparent extends Component {
             .catch(err => {
                 alert(err)
             })
+    }
+    clear = (abc) => {
+        this.setState({
+            qty: "",
+            [abc]: 0
+        })
     }
     render() {
         return (
@@ -105,7 +112,7 @@ export default class HeaderTransparent extends Component {
                                             placeholderTextColor="red"
                                             autoCapitalize='none'
                                         />
-                                        <Button style={{ alignSelf: "center" }} onPress={() => { this.props.card(mu, this.state["f" + index]); this.clear("f" + index); }}><Text>ORDER</Text></Button>
+                                        <Button style={{ alignSelf: "center" }} onPress={() => { this.props.AddOrder(mu, this.state["f" + index]); this.clear("f" + index); }}><Text>ORDER</Text></Button>
                                     </CardItem>
                                 </Card>
                             )
@@ -116,3 +123,14 @@ export default class HeaderTransparent extends Component {
         );
     }
 }
+const mapDispatchToProps = (dispatch) => {
+    return {
+        AddOrder: (OrdrD, qty) => { dispatch({ type: 'ADD_TODO', OrderDetails: OrdrD, Quantity: qty }) }
+    }
+}
+const mapStateToProps = (state) => {
+    return {
+        todo: state.todo
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(hightea)

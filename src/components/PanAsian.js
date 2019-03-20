@@ -23,8 +23,9 @@ import {
 } from 'native-base';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 const { width, fontScale } = Dimensions.get('window');
+import { connect } from 'react-redux'
 import firebase from 'react-native-firebase'
-export default class PanAsian extends Component {
+class PanAsian extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -120,7 +121,7 @@ export default class PanAsian extends Component {
                                         </Body>
                                         <Right style={{ borderBottomWidth: 0 }}>
                                             <TextInput
-                                                style={{ fontWeight: "bold", fontWeight: "bold", height: width / 15,margin:0,padding:0, width: width / 4.7,display:"flex",flexDirection:"row",textAlign:"center", color: "red", backgroundColor: "none", fontSize: 19}}                                               
+                                                style={{ fontWeight: "bold", fontWeight: "bold", height: width / 15, margin: 0, padding: 0, width: width / 4.7, display: "flex", flexDirection: "row", textAlign: "center", color: "red", backgroundColor: "none", fontSize: 19 }}
                                                 onChangeText={(qty) => this.setState({ ["f" + index]: qty })}
                                                 value={this.state["f" + index]}
                                                 name={"f" + index}
@@ -128,7 +129,7 @@ export default class PanAsian extends Component {
                                                 placeholderTextColor="red"
                                                 autoCapitalize='none'
                                             />
-                                            <Button onPress={() => { this.props.card(numbers, this.state["f" + index]); this.clear("f" + index); }}><Text>ORDER</Text></Button>
+                                            <Button onPress={() => { this.props.AddOrder(numbers, this.state["f" + index]); this.clear("f" + index); }}><Text>ORDER</Text></Button>
                                         </Right>
                                     </ListItem>
                                 )
@@ -150,7 +151,7 @@ export default class PanAsian extends Component {
                                             </Body>
                                             <Right style={{ borderBottomWidth: 0 }}>
                                                 <TextInput
-                                                    style={{ fontWeight: "bold", fontWeight: "bold", height: width / 15,margin:0,padding:0, width: width / 4.7, display: "flex", flexDirection: "row", textAlign: "center", color: "red", backgroundColor: "none", fontSize: 19 }}
+                                                    style={{ fontWeight: "bold", fontWeight: "bold", height: width / 15, margin: 0, padding: 0, width: width / 4.7, display: "flex", flexDirection: "row", textAlign: "center", color: "red", backgroundColor: "none", fontSize: 19 }}
                                                     onChangeText={(qty) => this.setState({ ["g" + index]: qty })}
                                                     value={this.state["g" + index]}
                                                     name={"g" + index}
@@ -158,7 +159,7 @@ export default class PanAsian extends Component {
                                                     placeholderTextColor="red"
                                                     autoCapitalize='none'
                                                 />
-                                                <Button onPress={() => { this.props.card(numbers, this.state["g" + index]); this.clear("g" + index); }}><Text>ORDER</Text></Button>
+                                                <Button onPress={() => { this.props.AddOrder(numbers, this.state["g" + index]); this.clear("g" + index); }}><Text>ORDER</Text></Button>
                                             </Right>
                                         </ListItem>
                                     )
@@ -181,7 +182,7 @@ export default class PanAsian extends Component {
                                         </Body>
                                         <Right style={{ borderBottomWidth: 0 }}>
                                             <TextInput
-                                                style={{ fontWeight: "bold", fontWeight: "bold", height: width / 15,margin:0,padding:0, width: width / 4.7,display:"flex",flexDirection:"row",textAlign:"center", color: "red", backgroundColor: "none", fontSize: 19}}                                             
+                                                style={{ fontWeight: "bold", fontWeight: "bold", height: width / 15, margin: 0, padding: 0, width: width / 4.7, display: "flex", flexDirection: "row", textAlign: "center", color: "red", backgroundColor: "none", fontSize: 19 }}
                                                 onChangeText={(qty) => this.setState({ ["h" + index]: qty })}
                                                 value={this.state["h" + index]}
                                                 name={"h" + index}
@@ -189,7 +190,7 @@ export default class PanAsian extends Component {
                                                 placeholderTextColor="red"
                                                 autoCapitalize='none'
                                             />
-                                            <Button onPress={() => { this.props.card(numbers, this.state["h" + index]); this.clear("h" + index); }}><Text>ORDER</Text></Button>
+                                            <Button onPress={() => { this.props.AddOrder(numbers, this.state["h" + index]); this.clear("h" + index); }}><Text>ORDER</Text></Button>
                                         </Right>
                                     </ListItem>
                                 )
@@ -200,3 +201,14 @@ export default class PanAsian extends Component {
             </Container>)
     }
 }
+const mapDispatchToProps = (dispatch) => {
+    return {
+        AddOrder: (OrdrD, qty) => { dispatch({ type: 'ADD_TODO', OrderDetails: OrdrD, Quantity: qty }) }
+    }
+}
+const mapStateToProps = (state) => {
+    return {
+        order: state.order
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(PanAsian)

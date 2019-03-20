@@ -204,7 +204,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 const mapStateToProps = (state) => {
     return {
-        todo: state.todo
+        todo: state.todo,
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Menus)
