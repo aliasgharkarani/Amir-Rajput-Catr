@@ -43,7 +43,7 @@ class SelectCity extends Component {
     this.AddToDB = this.AddToDB.bind(this);
   }
   AddToDB() { 
-    if (this.state.name.length > 1 && this.state.mobile.length == 11 && this.state.email.length > 5 && this.state.location.length > 6) {
+    if (this.state.name.length > 1 && this.state.mobile.length == 11 && this.state.email.length > 5 && this.state.address.length > 6) {
       firebase.database().ref(`Orders/${this.state.name}-${this.state.mobile}`).set({
         name: this.state.name,
         phoneno: this.state.mobile,
@@ -113,11 +113,12 @@ class SelectCity extends Component {
             </View>
           </View>
         </Content>
-        <Footer style={{ backgroundColor: "#C21807" }} onPress={() => this.AddToDB()}>
+        <Footer style={{ backgroundColor: "#C21807" }} >
           <Button
             full
             primary
             style={styles.nextBtn}
+            onPress={() => this.AddToDB()}
           >
             <Text style={styles.btnText}>Book</Text>
           </Button>
