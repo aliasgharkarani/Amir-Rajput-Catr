@@ -81,8 +81,10 @@ class dashboard extends Component {
                             <Text style={styles.heading}>{this.state.header}</Text>
                         </TouchableOpacity>
                         <TouchableOpacity activeOpacity={1} style={{ width: "30%", backgroundColor: "#C21807" }}>
-                            <Button style={{ elevation: 0, backgroundColor: "#C21807", width: "100%",height:"100%" }} onPress={() => this.props.navigation.navigate('Details')} badge vertical>
-                                {/* <Badge style={{ width: 22, marginBottom: -7, zIndex: 10 }}><Text style={{ fontSize: 13, color: "white", width: 22, alignSelf: "center" }}>{this.props.order}</Text></Badge> */}
+                            <Button style={{ elevation: 0, backgroundColor: "#C21807", width: "100%", height: "100%" }} onPress={() => this.props.navigation.navigate('About')} badge vertical>
+                                {/* <Badge style={{ width: 22, marginBottom: -7, zIndex: 10 }}> */}
+                                {/* <Text style={{ fontSize: 13, color: "white", width: 22, alignSelf: "center" }}>Contact</Text> */}
+                                {/* </Badge> */}
                                 <Icon name="ios-person" />
                             </Button>
                         </TouchableOpacity>
@@ -107,7 +109,7 @@ class dashboard extends Component {
                             <Button style={{ elevation: 0 }} badge vertical onPress={() => { this.setState({ ScreenDisplay: 3, header: "CART" }) }}>
                                 <Badge><Text>{this.props.order}</Text></Badge>
                                 <Icon name="cart" />
-                                <Text>Contact</Text>
+                                <Text>CART</Text>
                             </Button>
                         </FooterTab>
                     </Footer>

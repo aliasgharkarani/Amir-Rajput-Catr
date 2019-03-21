@@ -12,7 +12,8 @@ import {
   Image,
   TouchableNativeFeedback,
   Dimensions,
-  ScrollView
+  ScrollView,
+  ToastAndroid
 } from 'react-native';
 import {
   Footer,
@@ -38,13 +39,22 @@ class SelectCity extends Component {
       address: "",
       name: "",
       email: "",
-      mobile: ""
+      mobile: "",
+      date: "",
+      note: ""
     }
     this.AddToDB = this.AddToDB.bind(this);
   }
-  AddToDB() { 
+  UNSAFE_componentWillMount() {
+    let dt = new Date();
+    let c = dt.getTime().toString();
+    this.setState({
+      date: c
+    })
+  }
+  AddToDB() {
     if (this.state.name.length > 1 && this.state.mobile.length == 11 && this.state.email.length > 5 && this.state.address.length > 6) {
-      firebase.database().ref(`Orders/${this.state.name}-${this.state.mobile}`).set({
+      firebase.database().ref(`Orders/${this.state.name.charAt(0)}${this.state.email.slice(0, 3)}${this.state.date}`).set({
         name: this.state.name,
         phoneno: this.state.mobile,
         email: this.state.email,
@@ -52,14 +62,18 @@ class SelectCity extends Component {
         ordered: this.props.todo,
         totalPrice: this.props.total
       }).then((d) => {
+        let ordNo = `${this.state.name.toLowerCase().charAt(0)}${this.state.email.toLowerCase().slice(0, 3)}${this.state.date}`;
+        // console.log(ordNo);
+        this.props.navigation.navigate('Details', { OrderNo: ordNo });
+        // alert(`Order no is: ${this.state.name.charAt(0)}${this.state.email.slice(0, 3)}${this.state.date}`)
+        ToastAndroid.show("Your Order is Booked , Thanks for contacting!", ToastAndroid.SHORT);
         this.setState({
           name: "",
-          phoneno: "",
+          mobile: "",
           email: "",
-          location: ""
+          address: "",
+          note: ""
         })
-        this.props.navigation.navigate('Details');
-        ToastAndroid.show("Your Order is Booked , Thanks for contacting!", ToastAndroid.SHORT);
       }).catch((er) => {
         ToastAndroid.show("Sorry Not Sent", ToastAndroid.SHORT);
       })
@@ -108,7 +122,10 @@ class SelectCity extends Component {
                 />
               </Item>
               <Item underline style={styles.detailBox}>
-                <Input placeholder="Add delivery note" />
+                <Input placeholder="Add delivery note"
+                  onChangeText={(note) => { this.setState({ note }); }}
+                  value={this.state.note}
+                />
               </Item>
             </View>
           </View>

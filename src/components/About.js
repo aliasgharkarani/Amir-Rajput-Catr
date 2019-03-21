@@ -14,7 +14,7 @@ import { Col, Row, Grid } from "react-native-easy-grid";
 
 const { height, width, fontScale } = Dimensions.get('window');
 
-class Details extends Component {
+class About extends Component {
   constructor(props) {
     super(props);
     console.log(this.props)
@@ -52,8 +52,9 @@ class Details extends Component {
           <Text style={{ marginTop: '1%', color: "#4A4A4A", fontSize: fontScale * 16, color: "#0645ad", textAlign: "center" }}>Ali - 0346-3786000</Text>
           <Text style={{ marginTop: '1%', color: "#4A4A4A", fontSize: fontScale * 16, color: "#0645ad", textAlign: "center" }}>Sarfraz - 0300-8252022</Text>
           <Text style={{ marginTop: '1%', color: "#4A4A4A", fontSize: fontScale * 16, color: "#0645ad", textAlign: "center" }}>Email:inquiry@amirrajput.com</Text>
-          <Text style={{ marginTop: '1%', color: "red", fontSize: fontScale * 16, color: "#0645ad", textAlign: "center" }}>Order Id.</Text>
-          <Text style={{ marginTop: '3%', color: "red", fontSize: 30, textAlign: "center" }}>{this.props.navigation.state.params.OrderNo}</Text>
+          {/* {this.props.navigation.state.params.OrderNo ? */}
+          {/* <Text style={{ marginTop: '30%', color: "red", fontSize: 30, textAlign: "center" }}>{this.props.navigation.state.params.OrderNo}</Text> */}
+          {/* : ""} */}
         </View>
         <View style={{ height: width / 14 }}></View>
         {/* <View style={{ display: "flex", flexDirection: "row", alignSelf: "center" }}>
@@ -74,4 +75,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Details;
+export default About;

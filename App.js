@@ -13,6 +13,7 @@ import hightea from './src/components/hightea'
 import dinner from './src/components/dinner'
 import Lunch from './src/components/Lunch'
 import menu from './src/components/menu'
+import About from './src/components/About'
 // class App extends React.Component {
 //   render() {
 //     return (
@@ -24,12 +25,12 @@ import menu from './src/components/menu'
 // }
 class HomeScreen extends React.Component {
   render() {
-      return (
-          // <Provider store={Store}>
-          //     <AppNavigator />
-          // </Provider>
-          <Text>abc</Text>
-      )
+    return (
+      // <Provider store={Store}>
+      //     <AppNavigator />
+      // </Provider>
+      <Text>abc</Text>
+    )
   }
 }
 
@@ -102,6 +103,12 @@ const AppNavigator = createStackNavigator({
   },
   Cart: {
     screen: Cart,
+    navigationOptions: {
+      header: null,
+    }
+  },
+  About: {
+    screen: About,
     navigationOptions: {
       header: null,
     }
