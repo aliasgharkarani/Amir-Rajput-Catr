@@ -46,6 +46,13 @@ const rootReducer = (state = initialState, action) => {
             }
         }
     }
+    else if (action.type === 'CLEAR_TODO') {
+        return {
+            todo: [],
+            total: 0,
+            order: 0
+        }
+    }
     return state;
 }
 export default rootReducer;

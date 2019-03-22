@@ -54,7 +54,7 @@ class SelectCity extends Component {
   }
   AddToDB() {
     if (this.state.name.length > 1 && this.state.mobile.length == 11 && this.state.email.length > 5 && this.state.address.length > 6) {
-      firebase.database().ref(`Orders/${this.state.name.charAt(0)}${this.state.email.slice(0, 3)}${this.state.date}`).set({
+      firebase.database().ref(`Orders/${this.state.name.toLowerCase().charAt(0)}${this.state.email.toLowerCase().slice(0, 3)}${this.state.date}`).set({
         name: this.state.name,
         phoneno: this.state.mobile,
         email: this.state.email,
@@ -63,9 +63,8 @@ class SelectCity extends Component {
         totalPrice: this.props.total
       }).then((d) => {
         let ordNo = `${this.state.name.toLowerCase().charAt(0)}${this.state.email.toLowerCase().slice(0, 3)}${this.state.date}`;
-        // console.log(ordNo);
         this.props.navigation.navigate('Details', { OrderNo: ordNo });
-        // alert(`Order no is: ${this.state.name.charAt(0)}${this.state.email.slice(0, 3)}${this.state.date}`)
+        this.props.OrderDone();
         ToastAndroid.show("Your Order is Booked , Thanks for contacting!", ToastAndroid.SHORT);
         this.setState({
           name: "",
@@ -187,7 +186,7 @@ const styles = StyleSheet.create({
 }); SelectCity
 const mapDispatchToProps = (dispatch) => {
   return {
-    // AddOrder: (OrdrD, qty) => { dispatch({ type: 'ADD_TODO', OrderDetails: OrdrD, Quantity: qty }) }
+    OrderDone: () => { dispatch({ type: 'CLEAR_TODO' }) }
   }
 }
 const mapStateToProps = (state) => {
