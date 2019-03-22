@@ -56,7 +56,7 @@ class hightea extends Component {
                         </Button>
                     </Left>
                     <Body>
-                        <Title>High Tea</Title>
+                        <Title style={{fontFamily:""}}>High Tea</Title>
                     </Body>
                     <Right>
                         <Button transparent>
@@ -71,7 +71,7 @@ class hightea extends Component {
                                 <Card style={{ backgroundColor: "green", margin: 0, padding: 0 }}>
                                     <CardItem header bordered>
                                         <TouchableOpacity style={{ width: width / 1.5, height: width / 15 }}>
-                                            <Text>{mu.menuName}</Text>
+                                            <Text >{mu.menuName}</Text>
                                         </TouchableOpacity>
                                         <TouchableOpacity style={{ width: width / 4, height: width / 11, display: "flex", flexDirection: "row", justifyContent: "center" }} onPress={() => this.setState({ ["h" + index]: !this.state["h" + index] })}>
                                             {
@@ -90,7 +90,7 @@ class hightea extends Component {
                                                     {
                                                         mu.items.map((numbers) => {
                                                             return (
-                                                                <Text style={{ fontFamily: "AguafinaScript-Regular" }}>
+                                                                <Text style={{ fontFamily: "Roboto-MediumItalic" }}>
                                                                     {numbers}
                                                                 </Text>
                                                             )

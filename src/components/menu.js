@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
         fontSize: 17,
         color: 'grey',
         width: width / 1.9,
-        fontFamily: "monospace"
+        fontFamily: "Roboto-MediumItalic"
     },
     cardTime: {
         backgroundColor: 'lightgrey',

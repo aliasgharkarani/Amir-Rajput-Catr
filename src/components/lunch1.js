@@ -90,7 +90,7 @@ class lunch1 extends Component {
                                                     {
                                                         mu.items.map((numbers) => {
                                                             return (
-                                                                <Text style={{ fontFamily: "AguafinaScript-Regular" }}>
+                                                                <Text style={{ fontFamily: "Roboto-MediumItalic" }}>
                                                                     {numbers}
                                                                 </Text>
                                                             )

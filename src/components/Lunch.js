@@ -62,7 +62,7 @@ export default class Lunch extends Component {
                     <Card>
                         <CardItem header bordered>
                             <TouchableOpacity style={{ width: width / 1.5, height: width / 15 }} onPress={() => this.props.navigation1.navigate('lunch1')}>
-                                <Text style={{fontFamily:"AguafinaScript-Regular !important",fontSize:20}}>Lunch</Text>
+                                <Text style={{fontFamily:"AguafinaScript-Regular !important",fontSize:19}}>Lunch</Text>
                             </TouchableOpacity>
                             {/* <TouchableOpacity style={{ width: width / 4, height: width / 11, display: "flex", flexDirection: "row", justifyContent: "center" }} onPress={() => this.setState({ lunchOpen: !this.state.lunchOpen })}> */}
                             <TouchableOpacity style={{ width: width / 4, height: width / 11, display: "flex", flexDirection: "row", justifyContent: "center" }} onPress={() => this.props.navigation1.navigate('lunch1')}>
@@ -139,7 +139,7 @@ export default class Lunch extends Component {
                     <Card>
                         <CardItem header bordered>
                             <TouchableOpacity style={{ width: width / 1.5, height: width / 15 }} onPress={() => this.props.navigation1.navigate('hightea')}>
-                                <Text style={{fontFamily:"AguafinaScript-Regular !important",fontSize:20}}>High Tea</Text>
+                                <Text style={{fontFamily:"AguafinaScript-Regular !important",fontSize:19}}>High Tea</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={{ width: width / 4, height: width / 11, display: "flex", flexDirection: "row", justifyContent: "center" }} onPress={() => this.props.navigation1.navigate('hightea')}>
                                 {this.state.HightTeaOpen ?
@@ -227,7 +227,7 @@ export default class Lunch extends Component {
                     <Card>
                         <CardItem header bordered>
                             <TouchableOpacity style={{ width: width / 1.5, height: width / 15 }} onPress={() => this.props.navigation1.navigate('dinner')}>
-                                <Text style={{fontFamily: "AguafinaScript-Regular !important",fontSize:20}}>Dinner</Text>
+                                <Text style={{fontFamily: "AguafinaScript-Regular !important",fontSize:19}}>Dinner</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={{ width: width / 4, height: width / 11, display: "flex", flexDirection: "row", justifyContent: "center" }} onPress={() => this.setState({ DinnerOpen: !this.state.DinnerOpen })} onPress={() => this.props.navigation1.navigate('dinner')}>
                                 {this.state.DinnerOpen ?
@@ -315,7 +315,7 @@ export default class Lunch extends Component {
                     <Card>
                         <CardItem header bordered>
                             <TouchableOpacity style={{ width: width / 1.5, height: width / 15 }} onPress={() => this.props.navigation1.navigate('menu')}>
-                                <Text style={{fontFamily: "AguafinaScript-Regular !important",fontSize:20}}>Menus</Text>
+                                <Text style={{fontFamily: "AguafinaScript-Regular !important",fontSize:19}}>Menu</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={{ width: width / 4, height: width / 11, display: "flex", flexDirection: "row", justifyContent: "center" }} onPress={() => this.setState({ DinnerOpen: !this.state.DinnerOpen })} onPress={() => this.props.navigation1.navigate('menu')}>
                                 {this.state.DinnerOpen ?

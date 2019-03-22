@@ -15,7 +15,7 @@ class dashboard extends Component {
         super(props);
         this.state = {
             ScreenDisplay: 0,
-            header: "Traditional Set Menus",
+            header: "Traditional Set Menu",
             stm: true
         }
     }
@@ -98,7 +98,7 @@ class dashboard extends Component {
                     </Content>
                     <Footer style={{ backgroundColor: "#C21807" }}>
                         <FooterTab style={{ backgroundColor: "#C21807" }}>
-                            <Button style={{ elevation: 0 }} vertical onPress={() => { this.setState({ ScreenDisplay: 0, header: "Traditional Set Menus" }) }}>
+                            <Button style={{ elevation: 0 }} vertical onPress={() => { this.setState({ ScreenDisplay: 0, header: "Traditional Set Menu" }) }}>
                                 <Icon name="apps" />
                                 <Text>TSM</Text>
                             </Button>
