@@ -111,6 +111,7 @@ class hightea extends Component {
                                             placeholder="1"
                                             placeholderTextColor="red"
                                             autoCapitalize='none'
+                                            keyboardType="numeric"
                                         />
                                         <Button style={{ alignSelf: "center" }} onPress={() => { this.props.AddOrder(mu, this.state["f" + index]); this.clear("f" + index); }}><Text>ORDER</Text></Button>
                                     </CardItem>

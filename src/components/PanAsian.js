@@ -128,6 +128,7 @@ class PanAsian extends Component {
                                                 placeholder="1"
                                                 placeholderTextColor="red"
                                                 autoCapitalize='none'
+                                                keyboardType="numeric"
                                             />
                                             <Button onPress={() => { this.props.AddOrder(numbers, this.state["f" + index]); this.clear("f" + index); }}><Text>ORDER</Text></Button>
                                         </Right>
@@ -158,6 +159,7 @@ class PanAsian extends Component {
                                                     placeholder="1"
                                                     placeholderTextColor="red"
                                                     autoCapitalize='none'
+                                                    keyboardType="numeric"
                                                 />
                                                 <Button onPress={() => { this.props.AddOrder(numbers, this.state["g" + index]); this.clear("g" + index); }}><Text>ORDER</Text></Button>
                                             </Right>
@@ -189,6 +191,7 @@ class PanAsian extends Component {
                                                 placeholder="1"
                                                 placeholderTextColor="red"
                                                 autoCapitalize='none'
+                                                keyboardType="numeric"
                                             />
                                             <Button onPress={() => { this.props.AddOrder(numbers, this.state["h" + index]); this.clear("h" + index); }}><Text>ORDER</Text></Button>
                                         </Right>

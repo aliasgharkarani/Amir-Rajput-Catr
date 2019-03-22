@@ -106,6 +106,7 @@ class Menus extends Component {
                                                         placeholder="1"
                                                         placeholderTextColor="red"
                                                         autoCapitalize='none'
+                                                        keyboardType="numeric"
                                                     />
                                                     <Button onPress={() => { this.props.AddOrder(mu, this.state["a" + index]); this.clear("a" + index); }}><Text>ORDER</Text></Button>
                                                 </View>

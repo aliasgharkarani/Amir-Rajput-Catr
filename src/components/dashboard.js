@@ -76,16 +76,20 @@ class dashboard extends Component {
             </View> :
                 <Container contentContainerStyle={{ flex: 1 }}>
                     <Header style={styles.hdr}>
-                        <TouchableOpacity activeOpacity={1} style={{ width: "20%" }}></TouchableOpacity>
-                        <TouchableOpacity activeOpacity={1} style={{ width: "60%", alignSelf: "center" }}>
+                        {/* {this.state.ScreenDisplay = 3  || 2? */}
+                        <TouchableOpacity activeOpacity={1} style={{ width: "10%" }}></TouchableOpacity>
+
+                        {/* : ""} */}
+                        <TouchableOpacity activeOpacity={1} style={{ width: "70%", backgroundColor: "#C21807", height: "100%", alignSelf: "center", display: "flex", flexDirection: "row", justifyContent: this.state.ScreenDisplay == 3 || this.state.ScreenDisplay == 2 || this.state.ScreenDisplay == 1 ? "center" : "center", alignSelf: "flex-start" }}>
                             <Text style={styles.heading}>{this.state.header}</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity activeOpacity={1} style={{ width: "30%", backgroundColor: "#C21807" }}>
+                        {/*  */}
+                        <TouchableOpacity activeOpacity={1} style={{ width: "20%", backgroundColor: "#C21807" }}>
                             <Button style={{ elevation: 0, backgroundColor: "#C21807", width: "100%", height: "100%" }} onPress={() => this.props.navigation.navigate('About')} badge vertical>
                                 {/* <Badge style={{ width: 22, marginBottom: -7, zIndex: 10 }}> */}
                                 {/* <Text style={{ fontSize: 13, color: "white", width: 22, alignSelf: "center" }}>Contact</Text> */}
                                 {/* </Badge> */}
-                                <Icon name="ios-person" />
+                                <Icon name="ios-person" style={{ width: "60%", height: "70%" }} />
                             </Button>
                         </TouchableOpacity>
                     </Header>
@@ -104,7 +108,7 @@ class dashboard extends Component {
                             </Button>
                             <Button style={{ elevation: 0 }} vertical onPress={() => { this.setState({ ScreenDisplay: 2, header: "Pan Asian" }) }}>
                                 <Icon name="nutrition" />
-                                <Text>Pan Asian</Text>
+                                <Text style={{fontSize:9.8}}>Pan Asian</Text>
                             </Button>
                             <Button style={{ elevation: 0 }} badge vertical onPress={() => { this.setState({ ScreenDisplay: 3, header: "CART" }) }}>
                                 <Badge><Text>{this.props.order}</Text></Badge>
@@ -119,10 +123,14 @@ class dashboard extends Component {
 }
 const styles = StyleSheet.create({
     heading: {
-        textAlign: "center",
-        marginTop: 10,
+        // textAlign: "center",
+        // marginTop: 10,
         fontSize: 20,
-        color: 'white'
+        color: 'white',
+        alignSelf: "center",
+        backgroundColor: "#C21807",
+        // fontFamily: "AguafinaScript-Regular"
+        fontFamily:"Pacifico"
     },
     hdr: {
         backgroundColor: '#C21807',

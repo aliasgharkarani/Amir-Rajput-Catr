@@ -141,6 +141,7 @@ class RoyalMughlai extends Component {
                                                     placeholder="1"
                                                     placeholderTextColor="red"
                                                     autoCapitalize='none'
+                                                    keyboardType="numeric"
                                                 />
                                                 <Button onPress={() => { this.props.AddOrder(numbers, this.state["b" + index]); this.clear("b" + index); }}><Text>ORDER</Text></Button>
                                             </Right>
@@ -172,6 +173,7 @@ class RoyalMughlai extends Component {
                                                         placeholder="1"
                                                         placeholderTextColor="red"
                                                         autoCapitalize='none'
+                                                        keyboardType="numeric"
                                                     />
                                                     <Button style={{ margin: 0, padding: 0 }} onPress={() => { this.props.AddOrder(numbers, this.state["c" + index]); this.clear("c" + index); }}><Text>ORDER</Text></Button>
                                                 </Right>
@@ -202,6 +204,7 @@ class RoyalMughlai extends Component {
                                                     placeholder="1"
                                                     placeholderTextColor="red"
                                                     autoCapitalize='none'
+                                                    keyboardType="numeric"
                                                 />
                                                 <Button onPress={() => { this.props.AddOrder(numbers, this.state["d" + index]); this.clear("d" + index); }}><Text>ORDER</Text></Button>
                                             </Right>
@@ -232,6 +235,7 @@ class RoyalMughlai extends Component {
                                                 placeholder="1"
                                                 placeholderTextColor="red"
                                                 autoCapitalize='none'
+                                                keyboardType="numeric"
                                             />
                                             <Button onPress={() => { this.props.AddOrder(numbers, this.state["e" + index]); this.clear("e" + index); }}><Text>ORDER</Text></Button>
                                         </Right>

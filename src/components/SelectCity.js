@@ -112,7 +112,8 @@ class SelectCity extends Component {
                 <Input placeholder="Cell no"
                   onChangeText={(mobile) => { this.setState({ mobile }); }}
                   value={this.state.mobile}
-                />
+                  keyboardType="numeric"               
+               />
               </Item>
               <Item underline style={styles.detailBox}>
                 <Input placeholder="Email"
