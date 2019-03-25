@@ -138,13 +138,13 @@ const styles = StyleSheet.create({
         fontSize: 22
     },
     cardText: {
-        fontSize: 17,
-        color: 'grey',
+        // fontSize: 17,
+        // color: 'Black',
         width: width / 1.9,
         fontFamily: "Roboto-MediumItalic"
     },
     cardTime: {
-        backgroundColor: 'lightgrey',
+        // backgroundColor: 'lightgrey',
         fontSize: 18,
         alignSelf: "center"
     },
