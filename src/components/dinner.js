@@ -10,7 +10,7 @@ import {
 import firebase from 'react-native-firebase'
 const { width, height, fontScale } = Dimensions.get('window');
 import { connect } from 'react-redux'
-import { Container, Header, Title, Content, Button, Icon, Left, Right, Body, Text, Card, CardItem } from "native-base";
+import { Container, Header, Title, Content, Button, Icon, Left, Right, Body, Text, Card, CardItem,Badge } from "native-base";
 class dinner extends Component {
     constructor(props) {
         super(props)
@@ -59,9 +59,18 @@ class dinner extends Component {
                         <Title>Dinner</Title>
                     </Body>
                     <Right>
-                        <Button transparent>
-                            {/* <Text>Cancel</Text> */}
-                        </Button>
+                        <View style={{width:"100%",display:"flex",flexDirection:"row"}}>
+                            <View style={{ width: "65%",height:"100%" }}>
+                            </View>
+                            <View style={{ width: "35%"}}>
+                                <Button style={{ elevation: 0, width: "100%",backgroundColor:"none", display: "flex", justifyContent: "flex-end" }} badge vertical>
+                                    <Badge style={{ width: 22, marginBottom: -13, marginRight: -40, zIndex: 10 }}>
+                                        <Text style={{ fontSize: 13, color: "white", width: 22, alignSelf: "center"}}>{this.props.order}</Text>
+                                    </Badge>
+                                    <Icon name="cart" style={{ width: "50%", height: "70%", marginLeft: -40 }} />
+                                </Button>
+                            </View>
+                        </View>
                     </Right>
                 </Header>
                 <Content padder>
@@ -131,7 +140,8 @@ const mapDispatchToProps = (dispatch) => {
 }
 const mapStateToProps = (state) => {
     return {
-        todo: state.todo
+        todo: state.todo,
+        order: state.order
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(dinner)

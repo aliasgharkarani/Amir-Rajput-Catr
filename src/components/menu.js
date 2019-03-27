@@ -19,7 +19,8 @@ import {
     Right,
     Left,
     Icon,
-    Title
+    Title,
+    Badge
 } from 'native-base';
 const { width, fontScale, height } = Dimensions.get('window');
 import firebase from 'react-native-firebase'
@@ -70,9 +71,18 @@ class Menus extends Component {
                         <Title>Menus</Title>
                     </Body>
                     <Right>
-                        <Button transparent>
-                            {/* <Text>Cancel</Text> */}
-                        </Button>
+                        <View style={{width:"100%",display:"flex",flexDirection:"row"}}>
+                            <View style={{ width: "65%",height:"100%" }}>
+                            </View>
+                            <View style={{ width: "35%"}}>
+                                <Button style={{ elevation: 0, width: "100%",backgroundColor:"none", display: "flex", justifyContent: "flex-end" }} badge vertical>
+                                    <Badge style={{ width: 22, marginBottom: -13, marginRight: -40, zIndex: 10 }}>
+                                        <Text style={{ fontSize: 13, color: "white", width: 22, alignSelf: "center"}}>{this.props.order}</Text>
+                                    </Badge>
+                                    <Icon name="cart" style={{ width: "50%", height: "70%", marginLeft: -40 }} />
+                                </Button>
+                            </View>
+                        </View>
                     </Right>
                 </Header>
                 <Content padder>
@@ -99,7 +109,7 @@ class Menus extends Component {
                                                 <View style={{ display: "flex", flexDirection: "row", width: width / 1.25, justifyContent: "space-between" }}>
                                                     <Text style={styles.cardTime}>Rs.{mu.price}</Text>
                                                     <TextInput
-                                                        style={{ fontWeight: "bold", fontWeight: "bold", height: width / 8, width: width / 13, color: "red", backgroundColor: "none", fontSize: 19 }}
+                                                        style={{ fontWeight: "bold", fontWeight: "bold", height: width / , width: width / 6, color: "red", backgroundColor: "none", fontSize: 19 }}
                                                         onChangeText={(qty) => this.setState({ ["a" + index]: qty })}
                                                         value={this.state["a" + index]}
                                                         name={"a" + index}
@@ -139,12 +149,16 @@ const styles = StyleSheet.create({
     },
     cardText: {
         // fontSize: 17,
+<<<<<<< HEAD
         color: 'grey',
+=======
+        // color: 'Black',
+>>>>>>> 0bff86a4e635ea9dd534b2777adcd808398aabf2
         width: width / 1.9,
         fontFamily: "Roboto-MediumItalic"
     },
     cardTime: {
-        backgroundColor: 'lightgrey',
+        // backgroundColor: 'lightgrey',
         fontSize: 18,
         alignSelf: "center"
     },
@@ -206,6 +220,7 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
     return {
         todo: state.todo,
+        order: state.order
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Menus)

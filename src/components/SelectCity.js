@@ -53,7 +53,7 @@ class SelectCity extends Component {
     })
   }
   AddToDB() {
-    if (this.state.name.length > 1 && this.state.mobile.length == 11 && this.state.email.length > 5 && this.state.address.length > 6) {
+    if (this.state.name.length > 2 && this.state.mobile.length == 11 && this.state.email.length > 5 && this.state.address.length > 3) {
       firebase.database().ref(`Orders/${this.state.name.toLowerCase().charAt(0)}${this.state.email.toLowerCase().slice(0, 3)}${this.state.date}`).set({
         name: this.state.name,
         phoneno: this.state.mobile,
