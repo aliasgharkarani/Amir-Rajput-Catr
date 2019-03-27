@@ -109,7 +109,7 @@ class Menus extends Component {
                                                 <View style={{ display: "flex", flexDirection: "row", width: width / 1.25, justifyContent: "space-between" }}>
                                                     <Text style={styles.cardTime}>Rs.{mu.price}</Text>
                                                     <TextInput
-                                                        style={{ fontWeight: "bold", fontWeight: "bold", height: width / , width: width / 6, color: "red", backgroundColor: "none", fontSize: 19 }}
+                                                        style={{ fontWeight: "bold", fontWeight: "bold", height: width /6 , width: width / 6, color: "red", backgroundColor: "none", fontSize: 19 }}
                                                         onChangeText={(qty) => this.setState({ ["a" + index]: qty })}
                                                         value={this.state["a" + index]}
                                                         name={"a" + index}
@@ -148,12 +148,9 @@ const styles = StyleSheet.create({
         fontSize: 22
     },
     cardText: {
-        // fontSize: 17,
-<<<<<<< HEAD
-        color: 'grey',
-=======
-        // color: 'Black',
->>>>>>> 0bff86a4e635ea9dd534b2777adcd808398aabf2
+        fontSize: 17,
+       color: 'grey',
+        //  color: 'Black',
         width: width / 1.9,
         fontFamily: "Roboto-MediumItalic"
     },
