@@ -53,7 +53,7 @@ class Cart extends Component {
                                             <Text style={{ color: "red", fontSize: 20 }}>Total Price</Text>
                                         </Left>
                                         <Right>
-                                            <Text style={{ color: "blue", fontSize: 20 }}>{this.props.total}</Text>
+                                            <Text style={{ color: "blue", fontSize: 15 }}>{this.props.total}</Text>
                                         </Right>
                                     </ListItem>
                                 </List>

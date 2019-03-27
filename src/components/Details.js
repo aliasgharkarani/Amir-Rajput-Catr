@@ -49,11 +49,11 @@ class Details extends Component {
           <Text style={{ marginTop: '1%', color: "#4A4A4A", fontSize: fontScale * 16, color: "#0645ad", textAlign: "center" }}>Suite # Darwaish Colony, Karachi, Karachi City, Sindh.</Text>
           <Text style={{ marginTop: '1%', color: "#4A4A4A", fontSize: fontScale * 16, color: "#0645ad", textAlign: "center" }}>Arshee - 0300-8251337</Text>
           <Text style={{ marginTop: '1%', color: "#4A4A4A", fontSize: fontScale * 16, color: "#0645ad", textAlign: "center" }}>Shakeel - 0300-2130196</Text>
-          <Text style={{ marginTop: '1%', color: "#4A4A4A", fontSize: fontScale * 16, color: "#0645ad", textAlign: "center" }}>Ali - 0346-3786000</Text>
-          <Text style={{ marginTop: '1%', color: "#4A4A4A", fontSize: fontScale * 16, color: "#0645ad", textAlign: "center" }}>Sarfraz - 0300-8252022</Text>
+          {/* <Text style={{ marginTop: '1%', color: "#4A4A4A", fontSize: fontScale * 16, color: "#0645ad", textAlign: "center" }}>Ali - 0346-3786000</Text> */}
+          {/* <Text style={{ marginTop: '1%', color: "#4A4A4A", fontSize: fontScale * 16, color: "#0645ad", textAlign: "center" }}>Sarfraz - 0300-8252022</Text> */}
           <Text style={{ marginTop: '1%', color: "#4A4A4A", fontSize: fontScale * 16, color: "#0645ad", textAlign: "center" }}>Email:inquiry@amirrajput.com</Text>
           <Text style={{ marginTop: '1%', color: "red", fontSize: fontScale * 16, color: "#0645ad", textAlign: "center" }}>Order Id.</Text>
-          <Text style={{ marginTop: '3%', color: "red", fontSize: 30, textAlign: "center" }}>{this.props.navigation.state.params.OrderNo}</Text>
+          <Text style={{ marginTop: '2%', color: "red", fontSize: 30, textAlign: "center" }}>{this.props.navigation.state.params.OrderNo}</Text>
         </View>
         <View style={{ height: width / 14 }}></View>
         {/* <View style={{ display: "flex", flexDirection: "row", alignSelf: "center" }}>

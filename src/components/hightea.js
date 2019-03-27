@@ -80,14 +80,14 @@ class hightea extends Component {
                                 <Card style={{ backgroundColor: "green", margin: 0, padding: 0 }}>
                                     <CardItem header bordered>
                                         <TouchableOpacity style={{ width: width / 1.5, height: width / 15 }}>
-                                            <Text >{mu.menuName}</Text>
+                                            <Text style={{fontFamily: "AguafinaScript-Regular !important",fontSize:15}}>{mu.menuName}</Text>
                                         </TouchableOpacity>
                                         <TouchableOpacity style={{ width: width / 4, height: width / 11, display: "flex", flexDirection: "row", justifyContent: "center" }} onPress={() => this.setState({ ["h" + index]: !this.state["h" + index] })}>
                                             {
                                                 this.state["h" + index] ?
                                                     <Text style={{ fontSize: 30 }}>-</Text>
                                                     :
-                                                    <Text style={{ fontSize: 30 }}>+</Text>
+                                                    <Text style={{ fontSize: 25 }}>+</Text>
                                             }
                                         </TouchableOpacity>
                                     </CardItem>

@@ -102,13 +102,13 @@ class dashboard extends Component {
                                 <Icon name="apps" />
                                 <Text>TSM</Text>
                             </Button>
-                            <Button style={{ elevation: 0 }} vertical onPress={() => { this.setState({ ScreenDisplay: 1, header: "Royal Mughlai" }) }}>
+                            <Button style={{ elevation: 0}} vertical onPress={() => { this.setState({ ScreenDisplay: 1, header: "Royal Mughlai" }) }}>
                                 <Icon name="pizza" />
-                                <Text>Mughlai</Text>
+                                <Text style={{fontSize:9}}>Mughlai</Text>
                             </Button>
-                            <Button style={{ elevation: 0 }} vertical onPress={() => { this.setState({ ScreenDisplay: 2, header: "Pan Asian" }) }}>
+                            <Button style={{ elevation: 0,margin:0,padding:0}} vertical onPress={() => { this.setState({ ScreenDisplay: 2, header: "Pan Asian" }) }}>
                                 <Icon name="nutrition" />
-                                <Text style={{fontSize:9.8}}>Pan Asian</Text>
+                                <Text style={{fontSize:8.6}}>Pan Asian</Text>
                             </Button>
                             <Button style={{ elevation: 0 }} badge vertical onPress={() => { this.setState({ ScreenDisplay: 3, header: "CART" }) }}>
                                 <Badge><Text>{this.props.order}</Text></Badge>
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     heading: {
         // textAlign: "center",
         // marginTop: 10,
-        fontSize: 20,
+        fontSize: 17,
         color: 'white',
         alignSelf: "center",
         backgroundColor: "#C21807",

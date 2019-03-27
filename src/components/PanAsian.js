@@ -99,11 +99,13 @@ class PanAsian extends Component {
             <Container>
                 <Header hasSegment style={{ backgroundColor: "none" }}>
                     <Body>
-                        <Segment style={{ backgroundColor: "none", borderColor: "#C21807", borderWidth: 1 }}>
-                            <Button style={{ backgroundColor: this.state.tab1 ? "yellow" : "white", borderColor: "#C21807", borderWidth: 1 }} first onPress={() => { this.setState({ tab1: true, tab2: false, tab3: false }) }}><Text style={{ color: "#C21807" }}>Starters</Text></Button>
-                            <Button style={{ backgroundColor: this.state.tab2 ? "yellow" : "white", borderColor: "#C21807", borderWidth: 1 }} last onPress={() => { this.setState({ tab1: false, tab2: true, tab3: false }) }}><Text style={{ color: "#C21807" }}>Main Course</Text></Button>
-                            <Button style={{ backgroundColor: this.state.tab3 ? "yellow" : "white", borderColor: "#C21807", borderWidth: 1 }} last onPress={() => { this.setState({ tab1: false, tab2: false, tab3: true }) }}><Text style={{ color: "#C21807" }}>Desserts</Text></Button>
+                    <Content style={{width:"96%"}}>
+                        <Segment style={{borderColor: "#C21807", borderWidth: 1  }}>
+                            <Button style={{ backgroundColor: this.state.tab1 ? "yellow" : "white", borderColor: "#C21807", borderWidth: 1 }} first onPress={() => { this.setState({ tab1: true, tab2: false, tab3: false }) }}><Text style={{ color: "#C21807",fontSize:10.2 }}>Starters</Text></Button>
+                            <Button style={{ backgroundColor: this.state.tab2 ? "yellow" : "white", borderColor: "#C21807", borderWidth: 1 }} last onPress={() => { this.setState({ tab1: false, tab2: true, tab3: false }) }}><Text style={{ color: "#C21807",fontSize:10.2 }}>Main Course</Text></Button>
+                            <Button style={{ backgroundColor: this.state.tab3 ? "yellow" : "white", borderColor: "#C21807", borderWidth: 1 }} last onPress={() => { this.setState({ tab1: false, tab2: false, tab3: true }) }}><Text style={{ color: "#C21807",fontSize:10.2 }}>Desserts</Text></Button>
                         </Segment>
+                        </Content>
                     </Body>
                 </Header>
                 <Content padder style={{ marginTop: 0, paddingTop: 0 }}>
@@ -116,7 +118,7 @@ class PanAsian extends Component {
                                             <Thumbnail square source={{ uri: numbers.pics }} />
                                         </Left>
                                         <Body style={{ borderBottomWidth: 0 }}>
-                                            <Text>{numbers.menuName}</Text>
+                                            <Text style={{fontSize:14}}>{numbers.menuName}</Text>
                                             <Text note numberOfLines={1}>Rs.{numbers.price}/ Person</Text>
                                         </Body>
                                         <Right style={{ borderBottomWidth: 0 }}>
@@ -147,7 +149,7 @@ class PanAsian extends Component {
                                                 <Thumbnail square source={{ uri: numbers.pics }} />
                                             </Left>
                                             <Body style={{ borderBottomWidth: 0 }}>
-                                                <Text>{numbers.menuName}</Text>
+                                                <Text style={{fontSize:14}}>{numbers.menuName}</Text>
                                                 <Text note numberOfLines={1}>Rs.{numbers.price}/ Person</Text>
                                             </Body>
                                             <Right style={{ borderBottomWidth: 0 }}>
@@ -179,7 +181,7 @@ class PanAsian extends Component {
                                             <Thumbnail square source={{ uri: numbers.pics }} />
                                         </Left>
                                         <Body style={{ borderBottomWidth: 0 }}>
-                                            <Text>{numbers.menuName}</Text>
+                                            <Text style={{fontSize:13}}>{numbers.menuName}</Text>
                                             <Text note numberOfLines={1}>Rs.{numbers.price}/ Person</Text>
                                         </Body>
                                         <Right style={{ borderBottomWidth: 0 }}>
