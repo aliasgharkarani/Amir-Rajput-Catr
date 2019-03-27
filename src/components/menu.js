@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
         fontSize: 22
     },
     cardText: {
-        fontSize: 17,
+        // fontSize: 17,
         color: 'grey',
         width: width / 1.9,
         fontFamily: "Roboto-MediumItalic"
