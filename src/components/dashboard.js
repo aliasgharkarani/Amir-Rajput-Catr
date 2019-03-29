@@ -4,7 +4,8 @@ import {
     StyleSheet,
     TouchableOpacity,
     Dimensions,
-    Image
+    Image,
+    ImageBackground
 } from 'react-native';
 import { Container, Header, Content, Footer, FooterTab, Button, Icon, Text, Badge, Left, Body, Title, Right, List, ListItem, View } from 'native-base';
 var height = Dimensions.get('window').height;
@@ -61,10 +62,9 @@ class dashboard extends Component {
     // }
     render() {
         return (
-            this.state.stm ? <View style={styles.container1}>
-                <View style={{ height: width / 1.1 }}></View>
-
-                <View style={{ justifyContent: "flex-end", alignItems: "center", height: width / 4 }}>
+            this.state.stm ? <View>
+                <ImageBackground source={require('../assets/rajput.png')} style={{ width: '100%', height: '100%', }}  >
+                    {/* <View style={{ justifyContent: "flex-end", alignItems: "center", height: width / 4 }}>
                     <View style={{ width: width / 1.01, height: width / 1.5 }}>
                         <Image
                             source={require("../assets/logo1.png")} resizeMode="contain" style={{ height: "100%", width: "100%" }} />
@@ -72,7 +72,8 @@ class dashboard extends Component {
                 </View>
                 <View style={{ justifyContent: "flex-end", display: "flex", height: width / 1.8 }}>
                     <Text style={{ color: "#7e1416", fontSize: 20, textAlign: "center" }}>Brands</Text>
-                </View>
+                </View> */}
+                </ImageBackground>
             </View> :
                 <Container contentContainerStyle={{ flex: 1 }}>
                     <Header style={styles.hdr}>
@@ -102,13 +103,13 @@ class dashboard extends Component {
                                 <Icon name="apps" />
                                 <Text>TSM</Text>
                             </Button>
-                            <Button style={{ elevation: 0}} vertical onPress={() => { this.setState({ ScreenDisplay: 1, header: "Royal Mughlai" }) }}>
+                            <Button style={{ elevation: 0 }} vertical onPress={() => { this.setState({ ScreenDisplay: 1, header: "Royal Mughlai" }) }}>
                                 <Icon name="pizza" />
-                                <Text style={{fontSize:9}}>Mughlai</Text>
+                                <Text style={{ fontSize: 9 }}>Mughlai</Text>
                             </Button>
-                            <Button style={{ elevation: 0,margin:0,padding:0}} vertical onPress={() => { this.setState({ ScreenDisplay: 2, header: "Pan Asian" }) }}>
+                            <Button style={{ elevation: 0, margin: 0, padding: 0 }} vertical onPress={() => { this.setState({ ScreenDisplay: 2, header: "Pan Asian" }) }}>
                                 <Icon name="nutrition" />
-                                <Text style={{fontSize:8.6}}>Pan Asian</Text>
+                                <Text style={{ fontSize: 8.6 }}>Pan Asian</Text>
                             </Button>
                             <Button style={{ elevation: 0 }} badge vertical onPress={() => { this.setState({ ScreenDisplay: 3, header: "CART" }) }}>
                                 <Badge><Text>{this.props.order}</Text></Badge>
@@ -130,7 +131,7 @@ const styles = StyleSheet.create({
         alignSelf: "center",
         backgroundColor: "#C21807",
         // fontFamily: "AguafinaScript-Regular"
-        fontFamily:"Pacifico"
+        fontFamily: "Pacifico"
     },
     hdr: {
         backgroundColor: '#C21807',
